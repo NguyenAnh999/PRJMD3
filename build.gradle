@@ -50,6 +50,10 @@ dependencies {
     // https://mvnrepository.com/artifact/com.google.firebase/firebase-admin
     implementation group: 'com.google.firebase', name: 'firebase-admin', version: '8.1.0'
 
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.0'
+
 
 // https://mvnrepository.com/artifact/org.springframework.social/spring-social-facebook
     implementation group: 'org.springframework.social', name: 'spring-social-facebook', version: '2.0.3.RELEASE'
