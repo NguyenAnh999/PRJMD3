@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <link rel="stylesheet" href="/resources/css/admin.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="navigation">
+            <ul style="top: 80px">
+                <li style="top: -80px">
+                    <a href="index.html">
+                        <span class="icon">
+                            <img style="width: 250px;" src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png"
+                                alt="">
+                        </span>
+                    </a>
+
+                </li>
+
+                <li>
+                    <a >
+                        <span class="icon">
+                            <i class="fa-solid fa-table"></i>
+                        </span>
+                        <span  class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a >
+                        <span class="icon">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </span>
+                        <span  class="title">Products</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a >
+                        <span class="icon">
+                            <i class="fa-regular fa-note-sticky"></i>
+                        </span>
+                        <span class="title">Orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a  href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-user"></i>
+                        </span>
+                        <span class="title">User</span>
+                    </a>
+                </li>
+                <li>
+                    <a  href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-user"></i>
+                        </span>
+                        <span class="title">Category</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-regular fa-comment"></i>
+                        </span>
+                        <span class="title">Messages</span>
+                    </a>
+                </li>
+                <li style=" border: solid rgb(242, 241, 241) 1px ; margin-top: 100px;
+                width: 95%;">
+
+
+                </li>
+            </ul>
+            <ul style="top: 75%">
+                <li>
+                    <a >
+                        <span class="icon">
+                            <i class="fa-solid fa-gear"></i>
+                        </span>
+                        <span class="title">Menu Admin</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span class="icon">
+                            <i class="fa-solid fa-lock"></i>
+                        </span>
+                        <span class="title">New Password</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a th:href="@{/admin/addadmin}">
+                        <span class="icon">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </span>
+                        <span class="title">New Admin</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/admin/logoutadmin}">
+                        <span class="icon">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+            
+        </div>
+        <!-- Main-->
+
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="search">
+                    <h2 th:text="'xin chào admin'">
+
+                    </h2>
+                </div>
+                <div class="search">
+                    <form th:action="@{/admin/search}" method="get">
+                    <label>
+                        <input type="text" name="username" placeholder="Search here">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </label>
+                    </form>
+                </div>
+                <i class="fa-solid fa-bell" style="color: black; font-size: 30px;"><span style="background-color: pink;
+                color: white; border-radius: 50%; width: 20px;">0</span>
+                </i>
+                <div class="user">
+                    <img src="/resources/profile/avatar-dep-ngau-nu18.jpg" alt="">
+                </div>
+            </div>
+           
+           <div class="dashboardSession mot">
+            </div>  
+            <div class="chitietOrder hai">
+                <div class="dsOder">
+                    <div class="cardHeader" style="justify-content: space-between">
+                        <h2>Quản lý User</h2>
+                        <a th:href="@{/admin/sort}" class="btn">Sắp xếp</a>
+                    </div>
+                    <!-- <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <i  class="fa-solid fa-magnifying-glass"></i>
+                    </label>
+                  </div> -->
+                    <table>
+                        <thead>
+                        <tr>
+                            <td>ID </td>
+                            <td>fullname</td>
+                            <td>username</td>
+                            <td>Email</td>
+                            <td>img</td>
+                            <td>phone</td>
+                            <td>created_at</td>
+                            <td>updated_at</td>
+                            <td>status</td>
+                            <td>is_deleted</td>
+                            <td>Action</td>
+                        </tr>
+                        </thead>
+                        <tbody id="tableUser">
+                        <tr th:each="u : ${userList}">
+                            <td th:text="*{u.userId}"></td>
+                            <td th:text="*{u.fullName}"></td>
+                            <td th:text="*{u.username}"></td>
+                            <td th:text="*{u.email}"></td>
+                            <td ><img style="width: 100px;height: 100px;object-fit: cover" th:src="*{u.avatar}"></td>
+                            <td th:text="*{u.phone}"></td>
+                            <td th:text="${#dates.format(u.createdAt, 'dd/MM/yyyy')}"></td>
+                            <td th:text="${#dates.format(u.updatedAt, 'dd/MM/yyyy')}"></td>
+                            <td th:text="*{u.status}"></td>
+                            <td th:text="*{u.isDeleted}"></td>
+                            <td><a th:href="@{/admin/blockacc/{id}(id=${u.userId})}">block</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <ul class="listPage">
+                    </ul>
+
+
+                    <div th:if="${isuser!=null}" style="display: flex;gap: 10px">
+                        <!-- 1 2 3 4 5 -->
+                        <p th:each="i : ${#numbers.sequence(1,totalPages)}">
+                            <a th:href="@{'/admin/user?currentPage='+${i - 1}}" th:text="${i}"></a>
+                        </p>
+                        <!-- 1/2	-->
+                    </div>
+
+
+                          <div th:if="${issearch!=null}" style="display: flex;gap: 10px">
+                        <!-- 1 2 3 4 5 -->
+                        <p th:each="i : ${#numbers.sequence(1,totalPages)}">
+                            <a th:href="@{'/admin/search?currentPage='+${i - 1}+'&username='+${issearch}}" th:text="${i}"></a>
+                        </p>
+                        <!-- 1/2	-->
+                    </div>
+
+
+
+                          <div th:if="${issort!=null}" style="display: flex;gap: 10px">
+                        <!-- 1 2 3 4 5 -->
+                        <p th:each="i : ${#numbers.sequence(1,totalPages)}">
+                            <a th:href="@{'/admin/sort?currentPage='+${i - 1}}" th:text="${i}"></a>
+                        </p>
+                        <!-- 1/2	-->
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+
+            <!-- <div class="chitietOrder ba">
+                <div class="dsOder">
+                    <div class="cardHeader" style="justify-content: space-between;">
+                        <button onclick="hienAdd()" style="padding-left: 0;"> <i class="fa-solid fa-plus"></i>Thêm sản phẩm</button>
+                        <a href="#" class="btn">Sắp xếp<i style="padding: 6px;" class="fa-solid fa-v"></i></a>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Tên Sản Phẩm </th>
+                                <th>Giá</th>
+                                <th> Mã sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Ngày tháng</th>
+                                <th>Ghi chú</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableProduct">
+                        </tbody>
+                    </table>
+
+                    <ul class="listPage">
+                    </ul>
+                </div>
+
+            </div> -->
+
+            <!-- <div class="chitietOrder bon">
+             
+            </div> -->
+        
+        </div>
+
+
+
+<!--         <div class="recentCustomers">-->
+<!--                    <div class="cardHeader">-->
+<!--                        <h2>Recent Customers</h2>-->
+<!--                    </div>-->
+
+<!--                    <table>-->
+<!--                        <tr>-->
+<!--                            <td width="60px">-->
+<!--                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <h4>Nguyen Van A <br> <span>Viet Nam</span></h4>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+
+<!--                        <tr>-->
+<!--                            <td width="60px">-->
+<!--                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <h4>Yoshida Moto <br> <span>Japan</span></h4>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+
+<!--                        <tr>-->
+<!--                            <td width="60px">-->
+<!--                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <h4>Nguyen Van A <br> <span>Viet Nam</span></h4>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+
+<!--                        <tr>-->
+<!--                            <td width="60px">-->
+<!--                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <h4>Yoshida Moto <br> <span>Japan</span></h4>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+
+<!--                        <tr>-->
+<!--                            <td width="60px">-->
+<!--                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <h4>Nguyen Van A <br> <span>Viet Nam</span></h4>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+
+<!--                        <tr>-->
+<!--                            <td width="60px">-->
+<!--                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <h4>Yoshida Moto <br> <span>Japan</span></h4>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+
+<!--                        <tr>-->
+<!--                            <td width="60px">-->
+<!--                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <h4>Nguyen Van A <br> <span>Viet Nam</span></h4>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+
+<!--                        <tr>-->
+<!--                            <td width="60px">-->
+<!--                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <h4>Yoshida Moto <br> <span>Japan</span></h4>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                    </table>-->
+<!--                </div> -->
+<!--          </div>-->
+    </div>
+    <script src="/resources/js/admin.js"></script>
+</body>
+
+</html>

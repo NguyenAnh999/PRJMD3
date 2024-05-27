@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gio hang</title>
+
+    <link rel="stylesheet" href="/resources/css/giohang.css" />
+
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+   
+  </head>
+
+
+  <body>
+    <div class="container">
+      <div style="background-color:  rgb(240, 148, 156); width: 100vh;
+      height: 1.5rem;"
+      >
+        <!-- <p class="alert-text"></p> 
+          Nếu muốn cho thông báo gì thêm thì viết vào luôn-->
+      </div>  
+      <header id="header">
+        <a href="index.html" class="logo">
+          <img src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="300" height="50" alt="Glowing">
+        </a>
+
+        <div class="shopping" active>
+          <ion-icon name="bag-handle-outline" aria-hidden="true" 
+          style="font-size: 40px;"></ion-icon>
+          <span class="quantity">0</span>
+        </div>
+
+      </header>
+
+      <div class="list"></div>
+      <ul class="listPage">
+      </ul>
+    </div>
+    <div class="card">
+      <h1>Card</h1>
+      <ul class="listCard"></ul>
+      <div class="checkOut">
+        <div onclick="thanhtoan()" class="total">0</div>
+        <div class="closeShopping">Close</div>
+      </div>
+    </div>
+    <footer >
+        <p class="newsletter-text" style="margin-top: 50px;">
+          Xin chân thành cảm ơn quý khách đã luôn đồng hành cùng Marosa`s Qynh - Chúc quý khách shopping vui vẻ
+        </p>
+        <p class="copyright" style="margin: 50px 0 0 10px;">
+            &copy; 2024 code with love by QuynhAinXynh
+        </p>
+
+
+          <a href="#" class="logo">
+            <img src="../logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="179" height="26" loading="lazy" alt="Glowing">
+          </a>
+        
+         
+      
+    </footer>
+
+
+    <script src="/resources/js/giohang.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  
+  </body>
+</html>
