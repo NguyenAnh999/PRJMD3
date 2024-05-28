@@ -1,10 +1,10 @@
 package com.ra.demo9.controller;
 
+import com.google.api.Http;
 import com.ra.demo9.model.dto.ProductRequest;
 import com.ra.demo9.model.entity.Product;
-import com.ra.demo9.service.ICategoryService;
-import com.ra.demo9.service.IProductService;
-import com.ra.demo9.service.FileService;
+import com.ra.demo9.model.entity.Users;
+import com.ra.demo9.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -27,6 +28,10 @@ public class ProductController {
     @Autowired
     private FileService fileService;
     LocalDateTime currentTime = LocalDateTime.now();
+    @Autowired
+    ShoppingCartService shoppingCartService;
+    @Autowired
+    UserService userService;
 
     @Value("${file-upload}")
     private String fileUpload;
@@ -193,4 +198,29 @@ public class ProductController {
 
         return "/productAdmin";
     }
+
+
+
+    @RequestMapping("/productList")
+    public String productHomeUser(Model model,@RequestParam (defaultValue = "0") int currentPage,@RequestParam(defaultValue = "8") int size) {
+        List<Product> products = productService.getProduct(currentPage,size);
+        model.addAttribute("totalMoney" ,shoppingCartService.getShoppingCartTotal());
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct()/size));
+        model.addAttribute("products", products);
+        model.addAttribute("categories", categoryService.getCategory());
+        return "Product";
+
+    }
+
+    @RequestMapping("/addProductToCart/{id}")
+    public String addProductToCart(@PathVariable("id") Long productId, Model model, HttpSession session)
+    {
+        Product product = productService.getProductById(productId);
+        // Users user = (Users) session.getAttribute("user");
+        Users user = userService.findById(1L);
+        shoppingCartService.addToCart(product,user);
+        return "redirect:/productList";
+    }
+
 }
