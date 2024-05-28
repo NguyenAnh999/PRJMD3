@@ -16,15 +16,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/admin")
 public class AdminController {
     @Autowired
-    private ProductService productService;
-    @Autowired
     private UserService userService;
-
-    @RequestMapping("/product")
-    public String order(Model model) {
-        model.addAttribute("products", productService.getProducts());
-        return "adminproduct";
-    }
 
     @RequestMapping("/logoutadmin")
     public String logout(HttpSession session) {
@@ -45,7 +37,6 @@ public class AdminController {
         model.addAttribute("user", new UsersDTO());
         return "addadmin";
     }
-
     @PostMapping("/addaffter")
     public String addAdminAfter(@ModelAttribute(name = "user") UsersDTO user, HttpSession session) {
           userService.save(user,true);
