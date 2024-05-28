@@ -1,22 +1,418 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/userinfo.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>MAROSA'S Jewelry</title>
 
-    <!-- Google font -->
+    <!--
+      - favicon
+    -->
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+    <!--
+      - custom css link
+
+
+
+
+    -->
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/userInfor.css">
+
+    <!--
+      - google font link
+    -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
+
+    <!--
+      - preload images
+    -->
+    <!-- <link rel="preload" as="image" href=".">
+    <link rel="preload" as="image" href="./myproject/images/hero-banner-1.jpg">
+    <link rel="preload" as="image" href="./myproject/images/hero-banner-2.jpg">
+    <link rel="preload" as="image" href="./myproject/images/hero-banner-3.jpg"> -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
+
+<body id="top">
+<!--
+- #HEADER
+-->
+
+<header class="header">
+
+
+    <div class="container" style="background-color:  rgb(240, 148, 156);
+  height: 1.5rem;"
+    >
+        <!-- <p class="alert-text"></p>
+          Nếu muốn cho thông báo gì thêm thì viết vào luôn-->
+
+    </div>
+
+
+    <div class="header-top active header-hide" data-header>
+        <div class="container">
+
+            <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+                <span class="line line-1"></span>
+                <span class="line line-2"></span>
+                <span class="line line-3"></span>
+            </button>
+
+            <div class="input-wrapper">
+                <input type="search" name="search" placeholder="Search product" class="search-field">
+
+                <button class="search-submit" aria-label="search">
+                    <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+                </button>
+            </div>
+
+            <a href="#" class="logo">
+                <img src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="300" height="50" alt="Glowing">
+            </a>
+
+            <div class="header-actions">
+
+                <a href="login.html" ><button class="header-action-btn" aria-label="user">
+                    <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+                </button></a>
+
+                <!-- <button class="header-action-btn" aria-label="favourite item">
+                  <ion-icon name="star-outline" aria-hidden="true" aria-hidden="true"></ion-icon>
+
+                  <span class="btn-badge">0</span>
+                </button> -->
+
+                <a href="giohang.html"><button class="header-action-btn" aria-label="cart item">
+
+
+                    <ion-icon name="bag-handle-outline" aria-hidden="true" ></ion-icon>
+
+                    <span class="btn-badge">0</span>
+                </button></a>
+
+            </div>
+
+            <nav class="navbar">
+                <ul class="navbar-list">
+
+                    <li>
+                        <a href="#home" class="navbar-link has-after">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#collection" class="navbar-link has-after">Bộ Sưu Tập</a>
+                    </li>
+
+                    <li>
+                        <a href="Product.html" class="navbar-link has-after">Shop</a>
+                    </li>
+
+                    <li>
+                        <a href="#offer" class="navbar-link has-after">Offer</a>
+                    </li>
+
+                    <li>
+                        <a href="#blog" class="navbar-link has-after">Về Chúng Tôi</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+
+</header>
+
+
+
+
+
+<!-- Side bar tren dt-->
+
+<div class="sidebar">
+    <div class="mobile-navbar" data-navbar>
+
+        <div class="wrapper">
+            <a href="#" class="logo">
+                <img src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="179" height="26" alt="Glowing">
+            </a>
+
+            <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+                <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+            </button>
+        </div>
+
+        <ul class="navbar-list">
+
+            <li>
+                <a href="#home" class="navbar-link" data-nav-link>Home</a>
+            </li>
+
+            <li>
+                <a href="#collection" class="navbar-link" data-nav-link>Bộ sưu tập</a>
+            </li>
+
+            <li>
+                <a href="Product.html" class="navbar-link" data-nav-link>Shop</a>
+            </li>
+
+            <li>
+                <a href="#offer" class="navbar-link" data-nav-link>Offer</a>
+            </li>
+
+            <li>
+                <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="overlay" data-nav-toggler data-overlay></div>
+</div>
+
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-xl-6 col-md-12">
+                <div class="card user-card-full">
+                    <div class="row m-l-0 m-r-0">
+                        <div class="col-sm-4 bg-c-lite-green user-profile">
+                            <div class="card-block text-center text-white">
+                                <div class="m-b-25">
+                                    <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
+                                </div>
+                                <h6 class="f-w-600">Hembo Tingor</h6>
+                                <p>Web Designer</p>
+                                <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="card-block">
+                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Email</p>
+                                        <h6 class="text-muted f-w-400">rntng@gmail.com</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Phone</p>
+                                        <h6 class="text-muted f-w-400">98979989898</h6>
+                                    </div>
+                                </div>
+                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Recent</p>
+                                        <h6 class="text-muted f-w-400">Sam Disuja</h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600">Most Viewed</p>
+                                        <h6 class="text-muted f-w-400">Dinoter husainm</h6>
+                                    </div>
+                                </div>
+                                <ul class="social-link list-unstyled m-t-40 m-b-10">
+                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="facebook" data-abc="true"><i class="mdi mdi-facebook feather icon-facebook facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="twitter" data-abc="true"><i class="mdi mdi-twitter feather icon-twitter twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#!" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="instagram" data-abc="true"><i class="mdi mdi-instagram feather icon-instagram instagram" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!--
+- #FOOTER
+-->
+
+<footer class="footer" data-section>
+    <div class="container">
+
+        <div class="footer-top">
+
+            <ul class="footer-list">
+
+                <li>
+                    <p class="footer-list-title">Company</p>
+                </li>
+
+                <li>
+                    <p class="footer-list-text">
+                        Tìm một địa điểm gần bạn nhất. <a href="#" class="link">Cửa hàng gần nhất</a>
+                    </p>
+                </li>
+
+                <li>
+                    <p class="footer-list-text bold"> +84 847891296</p>
+                </li>
+
+                <li>
+                    <p class="footer-list-text">quynhanh07021997@gmail.com</p>
+                </li>
+
+            </ul>
+
+            <ul class="footer-list">
+
+                <li>
+                    <p class="footer-list-title">Liên kết sản phẩm</p>
+                </li>
+
+                <li>
+                    <a href="#" class="footer-link">Sản phẩm mới</a>
+                </li>
+
+                <li>
+                    <a href="#" class="footer-link">Best Sellers - Bán chạy</a>
+                </li>
+
+                <li>
+                    <a href="#" class="footer-link">Lưu và giỏ hàng</a>
+                </li>
+
+                <li>
+                    <a href="#" class="footer-link">Quà tặng Online</a>
+                </li>
+
+            </ul>
+
+            <ul class="footer-list">
+
+                <li>
+                    <p class="footer-list-title">Thông tin</p>
+                </li>
+
+                <li>
+                    <a href="#" class="footer-link">Bắt đầu lại</a>
+                </li>
+
+                <li>
+                    <a href="#" class="footer-link">Liên hệ với chúng tôi</a>
+                </li>
+
+                <li>
+                    <a href="#" class="footer-link">Huỷ đặt hàng</a>
+                </li>
+
+                <li>
+                    <a href="#" class="footer-link">Chính sách và điều kiện</a>
+                </li>
+
+                <li>
+                    <a href="#" class="footer-link">Bảo mật thông tin</a>
+                </li>
+
+            </ul>
+
+            <div class="footer-list">
+
+                <p class="newsletter-title">Emails</p>
+
+                <p class="newsletter-text">
+                    Nhập email của bạn bên dưới để là người đầu tiên biết về các bộ sưu tập mới và ra mắt sản phẩm.
+                </p>
+
+                <form action="" class="newsletter-form">
+                    <input type="email" name="email_address" placeholder="Nhập địa chỉ Email" required
+                           class="email-field">
+
+                    <button type="submit" class="btn btn-primary">Gửi</button>
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <div class="wrapper">
+                <p class="copyright">
+                    &copy; 2024 code with love by QuynhAinXynh
+                </p>
+
+                <ul class="social-list">
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-youtube"></ion-icon>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <a href="#" class="logo">
+                <img src="../logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="179" height="26" loading="lazy" alt="Glowing">
+            </a>
+
+            <img src="../logo/pay.png" width="313" height="28" alt="available all payment method" class="w-100">
+
+        </div>
+
+    </div>
+</footer>
+
+
+
+
+
+<!--
+- #BACK TO TOP
+-->
+
+<a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
+</a>
+
+<!--
+  - custom js link
+-->
+<script src="/resources/js/script.js" defer></script>
+
+<!--
+  - ionicon link
+-->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+=======
 <body>
    <div id="anhiu">
        s/
    </div>
-      <script src="../juserinfor.js"></script>
+      <script src="/resources/juserinfor.js"></script>
 </body>
+
 </html>

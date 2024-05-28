@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -24,13 +25,14 @@ public class ProductImpl implements IProductDao {
     private IProductService productService;
     @Autowired
     private FileService fileService;
+
     @Override
-    public List<Product> getProduct(int currentPage,int size) {
+    public List<Product> getProduct(Integer currentPage,Integer size) {
         Session session = sessionFactory.openSession();
         List<Product> products = null;
         try {
             products = session.createQuery("from Product ", Product.class)
-                    .setFirstResult(currentPage*size)
+                    .setFirstResult(currentPage * size)
                     .setMaxResults(size)
                     .getResultList();
         } catch (Exception ex) {
@@ -47,11 +49,11 @@ public class ProductImpl implements IProductDao {
     public Product getProductById(Long pro_Id) {
         Session session = sessionFactory.openSession();
         try {
-            Product product = session.get(Product.class,pro_Id);
+            Product product = session.get(Product.class, pro_Id);
             return product;
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
         return null;
@@ -65,10 +67,10 @@ public class ProductImpl implements IProductDao {
             session.save(pro);
             session.getTransaction().commit();
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
-        }finally {
+        } finally {
             session.close();
         }
         return false;
@@ -130,6 +132,7 @@ public class ProductImpl implements IProductDao {
         }
 
     }
+
     @Override
     public boolean deleteProduct(Long pro_Id) {
         Session session = sessionFactory.openSession();
@@ -138,10 +141,10 @@ public class ProductImpl implements IProductDao {
             session.delete(getProductById(pro_Id));
             session.getTransaction().commit();
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
-        }finally {
+        } finally {
             session.close();
         }
         return false;
@@ -161,42 +164,75 @@ public class ProductImpl implements IProductDao {
     }
 
     @Override
-    public List<Product> getProductByName(String name,int currentPage,int size) {
+
+    public List<Product> getProductByName(String name,Integer currentPage,Integer size) {
         Session session = sessionFactory.openSession();
-        try{
-            if(name==null || name.length()==0)
+        try {
+            if (name == null || name.length() == 0)
                 name = "%";
             else
-                name = "%"+name+"%";
+                name = "%" + name + "%";
             List list = session.createQuery("from Product where productName like : proName")
-                    .setParameter("proName",name)
-                    .setFirstResult(currentPage*size)
+                    .setParameter("proName", name)
+                    .setFirstResult(currentPage * size)
                     .setMaxResults(size)
                     .getResultList();
             return list;
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
         return null;
     }
 
     @Override
-    public List<Product> sortByName(int currentPage,int size) {
+
+
+    public List<Product> sortByName(Integer currentPage,Integer size) {
         Session session = sessionFactory.openSession();
         List<Product> products = session.createQuery("from Product order by productName", Product.class)
-                .setFirstResult(currentPage*size)
+                .setFirstResult(currentPage * size)
                 .setMaxResults(size)
                 .getResultList();
-       session.close();
-       return products;
+        session.close();
+        return products;
     }
 
     public Long countAllProduct() {
         Session session = sessionFactory.openSession();
         try {
             return (Long) session.createQuery("select count(p.id) from Product p").getSingleResult();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            session.close();
+        }
+    }
+
+@Override
+    public List<Product> listProductOfCategory(Long category_id,String name) {
+        Session session = sessionFactory.openSession();
+        try {
+            return session.createQuery("select p from Product p where p.category.categoryId=:id or p.productName like :name", Product.class)
+                    .setParameter("name", "%"+name+"%")
+                    .setParameter("id", category_id)
+                    .setMaxResults(6)
+                    .getResultList();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }finally {
+            session.close();
+        }
+}
+
+    public Long countProductByName(String name) {
+        Session session = sessionFactory.openSession();
+        name = "%" + name + "%";
+        try {
+            return (Long) session.createQuery("select count(p.id) from Product p where p.productName like :name")
+                    .setParameter("name", name)
+                    .getSingleResult();
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {

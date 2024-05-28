@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="/resources/css/admin.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .container {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="navigation">
+        <ul style="top: 80px">
+            <li style="top: -80px">
+                <a href="index.html">
+                        <span class="icon">
+                            <img style="width: 250px;"
+                                 src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png"
+                                 alt="">
+                        </span>
+                </a>
+
+            </li>
+
+            <li>
+                <a>
+                        <span class="icon">
+                            <i class="fa-solid fa-table"></i>
+                        </span>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+
+            <li>
+                <a>
+                        <span class="icon">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </span>
+                    <span class="title">Products</span>
+                </a>
+            </li>
+
+            <li>
+                <a>
+                        <span class="icon">
+                            <i class="fa-regular fa-note-sticky"></i>
+                        </span>
+                    <span class="title">Orders</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-user"></i>
+                        </span>
+                    <span class="title">User</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                        <span class="icon">
+                            <i class="fa-solid fa-user"></i>
+                        </span>
+                    <span class="title">Category</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                        <span class="icon">
+                            <i class="fa-regular fa-comment"></i>
+                        </span>
+                    <span class="title">Messages</span>
+                </a>
+            </li>
+            <li style=" border: solid rgb(242, 241, 241) 1px ; margin-top: 100px;
+                width: 95%;">
+
+
+            </li>
+        </ul>
+        <ul style="top: 75%">
+            <li>
+                <a>
+                        <span class="icon">
+                            <i class="fa-solid fa-gear"></i>
+                        </span>
+                    <span class="title">Menu Admin</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="">
+                        <span class="icon">
+                            <i class="fa-solid fa-lock"></i>
+                        </span>
+                    <span class="title">New Password</span>
+                </a>
+            </li>
+
+            <li>
+                <a th:href="@{/admin/addadmin}">
+                        <span class="icon">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </span>
+                    <span class="title">New Admin</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/admin/logoutadmin}">
+                        <span class="icon">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </span>
+                    <span class="title">Sign Out</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+    <!-- Main-->
+
+    <div class="main">
+        <div class="topbar">
+            <div class="toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="search">
+                <h2 th:text="'xin chào admin'">
+
+                </h2>
+            </div>
+            <div class="search" style="margin-top: 3%">
+                <form th:action="@{/searchCategory}" method="get">
+                    <label>
+                        <input type="text" name="search" placeholder="Search here">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass" style="margin-top: 10px"></i>
+                        </button>
+                    </label>
+                </form>
+            </div>
+            <i class="fa-solid fa-bell" style="color: black; font-size: 30px;"><span style="background-color: pink;
+                color: white; border-radius: 50%; width: 20px;">0</span>
+            </i>
+            <div class="user">
+                <img src="/resources/profile/avatar-dep-ngau-nu18.jpg" alt="">
+            </div>
+        </div>
+        <div class="chitietOrder ba">
+            <div class="dsOder">
+                <div class="cardHeader" style="justify-content: space-between;">
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-add"
+                            style="padding-left: 0;"><i class="fa-solid fa-plus"></i>Thêm sản phẩm
+                    </button>
+                    <a th:href="@{/sortByNameCategory}" class="btn">Sắp xếp<i style="padding: 6px;"
+                                                                              class="fa-solid fa-v"></i></a>
+                </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th style="text-align: center">ID</th>
+                        <th style="text-align: center">Tên Danh Mục</th>
+                        <th style="text-align: center">Mô Tả</th>
+                        <th style="text-align: center">Trạng Thái</th>
+                        <th style="text-align: center" colspan="2">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tableProduct">
+                    <tr th:each="c : ${categoryList}">
+                        <td style="text-align: center" th:text="${c.categoryId}"></td>
+                        <td style="text-align: center" th:text="${c.categoryName}"></td>
+                        <td th:text="${c.description}"></td>
+                        <td style="text-align: center" th:text="${c.status}"></td>
+                        <td>
+                            <button th:onclick="|handleEdit(${c.categoryId})|" class="btn btn-warning"
+                                    data-bs-toggle="modal" data-bs-target="#modal-edit">Sửa
+                            </button>
+                        </td>
+                        <td><a th:href="@{/deleteCategory/{id}(id=${c.categoryId})}"
+                               onclick="return confirm('Bạn chắc chưa? 🤡')" class="btn btn-danger">Xóa</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div style="margin-left: 50%">
+                    <div th:if="${iscategory!=null}" style="display: flex;gap: 10px">
+                        <!-- 1 2 3 4 5 -->
+                        <p th:each="i : ${#numbers.sequence(1,totalPage)}">
+                            <a th:href="@{'/Category?currentPage='+${i - 1}}" th:text="${i}"></a>
+                        </p>
+                        <!-- 1/2	-->
+                    </div>
+
+
+                    <div th:if="${issearch!=null}" style="display: flex;gap: 10px">
+                        <!-- 1 2 3 4 5 -->
+                        <p th:each="i : ${#numbers.sequence(1,totalPage)}">
+                            <a th:href="@{'/searchCategory?currentPage='+${i - 1}+'&search='+${issearch}}"
+                               th:text="${i}"></a>
+                        </p>
+                        <!-- 1/2	-->
+                    </div>
+
+
+                    <div th:if="${issort!=null}" style="display: flex;gap: 10px">
+                        <!-- 1 2 3 4 5 -->
+                        <p th:each="i : ${#numbers.sequence(1,totalPage)}">
+                            <a th:href="@{'/sortByNameCategory?currentPage='+${i - 1}}" th:text="${i}"></a>
+                        </p>
+                        <!-- 1/2	-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Modal Add -->
+        <div class="modal fade" id="modal-add" tabindex="-1" aria-labelledby="modal-add-label" aria-hidden="true"
+             data-bs-backdrop="static">
+            <div class="modal-dialog">
+                <form th:action="@{/saveCategory}" method="post" style="max-width: 30rem; margin: 0 auto"
+                      class="p-4 mt-5" enctype="multipart/form-data" th:object="${category}">
+                    <div class="modal-content" style=" width: 150%;height: 60% ; font-size: 20px">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="modal-add-label">Thêm Danh Mục</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <div>
+                                    <label class="form-label" style="width: 150px ; height:  30px">Tên Danh Mục</label>
+                                    <input type="text" th:field="*{categoryName}" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" style="width: 150px ; height: 30px">Trạng thái</label>
+                                <select class="form-control" th:field="*{status}">
+                                    <option value="true">Đang Bán</option>
+                                    <option value="false">Không Bán</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label" style="width: 200px;height: 30px">Mô Tả</label>
+                                <input style="height: 80px" type="text" th:field="*{description}"
+                                       class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">ADD</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--        Modal Edit-->
+<div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="modal-edit-label" aria-hidden="true"
+     data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <form th:action="@{/updateCategory}" method="post" style="max-width: 30rem; margin: 0 auto"
+              class="p-4 mt-5" enctype="multipart/form-data" th:object="${categories}">
+            <div class="modal-content" style="width: 150% ;height: 60%; font-size: 20px">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modal-edit-label">Sửa Danh Mục</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <input type="hidden" name="categoryId" id="categoryId_up" readonly class="form-control"/>
+                    </div>
+                    <div class="mb-3">
+                        <div>
+                            <label class="form-label" style="width: 150px ; height:  30px">Tên Danh Mục</label>
+                            <input type="text" name="categoryName" id="categoryName_up" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" style="width: 150px ; height: 30px">Trạng thái</label>
+                        <select class="form-control" name="status">
+                            <option value="true">Đang Bán</option>
+                            <option value="false">Không Bán</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label" style="width: 200px;height: 30px">Mô Tả</label>
+                        <input style="height: 80px" type="text" name="description" id="description_up"
+                               class="form-control"/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(function (modal) {
+            modal.addEventListener('hidden.bs.modal', function () {
+                document.body.classList.remove('modal-open');
+                const backdrop = document.querySelector('.modal-backdrop');
+                if (backdrop) {
+                    backdrop.parentNode.removeChild(backdrop);
+                }
+            });
+        });
+
+        const handleEdit = (id) => {
+            fetch(`http://localhost:8080/api/v1/Category/` + id)
+                .then(response => response.json())
+                .then(category => {
+                    document.getElementById('categoryId_up').value = category.categoryId;
+                    document.getElementById('categoryName_up').value = category.categoryName;
+                    document.getElementById('description_up').value = category.description;
+                    const editModal = new bootstrap.Modal(document.getElementById('modal-edit'));
+                    editModal.show();
+                })
+                .catch(error => console.log('Error:' + error));
+        };
+
+        window.handleEdit = handleEdit;
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+<script src="/resources/js/admin.js"></script>
+</body>
+
+</html>
