@@ -14,7 +14,7 @@ public class ProductService implements IProductService{
     @Autowired
     private IProductDao productDao;
     @Override
-    public List<Product> getProduct(int currentPage,int size) {
+    public List<Product> getProduct(Integer currentPage,Integer size) {
         return productDao.getProduct(currentPage,size);
     }
 
@@ -44,17 +44,22 @@ public class ProductService implements IProductService{
     }
 
     @Override
-    public List<Product> getProductByName(String name,int currentPage,int size) {
+    public List<Product> getProductByName(String name,Integer currentPage,Integer size) {
         return productDao.getProductByName(name,currentPage,size);
     }
 
     @Override
-    public List<Product> sortByName(int currentPage,int size) {
+    public List<Product> sortByName(Integer currentPage,Integer size) {
         return productDao.sortByName(currentPage,size);
     }
 
     @Override
     public Long countAllProduct() {
         return productDao.countAllProduct();
+    }
+
+    @Override
+    public Long countProductByName(String name) {
+        return productDao.countProductByName(name);
     }
 }
