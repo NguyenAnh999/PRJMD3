@@ -213,6 +213,7 @@ public class ProductImpl implements IProductDao {
 
     @Override
     public List<Product> listProductOfCategory(Long category_id, String name) {
+
         Session session = sessionFactory.openSession();
         try {
             return session.createQuery("select p from Product p where p.category.categoryId=:id or p.productName like :name", Product.class)
@@ -223,7 +224,8 @@ public class ProductImpl implements IProductDao {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }finally {
-        session.close();
+
+            session.close();
         }
 }
 
