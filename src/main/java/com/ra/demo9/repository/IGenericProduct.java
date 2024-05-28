@@ -15,7 +15,7 @@ public interface IGenericProduct {
     String getImageByProductId(Long pro_id);
     public List<Product> getProductByName(String name,int currentPage,int size);
     public List<Product> sortByName(int currentPage,int size);
-
+    public List<Product> listProductOfCategory(int category_id,String name);
     public Long countAllProduct();
 
 }

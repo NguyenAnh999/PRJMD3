@@ -193,4 +193,14 @@ public class ProductController {
 
         return "/productAdmin";
     }
+    @RequestMapping("/viewProductDetail/{id}")
+    public String viewProductDetail(@PathVariable("id") Long id, Model model) {
+        Product product = productService.getProductById(id);
+        List<Product> products = productService.listProductOfCategory(1,"a");
+        model.addAttribute("product", product);
+        model.addAttribute("categories", categoryService.getCategory());
+        model.addAttribute("productList5",products);
+
+        return "Productdetail";
+    }
 }

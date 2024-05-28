@@ -7,6 +7,7 @@ import com.ra.demo9.repository.IProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 @Service
 public class ProductService implements IProductService{
@@ -54,7 +55,14 @@ public class ProductService implements IProductService{
     }
 
     @Override
+    public List<Product> listProductOfCategory(int category_id, String name) {
+        return productDao.listProductOfCategory(category_id,name);
+    }
+
+    @Override
     public Long countAllProduct() {
         return productDao.countAllProduct();
     }
+
+
 }

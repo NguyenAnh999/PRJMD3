@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -191,26 +191,26 @@
 </div>
 <div class="related-products">
     <h2>Sản Phẩm Liên Quan</h2>
-    <div class="related-product-item">
-        <img src="https://optech.vn/uploads/images/giao-dien-web-dep-mien-phi.jpg" alt="Related Product 1">
-        <p>Sản Phẩm 1</p>
-        <div class="product-price">150,000₫</div>
+    <div class="related-product-item" th:each="p : ${productList5}">
+        <img th:src="${p.image}" alt="Related Product 1">
+        <p th:text="${p.productName}"></p>
+        <div class="product-price" th:text="${p.unitPrice}" >150,000₫</div>
     </div>
-    <div class="related-product-item">
-        <img src="https://optech.vn/uploads/images/giao-dien-web-dep-mien-phi.jpg" alt="Related Product 2">
-        <p>Sản Phẩm 2</p>
-        <div class="product-price">170,000₫</div>
-    </div>
-    <div class="related-product-item">
-        <img src="https://optech.vn/uploads/images/giao-dien-web-dep-mien-phi.jpg" alt="Related Product 3">
-        <p>Sản Phẩm 3</p>
-        <div class="product-price">200,000₫</div>
-    </div>
-    <div class="related-product-item">
-        <img src="https://optech.vn/uploads/images/giao-dien-web-dep-mien-phi.jpg" alt="Related Product 4">
-        <p>Sản Phẩm 4</p>
-        <div class="product-price">220,000₫</div>
-    </div>
+<!--    <div class="related-product-item">-->
+<!--        <img src="https://optech.vn/uploads/images/giao-dien-web-dep-mien-phi.jpg" alt="Related Product 2">-->
+<!--        <p>Sản Phẩm 2</p>-->
+<!--        <div class="product-price">170,000₫</div>-->
+<!--    </div>-->
+<!--    <div class="related-product-item">-->
+<!--        <img src="https://optech.vn/uploads/images/giao-dien-web-dep-mien-phi.jpg" alt="Related Product 3">-->
+<!--        <p>Sản Phẩm 3</p>-->
+<!--        <div class="product-price">200,000₫</div>-->
+<!--    </div>-->
+<!--    <div class="related-product-item">-->
+<!--        <img src="https://optech.vn/uploads/images/giao-dien-web-dep-mien-phi.jpg" alt="Related Product 4">-->
+<!--        <p>Sản Phẩm 4</p>-->
+<!--        <div class="product-price">220,000₫</div>-->
+<!--    </div>-->
 </div>
 <div class="footer">
     <p>&copy; 2024 Thương Hiệu của Bạn. Tất cả các quyền được bảo lưu.</p>
