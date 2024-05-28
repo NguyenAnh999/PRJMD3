@@ -27,7 +27,7 @@ public class ProductImpl implements IProductDao {
     private FileService fileService;
 
     @Override
-    public List<Product> getProduct(int currentPage, int size) {
+    public List<Product> getProduct(Integer currentPage,Integer size) {
         Session session = sessionFactory.openSession();
         List<Product> products = null;
         try {
@@ -164,7 +164,8 @@ public class ProductImpl implements IProductDao {
     }
 
     @Override
-    public List<Product> getProductByName(String name, int currentPage, int size) {
+
+    public List<Product> getProductByName(String name,Integer currentPage,Integer size) {
         Session session = sessionFactory.openSession();
         try {
             if (name == null || name.length() == 0)
@@ -186,7 +187,9 @@ public class ProductImpl implements IProductDao {
     }
 
     @Override
-    public List<Product> sortByName(int currentPage, int size) {
+
+
+    public List<Product> sortByName(Integer currentPage,Integer size) {
         Session session = sessionFactory.openSession();
         List<Product> products = session.createQuery("from Product order by productName", Product.class)
                 .setFirstResult(currentPage * size)
@@ -206,6 +209,7 @@ public class ProductImpl implements IProductDao {
             session.close();
         }
     }
+
 @Override
     public List<Product> listProductOfCategory(int category_id,String name) {
         Session session = sessionFactory.openSession();
@@ -218,6 +222,17 @@ public class ProductImpl implements IProductDao {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }finally {
+
+    public Long countProductByName(String name) {
+        Session session = sessionFactory.openSession();
+        name = "%" + name + "%";
+        try {
+            return (Long) session.createQuery("select count(p.id) from Product p where p.productName like :name")
+                    .setParameter("name", name)
+                    .getSingleResult();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
             session.close();
         }
     }

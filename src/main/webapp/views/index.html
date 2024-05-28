@@ -39,93 +39,99 @@
 </head>
 
 <body id="top">
-  <!-- 
-  - #HEADER
+<!--
+- #HEADER
 -->
 
 <header class="header">
 
- 
+
   <div class="container" style="background-color:  rgb(240, 148, 156);
   height: 1.5rem;"
   >
     <!-- <p class="alert-text"></p> 
       Nếu muốn cho thông báo gì thêm thì viết vào luôn-->
 
-  </div>  
+  </div>
 
 
-<div class="header-top active header-hide" data-header>
-  <div class="container">
+  <div class="header-top active header-hide" data-header>
+    <div class="container">
 
-    <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
-      <span class="line line-1"></span>
-      <span class="line line-2"></span>
-      <span class="line line-3"></span>
-    </button>
-
-    <div class="input-wrapper">
-      <input type="search" name="search" placeholder="Search product" class="search-field">
-
-      <button class="search-submit" aria-label="search">
-        <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+        <span class="line line-3"></span>
       </button>
-    </div>
 
-    <a href="#" class="logo">
-      <img src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="300" height="50" alt="Glowing">
-    </a>
+      <div class="input-wrapper">
+        <input type="search" name="search" placeholder="Search product" class="search-field">
 
-    <div class="header-actions">
+        <button class="search-submit" aria-label="search">
+          <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+        </button>
+      </div>
+
+      <a href="#" class="logo">
+        <img src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="300" height="50" alt="Glowing">
+      </a>
+
+      <div class="header-actions">
+
 
       <a th:href="@{/user/info}" ><button class="header-action-btn" aria-label="user">
         <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
       </button></a>
 
-      <!-- <button class="header-action-btn" aria-label="favourite item">
-        <ion-icon name="star-outline" aria-hidden="true" aria-hidden="true"></ion-icon>
+        <a href="login.html" ><button class="header-action-btn" aria-label="user">
+          <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+        </button></a>
 
-        <span class="btn-badge">0</span>
-      </button> -->
 
-      <a href="giohang.html"><button class="header-action-btn" aria-label="cart item">
-       
+        <!-- <button class="header-action-btn" aria-label="favourite item">
+          <ion-icon name="star-outline" aria-hidden="true" aria-hidden="true"></ion-icon>
 
-        <ion-icon name="bag-handle-outline" aria-hidden="true" ></ion-icon>
+          <span class="btn-badge">0</span>
+        </button> -->
 
-        <span class="btn-badge">0</span>
-      </button></a>
+        <a href="giohang.html"><button class="header-action-btn" aria-label="cart item">
+
+
+          <ion-icon name="bag-handle-outline" aria-hidden="true" ></ion-icon>
+
+          <span class="btn-badge">0</span>
+        </button></a>
+
+      </div>
+
+      <nav class="navbar">
+        <ul class="navbar-list">
+
+          <li>
+            <a href="#home" class="navbar-link has-after">Home</a>
+          </li>
+
+          <li>
+            <a href="#collection" class="navbar-link has-after">Bộ Sưu Tập</a>
+          </li>
+
+          <li>
+            <a th:href="@{/productList}" class="navbar-link has-after">Shop</a>
+          </li>
+
+          <li>
+            <a href="#offer" class="navbar-link has-after">Offer</a>
+          </li>
+
+          <li>
+            <a href="#blog" class="navbar-link has-after">Về Chúng Tôi</a>
+          </li>
+
+        </ul>
+      </nav>
 
     </div>
-
-    <nav class="navbar">
-      <ul class="navbar-list">
-
-        <li>
-          <a href="#home" class="navbar-link has-after">Home</a>
-        </li>
-
-        <li>
-          <a href="#collection" class="navbar-link has-after">Bộ Sưu Tập</a>
-        </li>
-
-        <li>
-          <a href="Product.html" class="navbar-link has-after">Shop</a>
-        </li>
-
-        <li>
-          <a href="#offer" class="navbar-link has-after">Offer</a>
-        </li>
-
-        <li>
-          <a href="#blog" class="navbar-link has-after">Về Chúng Tôi</a>
-        </li>
-
-      </ul>
-    </nav>
-
   </div>
-</div>
 
 </header>
 
@@ -136,45 +142,45 @@
 <!-- Side bar tren dt-->
 
 <div class="sidebar">
-<div class="mobile-navbar" data-navbar> 
+  <div class="mobile-navbar" data-navbar>
 
-  <div class="wrapper">
-    <a href="#" class="logo">
-      <img src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="179" height="26" alt="Glowing">
-    </a>
+    <div class="wrapper">
+      <a href="#" class="logo">
+        <img src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="179" height="26" alt="Glowing">
+      </a>
 
-    <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
-      <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
-    </button>
+      <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+        <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+      </button>
+    </div>
+
+    <ul class="navbar-list">
+
+      <li>
+        <a href="#home" class="navbar-link" data-nav-link>Home</a>
+      </li>
+
+      <li>
+        <a href="#collection" class="navbar-link" data-nav-link>Bộ sưu tập</a>
+      </li>
+
+      <li>
+        <a href="Product.html" class="navbar-link" data-nav-link>Shop</a>
+      </li>
+
+      <li>
+        <a href="#offer" class="navbar-link" data-nav-link>Offer</a>
+      </li>
+
+      <li>
+        <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+      </li>
+
+    </ul>
+
   </div>
 
-  <ul class="navbar-list">
-
-    <li>
-      <a href="#home" class="navbar-link" data-nav-link>Home</a>
-    </li>
-
-    <li>
-      <a href="#collection" class="navbar-link" data-nav-link>Bộ sưu tập</a>
-    </li>
-
-    <li>
-      <a href="Product.html" class="navbar-link" data-nav-link>Shop</a>
-    </li>
-
-    <li>
-      <a href="#offer" class="navbar-link" data-nav-link>Offer</a>
-    </li>
-
-    <li>
-      <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
-    </li>
-
-  </ul>
-
-</div>
-
-<div class="overlay" data-nav-toggler data-overlay></div>
+  <div class="overlay" data-nav-toggler data-overlay></div>
 </div>
 
 
@@ -182,414 +188,414 @@
 
 
 <main>
-<article>
+  <article>
 
-  <section class="section hero" id="home" aria-label="hero" data-section>
-    <div class="container">
+    <section class="section hero" id="home" aria-label="hero" data-section>
+      <div class="container">
 
-      <ul class="has-scrollbar">
+        <ul class="has-scrollbar">
 
-        <li class="scrollbar-item">
-          <div class="hero-card has-bg-image" style="background-image: url(/resources/BG-Image/Pearl-Falco-Pearl-Jewelry.jpg);
+          <li class="scrollbar-item">
+            <div class="hero-card has-bg-image" style="background-image: url(/resources/BG-Image/Pearl-Falco-Pearl-Jewelry.jpg);
       background-position: left;">
 
-            <div class="card-content">
+              <div class="card-content">
 
-              <h1 class="h1 hero-title">
-                Bộ Sưu Tập  <br>
-                ${sp1.loai}
-              </h1>
+                <h1 class="h1 hero-title">
+                  Bộ Sưu Tập  <br>
+                  ${sp1.loai}
+                </h1>
 
-              <p class="hero-text">
-                ${sp1.ghichu}
-              </p>
+                <p class="hero-text">
+                  ${sp1.ghichu}
+                </p>
 
-              <p class="price">${sp1.gia}</p>
+                <p class="price">${sp1.gia}</p>
 
-              <a href="#" class="btn btn-primary">Shop Now</a>
+                <a href="#" class="btn btn-primary">Shop Now</a>
 
-            </div>
-
-          </div>
-        </li>
-
-        <li class="scrollbar-item">
-          <div class="hero-card has-bg-image" style="background-image: url(/resources/BG-Image/Pearl-Falco-Pearl-Jewelry.jpg)">
-
-            <div class="card-content">
-
-              <h1 class="h1 hero-title">
-                Bộ Sưu Tập <br>
-                ${sp2.loai}
-              </h1>
-
-              <p class="hero-text">
-                ${sp2.ghichu}
-              </p>
-
-              <p class="price">${sp2.gia}</p>
-
-              <a href="#" class="btn btn-primary">Shop Now</a>
+              </div>
 
             </div>
+          </li>
 
-          </div>
-        </li>
+          <li class="scrollbar-item">
+            <div class="hero-card has-bg-image" style="background-image: url(/resources/BG-Image/Pearl-Falco-Pearl-Jewelry.jpg)">
 
-        <li class="scrollbar-item">
-          <div class="hero-card has-bg-image" style="background-image: url(/resources/BG-Image/Pearl-Falco-Pearl-Jewelry.jpg)">
+              <div class="card-content">
 
-            <div class="card-content">
+                <h1 class="h1 hero-title">
+                  Bộ Sưu Tập <br>
+                  ${sp2.loai}
+                </h1>
 
-              <h1 class="h1 hero-title">
-                Bộ Sưu Tập <br>
-                ${sp3.loai}
-              </h1>
+                <p class="hero-text">
+                  ${sp2.ghichu}
+                </p>
 
-              <p class="hero-text">
-                ${sp3.ghichu}
-              </p>
+                <p class="price">${sp2.gia}</p>
 
-              <p class="price">${sp3.gia}</p>
+                <a href="#" class="btn btn-primary">Shop Now</a>
 
-              <a href="#" class="btn btn-primary">Shop Now</a>
+              </div>
 
             </div>
+          </li>
 
-          </div>
-        </li>
+          <li class="scrollbar-item">
+            <div class="hero-card has-bg-image" style="background-image: url(/resources/BG-Image/Pearl-Falco-Pearl-Jewelry.jpg)">
 
-      </ul>
+              <div class="card-content">
 
-    </div>
-  </section>
+                <h1 class="h1 hero-title">
+                  Bộ Sưu Tập <br>
+                  ${sp3.loai}
+                </h1>
+
+                <p class="hero-text">
+                  ${sp3.ghichu}
+                </p>
+
+                <p class="price">${sp3.gia}</p>
+
+                <a href="#" class="btn btn-primary">Shop Now</a>
+
+              </div>
+
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </section>
 
 
 
 
 
-  <!--Bo Suu tap-->
+    <!--Bo Suu tap-->
 
-  <section class="section collection" id="collection" aria-label="collection" data-section>
+    <section class="section collection" id="collection" aria-label="collection" data-section>
 
-    <div class="container">
+      <div class="container">
 
-      <ul class="has-scrollbar">
+        <ul class="has-scrollbar">
 
-        <li class="scrollbar-item">
-          <div class="hero-card has-bg-image" style="background-image: url(/resources/BG-Image/Pearl-Falco-Pearl-Jewelry.jpg);
+          <li class="scrollbar-item">
+            <div class="hero-card has-bg-image" style="background-image: url(/resources/BG-Image/Pearl-Falco-Pearl-Jewelry.jpg);
       background-position: left;">
 
-            <div class="card-content">
+              <div class="card-content">
 
-              <h1 class="h1 hero-title">
-                Bộ Sưu Tập  <br>
-                ${sp1.loai}
-              </h1>
+                <h1 class="h1 hero-title">
+                  Bộ Sưu Tập  <br>
+                  ${sp1.loai}
+                </h1>
 
-              <p class="hero-text">
-                ${sp1.ghichu}
-              </p>
+                <p class="hero-text">
+                  ${sp1.ghichu}
+                </p>
 
-              <p class="price">${sp1.gia}</p>
+                <p class="price">${sp1.gia}</p>
 
-              <a href="#" class="btn btn-primary">Shop Now</a>
+                <a href="#" class="btn btn-primary">Shop Now</a>
 
-            </div>
-
-          </div>
-        </li>
-
-        <li class="scrollbar-item">
-          <div class="hero-card has-bg-image" style="background-image: url(/resources/BG-Image/360_F_258912435_aizAXeXJLKK5W2s3Wq9U9BMOvyt0dTB4.jpg)">
-
-            <div class="card-content">
-
-              <h1 class="h1 hero-title">
-                Bộ Sưu Tập <br>
-                ${sp2.loai}
-              </h1>
-
-              <p class="hero-text">
-                ${sp2.ghichu}
-              </p>
-
-              <p class="price">${sp2.gia}</p>
-
-              <a href="#" class="btn btn-primary">Shop Now</a>
+              </div>
 
             </div>
+          </li>
 
-          </div>
-        </li>
+          <li class="scrollbar-item">
+            <div class="hero-card has-bg-image" style="background-image: url(/resources/BG-Image/360_F_258912435_aizAXeXJLKK5W2s3Wq9U9BMOvyt0dTB4.jpg)">
 
-        <li class="scrollbar-item">
-          <div class="hero-card has-bg-image" style="background-image: url(/resources/BG-Image/Akoya_Pearls_480x480.webp)">
+              <div class="card-content">
 
-            <div class="card-content">
+                <h1 class="h1 hero-title">
+                  Bộ Sưu Tập <br>
+                  ${sp2.loai}
+                </h1>
 
-              <h1 class="h1 hero-title">
-                Bộ Sưu Tập <br>
-                ${sp3.loai}
-              </h1>
+                <p class="hero-text">
+                  ${sp2.ghichu}
+                </p>
 
-              <p class="hero-text">
-                ${sp3.ghichu}
-              </p>
+                <p class="price">${sp2.gia}</p>
 
-              <p class="price">${sp3.gia}</p>
+                <a href="#" class="btn btn-primary">Shop Now</a>
 
-              <a href="#" class="btn btn-primary">Shop Now</a>
+              </div>
 
             </div>
+          </li>
 
-          </div>
-        </li>
+          <li class="scrollbar-item">
+            <div class="hero-card has-bg-image" style="background-image: url(/resources/BG-Image/Akoya_Pearls_480x480.webp)">
 
-      </ul>
+              <div class="card-content">
 
-    </div>
+                <h1 class="h1 hero-title">
+                  Bộ Sưu Tập <br>
+                  ${sp3.loai}
+                </h1>
 
-  </section>
+                <p class="hero-text">
+                  ${sp3.ghichu}
+                </p>
 
+                <p class="price">${sp3.gia}</p>
 
+                <a href="#" class="btn btn-primary">Shop Now</a>
 
+              </div>
 
+            </div>
+          </li>
 
-  <!-- 
-    - #SHOP
-  -->
+        </ul>
 
-  <section class="section shop" id="shop" aria-label="shop" data-section>
-    <div class="container">
-
-      <div class="title-wrapper">
-        <h2 class="h2 section-title">Sản phẩm bán chạy</h2>
-
-        <a href="giohang.html" class="btn-link">
-          <span class="span">Tất cả sản phẩm</span>
-
-          <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-        </a>
       </div>
 
-      <ul class="has-scrollbar" id="has-scrollbar">
+    </section>
 
-         <li class="scrollbar-item">
-          <div class="shop-card">
 
-            <div class="card-banner img-holder" style="--width: 540; --height: 720;">
-              <img src="/resources/product/Nhan/425786849_1043876866692579_1680147769726088099_n.jpg" width="540" height="720" loading="lazy"
-                alt="Pandora" class="img-cover">
 
-              <span class="badge" aria-label="20% off">-20%</span>
 
-              <div class="card-actions">
 
-                <button class="action-btn" aria-label="add to cart">
-                  <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                </button>
+    <!--
+      - #SHOP
+    -->
 
-                <button class="action-btn" aria-label="add to whishlist">
-                  <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                </button>
+    <section class="section shop" id="shop" aria-label="shop" data-section>
+      <div class="container">
 
-                <button class="action-btn" aria-label="compare">
-                  <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                </button>
+        <div class="title-wrapper">
+          <h2 class="h2 section-title">Sản phẩm bán chạy</h2>
 
+          <a href="giohang.html" class="btn-link">
+            <span class="span">Tất cả sản phẩm</span>
+
+            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+          </a>
+        </div>
+
+        <ul class="has-scrollbar" id="has-scrollbar">
+
+          <li class="scrollbar-item">
+            <div class="shop-card">
+
+              <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+                <img src="/resources/product/Nhan/425786849_1043876866692579_1680147769726088099_n.jpg" width="540" height="720" loading="lazy"
+                     alt="Pandora" class="img-cover">
+
+                <span class="badge" aria-label="20% off">-20%</span>
+
+                <div class="card-actions">
+
+                  <button class="action-btn" aria-label="add to cart">
+                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                  <button class="action-btn" aria-label="add to whishlist">
+                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                  <button class="action-btn" aria-label="compare">
+                    <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                </div>
               </div>
-            </div>
 
-            <div class="card-content">
+              <div class="card-content">
 
-              <div class="price">
-                <del class="del">1.200.000Đ</del>
+                <div class="price">
+                  <del class="del">1.200.000Đ</del>
 
-                <span class="span">800.000Đ</span>
-              </div>
-
-              <h3>
-                <a href="#" class="card-title">Facial Design</a>
-              </h3>
-
-              <div class="card-rating">
-
-                <div class="rating-wrapper" aria-label="5 start rating">
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
+                  <span class="span">800.000Đ</span>
                 </div>
 
-                <p class="rating-text">1700 reviews</p>
+                <h3>
+                  <a href="#" class="card-title">Facial Design</a>
+                </h3>
 
-              </div>
+                <div class="card-rating">
 
-            </div>
+                  <div class="rating-wrapper" aria-label="5 start rating">
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                  </div>
 
-          </div>
-        </li>
+                  <p class="rating-text">1700 reviews</p>
 
-        <li class="scrollbar-item">
-          <div class="shop-card">
-
-            <div class="card-banner img-holder" style="--width: 540; --height: 720;">
-              <img src="/resources/product/Nhan/427941906_1048134636266802_1102675401505890207_n.jpg" width="540" height="720" loading="lazy"
-                alt="sanpham" class="img-cover">
-
-              <div class="card-actions">
-
-                <button class="action-btn" aria-label="add to cart">
-                  <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-                <button class="action-btn" aria-label="add to whishlist">
-                  <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-                <button class="action-btn" aria-label="compare">
-                  <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-              </div>
-            </div>
-
-            <div class="card-content">
-
-              <div class="price">
-                <span class="span">2.200.000Đ</span>
-              </div>
-
-              <h3>
-                <a href="#" class="card-title">Khuyên Pinklow</a>
-              </h3>
-
-              <div class="card-rating">
-
-                <div class="rating-wrapper" aria-label="5 start rating">
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
                 </div>
 
-                <p class="rating-text">1345 reviews</p>
-
               </div>
 
             </div>
+          </li>
 
-          </div>
-        </li>
+          <li class="scrollbar-item">
+            <div class="shop-card">
 
-        <li class="scrollbar-item">
-          <div class="shop-card">
+              <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+                <img src="/resources/product/Nhan/427941906_1048134636266802_1102675401505890207_n.jpg" width="540" height="720" loading="lazy"
+                     alt="sanpham" class="img-cover">
 
-            <div class="card-banner img-holder" style="--width: 540; --height: 720;">
-              <img src="/resources/product/NgocTrai/422684432_1039291537151112_4860545587646787801_n.jpg" width="540" height="720" loading="lazy"
-                alt="da" class="img-cover">
+                <div class="card-actions">
 
-              <div class="card-actions">
+                  <button class="action-btn" aria-label="add to cart">
+                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                  </button>
 
-                <button class="action-btn" aria-label="add to cart">
-                  <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                </button>
+                  <button class="action-btn" aria-label="add to whishlist">
+                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                  </button>
 
-                <button class="action-btn" aria-label="add to whishlist">
-                  <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                </button>
+                  <button class="action-btn" aria-label="compare">
+                    <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
+                  </button>
 
-                <button class="action-btn" aria-label="compare">
-                  <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-              </div>
-            </div>
-
-            <div class="card-content">
-
-              <div class="price">
-                <span class="span">2.100.000Đ</span>
+                </div>
               </div>
 
-              <h3>
-                <a href="#" class="card-title"> Pandora</a>
-              </h3>
+              <div class="card-content">
 
-              <div class="card-rating">
-
-                <div class="rating-wrapper" aria-label="5 start rating">
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
+                <div class="price">
+                  <span class="span">2.200.000Đ</span>
                 </div>
 
-                <p class="rating-text">5170 reviews</p>
+                <h3>
+                  <a href="#" class="card-title">Khuyên Pinklow</a>
+                </h3>
 
-              </div>
+                <div class="card-rating">
 
-            </div>
+                  <div class="rating-wrapper" aria-label="5 start rating">
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                  </div>
 
-          </div>
-        </li>
+                  <p class="rating-text">1345 reviews</p>
 
-        <li class="scrollbar-item">
-          <div class="shop-card">
-
-            <div class="card-banner img-holder" style="--width: 540; --height: 720;">
-              <img src="/resources/Image/pandora/421076070_1036285374118395_9067880120818185060_n.jpg" width="540" height="720" loading="lazy"
-                alt="Pandora" class="img-cover">
-
-              <div class="card-actions">
-
-                <button class="action-btn" aria-label="add to cart">
-                  <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-                <button class="action-btn" aria-label="add to whishlist">
-                  <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-                <button class="action-btn" aria-label="compare">
-                  <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-              </div>
-            </div>
-
-            <div class="card-content">
-
-              <div class="price">
-                <span class="span">1.200.000Đ</span>
-              </div>
-
-              <h3>
-                <a href="#" class="card-title">Pandora</a>
-              </h3>
-
-              <div class="card-rating">
-
-                <div class="rating-wrapper" aria-label="5 start rating">
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
                 </div>
 
-                <p class="rating-text">5170 reviews</p>
+              </div>
+
+            </div>
+          </li>
+
+          <li class="scrollbar-item">
+            <div class="shop-card">
+
+              <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+                <img src="/resources/product/NgocTrai/422684432_1039291537151112_4860545587646787801_n.jpg" width="540" height="720" loading="lazy"
+                     alt="da" class="img-cover">
+
+                <div class="card-actions">
+
+                  <button class="action-btn" aria-label="add to cart">
+                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                  <button class="action-btn" aria-label="add to whishlist">
+                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                  <button class="action-btn" aria-label="compare">
+                    <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                </div>
+              </div>
+
+              <div class="card-content">
+
+                <div class="price">
+                  <span class="span">2.100.000Đ</span>
+                </div>
+
+                <h3>
+                  <a href="#" class="card-title"> Pandora</a>
+                </h3>
+
+                <div class="card-rating">
+
+                  <div class="rating-wrapper" aria-label="5 start rating">
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                  </div>
+
+                  <p class="rating-text">5170 reviews</p>
+
+                </div>
 
               </div>
 
             </div>
+          </li>
 
-          </div>
-        </li>
+          <li class="scrollbar-item">
+            <div class="shop-card">
+
+              <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+                <img src="/resources/Image/pandora/421076070_1036285374118395_9067880120818185060_n.jpg" width="540" height="720" loading="lazy"
+                     alt="Pandora" class="img-cover">
+
+                <div class="card-actions">
+
+                  <button class="action-btn" aria-label="add to cart">
+                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                  <button class="action-btn" aria-label="add to whishlist">
+                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                  <button class="action-btn" aria-label="compare">
+                    <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                </div>
+              </div>
+
+              <div class="card-content">
+
+                <div class="price">
+                  <span class="span">1.200.000Đ</span>
+                </div>
+
+                <h3>
+                  <a href="#" class="card-title">Pandora</a>
+                </h3>
+
+                <div class="card-rating">
+
+                  <div class="rating-wrapper" aria-label="5 start rating">
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                  </div>
+
+                  <p class="rating-text">5170 reviews</p>
+
+                </div>
+
+              </div>
+
+            </div>
+          </li>
 
 
 
@@ -609,601 +615,601 @@
 
 
 
-      </ul>
+        </ul>
 
-    </div>
-  </section>
-
-  <section class="section shop2" id="shop" aria-label="shop" data-section>
-    <div class="container">
-      <div class="title-wrapper">
-        <h2 class="h2 section-title">Chỉ dưới 500.000Đ</h2>
-
-        <a href="Product.html" class="btn-link">
-          <span class="span">Tất cả sản phẩm</span>
-
-          <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-        </a>
       </div>
+    </section>
 
-      <ul class="has-scrollbar" id="has-scrollbar2">
+    <section class="section shop2" id="shop" aria-label="shop" data-section>
+      <div class="container">
+        <div class="title-wrapper">
+          <h2 class="h2 section-title">Chỉ dưới 500.000Đ</h2>
 
-        <!-- <li class="scrollbar-item">
-          <div class="shop-card">
+          <a href="Product.html" class="btn-link">
+            <span class="span">Tất cả sản phẩm</span>
 
-            <div class="card-banner img-holder" style="--width: 540; --height: 720;">
-              <img src="../Image/pandora/421076070_1036285374118395_9067880120818185060_n.jpg" width="540" height="720" loading="lazy"
-                alt="Pandora" class="img-cover">
+            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+          </a>
+        </div>
 
-              <span class="badge" aria-label="20% off">-20%</span>
+        <ul class="has-scrollbar" id="has-scrollbar2">
 
-              <div class="card-actions">
+          <!-- <li class="scrollbar-item">
+            <div class="shop-card">
 
-                <button class="action-btn" aria-label="add to cart">
-                  <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                </button>
+              <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+                <img src="../Image/pandora/421076070_1036285374118395_9067880120818185060_n.jpg" width="540" height="720" loading="lazy"
+                  alt="Pandora" class="img-cover">
 
-                <button class="action-btn" aria-label="add to whishlist">
-                  <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                </button>
+                <span class="badge" aria-label="20% off">-20%</span>
 
-                <button class="action-btn" aria-label="compare">
-                  <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                </button>
+                <div class="card-actions">
 
+                  <button class="action-btn" aria-label="add to cart">
+                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                  <button class="action-btn" aria-label="add to whishlist">
+                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                  <button class="action-btn" aria-label="compare">
+                    <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                </div>
               </div>
-            </div>
 
-            <div class="card-content">
+              <div class="card-content">
 
-              <div class="price">
-                <del class="del">1.580.000Đ</del>
+                <div class="price">
+                  <del class="del">1.580.000Đ</del>
 
-                <span class="span">1.200.000Đ</span>
-              </div>
-
-              <h3>
-                <a href="#" class="card-title">Pandora</a>
-              </h3>
-
-              <div class="card-rating">
-
-                <div class="rating-wrapper" aria-label="5 start rating">
-                  <i name="star" class='bx bx-star'></i>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
+                  <span class="span">1.200.000Đ</span>
                 </div>
 
-                <p class="rating-text">5170 reviews</p>
+                <h3>
+                  <a href="#" class="card-title">Pandora</a>
+                </h3>
 
-              </div>
+                <div class="card-rating">
 
-            </div>
+                  <div class="rating-wrapper" aria-label="5 start rating">
+                    <i name="star" class='bx bx-star'></i>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                  </div>
 
-          </div>
-        </li>
+                  <p class="rating-text">5170 reviews</p>
 
-        <li class="scrollbar-item">
-          <div class="shop-card">
-
-            <div class="card-banner img-holder" style="--width: 540; --height: 720;">
-              <img src="../product/Nhan/427941906_1048134636266802_1102675401505890207_n.jpg" width="540" height="720" loading="lazy"
-                alt="sanpham" class="img-cover">
-
-              <div class="card-actions">
-
-                <button class="action-btn" aria-label="add to cart">
-                  <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-                <button class="action-btn" aria-label="add to whishlist">
-                  <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-                <button class="action-btn" aria-label="compare">
-                  <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-              </div>
-            </div>
-
-            <div class="card-content">
-
-              <div class="price">
-                <span class="span">1.200.000Đ</span>
-              </div>
-
-              <h3>
-                <a href="#" class="card-title">sanpham</a>
-              </h3>
-
-              <div class="card-rating">
-
-                <div class="rating-wrapper" aria-label="5 start rating">
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
                 </div>
 
-                <p class="rating-text">5170 reviews</p>
-
               </div>
 
             </div>
+          </li>
 
-          </div>
-        </li>
+          <li class="scrollbar-item">
+            <div class="shop-card">
 
-        <li class="scrollbar-item">
-          <div class="shop-card">
+              <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+                <img src="../product/Nhan/427941906_1048134636266802_1102675401505890207_n.jpg" width="540" height="720" loading="lazy"
+                  alt="sanpham" class="img-cover">
 
-            <div class="card-banner img-holder" style="--width: 540; --height: 720;">
-              <img src="../product/Da/420643711_1035841490829450_4443947920782925700_n.jpg" width="540" height="720" loading="lazy"
-                alt="da" class="img-cover">
+                <div class="card-actions">
 
-              <div class="card-actions">
+                  <button class="action-btn" aria-label="add to cart">
+                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                  </button>
 
-                <button class="action-btn" aria-label="add to cart">
-                  <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                </button>
+                  <button class="action-btn" aria-label="add to whishlist">
+                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                  </button>
 
-                <button class="action-btn" aria-label="add to whishlist">
-                  <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                </button>
+                  <button class="action-btn" aria-label="compare">
+                    <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
+                  </button>
 
-                <button class="action-btn" aria-label="compare">
-                  <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-              </div>
-            </div>
-
-            <div class="card-content">
-
-              <div class="price">
-                <span class="span">1.200.000Đ</span>
+                </div>
               </div>
 
-              <h3>
-                <a href="#" class="card-title">da</a>
-              </h3>
+              <div class="card-content">
 
-              <div class="card-rating">
-
-                <div class="rating-wrapper" aria-label="5 start rating">
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
+                <div class="price">
+                  <span class="span">1.200.000Đ</span>
                 </div>
 
-                <p class="rating-text">5170 reviews</p>
+                <h3>
+                  <a href="#" class="card-title">sanpham</a>
+                </h3>
 
-              </div>
+                <div class="card-rating">
 
-            </div>
+                  <div class="rating-wrapper" aria-label="5 start rating">
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                  </div>
 
-          </div>
-        </li>
+                  <p class="rating-text">5170 reviews</p>
 
-        <li class="scrollbar-item">
-          <div class="shop-card">
-
-            <div class="card-banner img-holder" style="--width: 540; --height: 720;">
-              <img src="../Image/pandora/423864362_1041336406946625_883777654919232637_n.jpg" width="540" height="720" loading="lazy"
-                alt="Pandora" class="img-cover">
-
-              <div class="card-actions">
-
-                <button class="action-btn" aria-label="add to cart">
-                  <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-                <button class="action-btn" aria-label="add to whishlist">
-                  <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-                <button class="action-btn" aria-label="compare">
-                  <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-              </div>
-            </div>
-
-            <div class="card-content">
-
-              <div class="price">
-                <span class="span">1.200.000Đ</span>
-              </div>
-
-              <h3>
-                <a href="#" class="card-title">Pandora</a>
-              </h3>
-
-              <div class="card-rating">
-
-                <div class="rating-wrapper" aria-label="5 start rating">
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
                 </div>
 
-                <p class="rating-text">5170 reviews</p>
-
               </div>
 
             </div>
+          </li>
 
-          </div>
-        </li>
+          <li class="scrollbar-item">
+            <div class="shop-card">
 
-        <li class="scrollbar-item">
-          <div class="shop-card">
+              <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+                <img src="../product/Da/420643711_1035841490829450_4443947920782925700_n.jpg" width="540" height="720" loading="lazy"
+                  alt="da" class="img-cover">
 
-            <div class="card-banner img-holder" style="--width: 540; --height: 720;">
-              <img src="../Image/pandora/428597765_1051256062621326_1310709895267562654_n.jpg" width="540" height="720" loading="lazy"
-                alt="da" class="img-cover">
+                <div class="card-actions">
 
-              <span class="badge" aria-label="20% off">-20%</span>
+                  <button class="action-btn" aria-label="add to cart">
+                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                  </button>
 
-              <div class="card-actions">
+                  <button class="action-btn" aria-label="add to whishlist">
+                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                  </button>
 
-                <button class="action-btn" aria-label="add to cart">
-                  <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                </button>
+                  <button class="action-btn" aria-label="compare">
+                    <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
+                  </button>
 
-                <button class="action-btn" aria-label="add to whishlist">
-                  <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-                <button class="action-btn" aria-label="compare">
-                  <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-              </div>
-            </div>
-
-            <div class="card-content">
-
-              <div class="price">
-                <del class="del">2.500.000Đ</del>
-
-                <span class="span">1.888.000Đ</span>
+                </div>
               </div>
 
-              <h3>
-                <a href="#" class="card-title">Pandora sumer colection</a>
-              </h3>
+              <div class="card-content">
 
-              <div class="card-rating">
-
-                <div class="rating-wrapper" aria-label="5 start rating">
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
+                <div class="price">
+                  <span class="span">1.200.000Đ</span>
                 </div>
 
-                <p class="rating-text">1288 reviews</p>
+                <h3>
+                  <a href="#" class="card-title">da</a>
+                </h3>
 
-              </div>
+                <div class="card-rating">
 
-            </div>
+                  <div class="rating-wrapper" aria-label="5 start rating">
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                  </div>
 
-          </div>
-        </li>
+                  <p class="rating-text">5170 reviews</p>
 
-        <li class="scrollbar-item">
-          <div class="shop-card">
-
-            <div class="card-banner img-holder" style="--width: 540; --height: 720;">
-              <img src="../product/NgocTrai/423160901_1039930470420552_4111893338867832569_n.jpg" width="540" height="720" loading="lazy"
-                alt="Pandora" class="img-cover">
-
-              <div class="card-actions">
-
-                <button class="action-btn" aria-label="add to cart">
-                  <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-                <button class="action-btn" aria-label="add to whishlist">
-                  <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-                <button class="action-btn" aria-label="compare">
-                  <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
-                </button>
-
-              </div>
-            </div>
-
-            <div class="card-content">
-
-              <div class="price">
-                <span class="span">4.999.000Đ</span>
-              </div>
-
-              <h3>
-                <a href="#" class="card-title">Pandora</a>
-              </h3>
-
-              <div class="card-rating">
-
-                <div class="rating-wrapper" aria-label="5 start rating">
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
-                  <ion-icon name="star" aria-hidden="true"></ion-icon>
                 </div>
 
-                <p class="rating-text">3999 reviews</p>
+              </div>
+
+            </div>
+          </li>
+
+          <li class="scrollbar-item">
+            <div class="shop-card">
+
+              <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+                <img src="../Image/pandora/423864362_1041336406946625_883777654919232637_n.jpg" width="540" height="720" loading="lazy"
+                  alt="Pandora" class="img-cover">
+
+                <div class="card-actions">
+
+                  <button class="action-btn" aria-label="add to cart">
+                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                  <button class="action-btn" aria-label="add to whishlist">
+                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                  <button class="action-btn" aria-label="compare">
+                    <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                </div>
+              </div>
+
+              <div class="card-content">
+
+                <div class="price">
+                  <span class="span">1.200.000Đ</span>
+                </div>
+
+                <h3>
+                  <a href="#" class="card-title">Pandora</a>
+                </h3>
+
+                <div class="card-rating">
+
+                  <div class="rating-wrapper" aria-label="5 start rating">
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                  </div>
+
+                  <p class="rating-text">5170 reviews</p>
+
+                </div>
 
               </div>
 
             </div>
+          </li>
+
+          <li class="scrollbar-item">
+            <div class="shop-card">
+
+              <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+                <img src="../Image/pandora/428597765_1051256062621326_1310709895267562654_n.jpg" width="540" height="720" loading="lazy"
+                  alt="da" class="img-cover">
+
+                <span class="badge" aria-label="20% off">-20%</span>
+
+                <div class="card-actions">
+
+                  <button class="action-btn" aria-label="add to cart">
+                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                  <button class="action-btn" aria-label="add to whishlist">
+                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                  <button class="action-btn" aria-label="compare">
+                    <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                </div>
+              </div>
+
+              <div class="card-content">
+
+                <div class="price">
+                  <del class="del">2.500.000Đ</del>
+
+                  <span class="span">1.888.000Đ</span>
+                </div>
+
+                <h3>
+                  <a href="#" class="card-title">Pandora sumer colection</a>
+                </h3>
+
+                <div class="card-rating">
+
+                  <div class="rating-wrapper" aria-label="5 start rating">
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                  </div>
+
+                  <p class="rating-text">1288 reviews</p>
+
+                </div>
+
+              </div>
+
+            </div>
+          </li>
+
+          <li class="scrollbar-item">
+            <div class="shop-card">
+
+              <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+                <img src="../product/NgocTrai/423160901_1039930470420552_4111893338867832569_n.jpg" width="540" height="720" loading="lazy"
+                  alt="Pandora" class="img-cover">
+
+                <div class="card-actions">
+
+                  <button class="action-btn" aria-label="add to cart">
+                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                  <button class="action-btn" aria-label="add to whishlist">
+                    <ion-icon name="star-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                  <button class="action-btn" aria-label="compare">
+                    <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
+                  </button>
+
+                </div>
+              </div>
+
+              <div class="card-content">
+
+                <div class="price">
+                  <span class="span">4.999.000Đ</span>
+                </div>
+
+                <h3>
+                  <a href="#" class="card-title">Pandora</a>
+                </h3>
+
+                <div class="card-rating">
+
+                  <div class="rating-wrapper" aria-label="5 start rating">
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                  </div>
+
+                  <p class="rating-text">3999 reviews</p>
+
+                </div>
+
+              </div>
+
+            </div>
+          </li> -->
+
+        </ul>
+
+      </div>
+    </section>
+
+
+
+
+
+    <!--
+      - #BANNER
+    -->
+
+    <section class="section banner" aria-label="banner" data-section>
+      <div class="container">
+
+        <ul class="banner-list">
+
+          <li>
+            <div class="banner-card banner-card-1 has-before hover:shine">
+
+              <p class="card-subtitle">Bộ sưu tập mới</p>
+
+              <h2 class="h2 card-title">Vòng Pandora</h2>
+
+              <a href="#" class="btn btn-secondary">Tìm hiểu thêm</a>
+
+              <div class="has-bg-image" style="background-image: url(/resources/Image/pandora/423864362_1041336406946625_883777654919232637_n.jpg)"></div>
+
+            </div>
+          </li>
+
+          <li>
+            <div class="banner-card banner-card-2 has-before hover:shine">
+
+              <h2 class="h2 card-title">Giảm 25% trên tất cả các mặt hàng</h2>
+
+              <p class="card-text">
+                Tri ân khách hàng
+              </p>
+
+              <a href="#" class="btn btn-secondary">Shop Sale</a>
+
+              <div class="has-bg-image" style="background-image: url(/resources/Image/pandora/421099096_1035833227496943_455186580237237021_n.jpg)"></div>
+
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </section>
+
+
+
+
+
+    <!--
+      - #FEATURE
+    -->
+
+    <section class="section feature" aria-label="feature" data-section>
+      <div class="container">
+
+        <h2 class="h2-large section-title">Bí quyết của MAROSA'S Qynh</h2>
+
+        <ul class="flex-list">
+
+          <li class="flex-item">
+            <div class="feature-card">
+
+              <img src="../product/Nhan/425444586_1042604726819793_7041979125009647959_n.jpg" width="204" height="236" loading="lazy" alt="Guaranteed PURE"
+                   class="card-icon">
+
+              <h3 class="h3 card-title">Luôn tận tâm</h3>
+
+              <p class="card-text">
+                Sản phẩm được thiết kế độc đáo, mang dấu ấn cá nhân
+              </p>
+
+            </div>
+          </li>
+
+          <li class="flex-item">
+            <div class="feature-card">
+
+              <img src="../product/Da/420659447_1035841427496123_8099747036112556656_n.jpg" width="204" height="236" loading="lazy"
+                   alt="Completely Cruelty-Free" class="card-icon">
+
+              <h3 class="h3 card-title">Chất lượng sản phẩm</h3>
+
+              <p class="card-text">
+                Hoàn tiền 100% nếu không hài lòng về chất lượng sản phẩm
+              </p>
+
+            </div>
+          </li>
+
+          <li class="flex-item">
+            <div class="feature-card">
+
+              <img src="../Image/pandora/421140908_1036285454118387_2496739193401426041_n.jpg" width="204" height="236" loading="lazy"
+                   alt="Ingredient Sourcing" class="card-icon">
+
+              <h3 class="h3 card-title">Chăm sóc khách hàng </h3>
+
+              <p class="card-text">
+                Luôn luôn lắng nghe - thấu hiểu
+              </p>
+
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </section>
+
+
+
+
+
+    <!--
+      - #OFFER
+    -->
+
+    <section class="section offer" id="offer" aria-label="offer" data-section>
+      <div class="container">
+
+        <figure class="offer-banner">
+          <img src="../product/Nhan/426453045_1050027189410880_6886319122469275711_n.jpg" width="305" height="408" loading="lazy" alt="offer products"
+               class="w-100">
+
+          <img src="../product/Nhan/426453045_1050027189410880_6886319122469275711_n.jpg" width="450" height="625" loading="lazy" alt="offer products"
+               class="w-100">
+        </figure>
+
+        <div class="offer-content">
+
+          <p class="offer-subtitle">
+            <span class="span">Sản phẩm đặc biệt</span>
+
+            <span class="badge" aria-label="20% off">-20%</span>
+          </p>
+
+          <h2 class="h2-large section-title">Đá shaphia</h2>
+          <p class="section-text">
+            Design in Japan - Ngọc trai Akoya quà tặng từ thiên nhiên
+          </p>
+
+          <div class="countdown">
+
+            <span class="time" aria-label="days">1</span>
+            <span class="time" aria-label="hours">21</span>
+            <span class="time" aria-label="minutes">46</span>
+            <span class="time" aria-label="seconds">08</span>
 
           </div>
-        </li> -->
 
-      </ul>
-
-    </div>
-  </section>
-
-
-
-
-
-  <!-- 
-    - #BANNER
-  -->
-
-  <section class="section banner" aria-label="banner" data-section>
-    <div class="container">
-
-      <ul class="banner-list">
-
-        <li>
-          <div class="banner-card banner-card-1 has-before hover:shine">
-
-            <p class="card-subtitle">Bộ sưu tập mới</p>
-
-            <h2 class="h2 card-title">Vòng Pandora</h2>
-
-            <a href="#" class="btn btn-secondary">Tìm hiểu thêm</a>
-
-            <div class="has-bg-image" style="background-image: url(/resources/Image/pandora/423864362_1041336406946625_883777654919232637_n.jpg)"></div>
-
-          </div>
-        </li>
-
-        <li>
-          <div class="banner-card banner-card-2 has-before hover:shine">
-
-            <h2 class="h2 card-title">Giảm 25% trên tất cả các mặt hàng</h2>
-
-            <p class="card-text">
-             Tri ân khách hàng
-            </p>
-
-            <a href="#" class="btn btn-secondary">Shop Sale</a>
-
-            <div class="has-bg-image" style="background-image: url(/resources/Image/pandora/421099096_1035833227496943_455186580237237021_n.jpg)"></div>
-
-          </div>
-        </li>
-
-      </ul>
-
-    </div>
-  </section>
-
-
-
-
-
-  <!-- 
-    - #FEATURE
-  -->
-
-  <section class="section feature" aria-label="feature" data-section>
-    <div class="container">
-
-      <h2 class="h2-large section-title">Bí quyết của MAROSA'S Qynh</h2>
-
-      <ul class="flex-list">
-
-        <li class="flex-item">
-          <div class="feature-card">
-
-            <img src="../product/Nhan/425444586_1042604726819793_7041979125009647959_n.jpg" width="204" height="236" loading="lazy" alt="Guaranteed PURE"
-              class="card-icon">
-
-            <h3 class="h3 card-title">Luôn tận tâm</h3>
-
-            <p class="card-text">
-        Sản phẩm được thiết kế độc đáo, mang dấu ấn cá nhân
-            </p>
-
-          </div>
-        </li>
-
-        <li class="flex-item">
-          <div class="feature-card">
-
-            <img src="../product/Da/420659447_1035841427496123_8099747036112556656_n.jpg" width="204" height="236" loading="lazy"
-              alt="Completely Cruelty-Free" class="card-icon">
-
-            <h3 class="h3 card-title">Chất lượng sản phẩm</h3>
-
-            <p class="card-text">
-            Hoàn tiền 100% nếu không hài lòng về chất lượng sản phẩm 
-            </p>
-
-          </div>
-        </li>
-
-        <li class="flex-item">
-          <div class="feature-card">
-
-            <img src="../Image/pandora/421140908_1036285454118387_2496739193401426041_n.jpg" width="204" height="236" loading="lazy"
-              alt="Ingredient Sourcing" class="card-icon">
-
-            <h3 class="h3 card-title">Chăm sóc khách hàng </h3>
-
-            <p class="card-text">
-              Luôn luôn lắng nghe - thấu hiểu
-            </p>
-
-          </div>
-        </li>
-
-      </ul>
-
-    </div>
-  </section>
-
-
-
-
-
-  <!-- 
-    - #OFFER
-  -->
-
-  <section class="section offer" id="offer" aria-label="offer" data-section>
-    <div class="container">
-
-      <figure class="offer-banner">
-        <img src="../product/Nhan/426453045_1050027189410880_6886319122469275711_n.jpg" width="305" height="408" loading="lazy" alt="offer products"
-          class="w-100">
-
-        <img src="../product/Nhan/426453045_1050027189410880_6886319122469275711_n.jpg" width="450" height="625" loading="lazy" alt="offer products"
-          class="w-100">
-      </figure>
-
-      <div class="offer-content">
-
-        <p class="offer-subtitle">
-          <span class="span">Sản phẩm đặc biệt</span>
-
-          <span class="badge" aria-label="20% off">-20%</span>
-        </p>
-
-        <h2 class="h2-large section-title">Đá shaphia</h2>
-        <p class="section-text">
-          Design in Japan - Ngọc trai Akoya quà tặng từ thiên nhiên
-        </p>
-
-        <div class="countdown">
-
-          <span class="time" aria-label="days">1</span>
-          <span class="time" aria-label="hours">21</span>
-          <span class="time" aria-label="minutes">46</span>
-          <span class="time" aria-label="seconds">08</span>
+          <a href="#" class="btn btn-primary">Mua chỉ với 800.000Đ</a>
 
         </div>
 
-        <a href="#" class="btn btn-primary">Mua chỉ với 800.000Đ</a>
+      </div>
+    </section>
+
+
+
+
+
+    <!--
+      - #BLOG
+    -->
+
+    <section class="section blog" id="blog" aria-label="blog" data-section>
+      <div class="container">
+
+        <h2 class="h2-large section-title">Khám phá thêm</h2>
+
+        <ul class="flex-list">
+
+          <li class="flex-item">
+            <div class="blog-card">
+
+              <figure class="card-banner img-holder has-before hover:shine" style="--width: 700; --height: 450;">
+                <img src="./myproject/product/Vang/418731888_1029939894752943_2660842461006055846_n.jpg" width="700" height="450" loading="lazy" alt="Find a Store"
+                     class="img-cover" >
+              </figure>
+
+              <h3 class="h3">
+                <a href="#" class="card-title">Tìm kiếm cửa hàng</a>
+              </h3>
+
+              <a href="#" class="btn-link">
+                <span class="span">Cửa hàng của chúng tôi</span>
+
+                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+              </a>
+
+            </div>
+          </li>
+
+          <li class="flex-item">
+            <div class="blog-card">
+
+              <figure class="card-banner img-holder has-before hover:shine" style="--width: 700; --height: 450;">
+                <img src="../product/Vongco/425353981_1042386006841665_6864985964538605100_n.jpg" width="700" height="450" loading="lazy" alt="From Our Blog"
+                     class="img-cover">
+              </figure>
+
+              <h3 class="h3">
+                <a href="#" class="card-title">Trang WEB của chúng tôi</a>
+              </h3>
+
+              <a href="#" class="btn-link">
+                <span class="span">My WEB</span>
+
+                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+              </a>
+
+            </div>
+          </li>
+
+          <li class="flex-item">
+            <div class="blog-card">
+
+              <figure class="card-banner img-holder has-before hover:shine" style="--width: 700; --height: 450;">
+                <img src="../product/Nhan/425444586_1042604726819793_7041979125009647959_n.jpg" width="700" height="450" loading="lazy" alt="Our Story"
+                     class="img-cover">
+              </figure>
+
+              <h3 class="h3">
+                <a href="#" class="card-title">Our Story</a>
+              </h3>
+
+              <a href="#" class="btn-link">
+                <span class="span">Our Store</span>
+
+                <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+              </a>
+
+            </div>
+          </li>
+
+        </ul>
 
       </div>
+    </section>
 
-    </div>
-  </section>
-
-
-
-
-
-  <!-- 
-    - #BLOG
-  -->
-
-  <section class="section blog" id="blog" aria-label="blog" data-section>
-    <div class="container">
-
-      <h2 class="h2-large section-title">Khám phá thêm</h2>
-
-      <ul class="flex-list">
-
-        <li class="flex-item">
-          <div class="blog-card">
-
-            <figure class="card-banner img-holder has-before hover:shine" style="--width: 700; --height: 450;">
-              <img src="./myproject/product/Vang/418731888_1029939894752943_2660842461006055846_n.jpg" width="700" height="450" loading="lazy" alt="Find a Store"
-                class="img-cover" >
-            </figure>
-
-            <h3 class="h3">
-              <a href="#" class="card-title">Tìm kiếm cửa hàng</a>
-            </h3>
-
-            <a href="#" class="btn-link">
-              <span class="span">Cửa hàng của chúng tôi</span>
-
-              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-            </a>
-
-          </div>
-        </li>
-
-        <li class="flex-item">
-          <div class="blog-card">
-
-            <figure class="card-banner img-holder has-before hover:shine" style="--width: 700; --height: 450;">
-              <img src="../product/Vongco/425353981_1042386006841665_6864985964538605100_n.jpg" width="700" height="450" loading="lazy" alt="From Our Blog"
-                class="img-cover">
-            </figure>
-
-            <h3 class="h3">
-              <a href="#" class="card-title">Trang WEB của chúng tôi</a>
-            </h3>
-
-            <a href="#" class="btn-link">
-              <span class="span">My WEB</span>
-
-              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-            </a>
-
-          </div>
-        </li>
-
-        <li class="flex-item">
-          <div class="blog-card">
-
-            <figure class="card-banner img-holder has-before hover:shine" style="--width: 700; --height: 450;">
-              <img src="../product/Nhan/425444586_1042604726819793_7041979125009647959_n.jpg" width="700" height="450" loading="lazy" alt="Our Story"
-                class="img-cover">
-            </figure>
-
-            <h3 class="h3">
-              <a href="#" class="card-title">Our Story</a>
-            </h3>
-
-            <a href="#" class="btn-link">
-              <span class="span">Our Store</span>
-
-              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-            </a>
-
-          </div>
-        </li>
-
-      </ul>
-
-    </div>
-  </section>
-
-</article>
+  </article>
 </main>
 
 
@@ -1215,148 +1221,148 @@
 -->
 
 <footer class="footer" data-section>
-<div class="container">
+  <div class="container">
 
-  <div class="footer-top">
+    <div class="footer-top">
 
-    <ul class="footer-list">
-
-      <li>
-        <p class="footer-list-title">Company</p>
-      </li>
-
-      <li>
-        <p class="footer-list-text">
-          Tìm một địa điểm gần bạn nhất. <a href="#" class="link">Cửa hàng gần nhất</a>
-        </p>
-      </li>
-
-      <li>
-        <p class="footer-list-text bold"> +84 847891296</p>
-      </li>
-
-      <li>
-        <p class="footer-list-text">quynhanh07021997@gmail.com</p>
-      </li>
-
-    </ul>
-
-    <ul class="footer-list">
-
-      <li>
-        <p class="footer-list-title">Liên kết sản phẩm</p>
-      </li>
-
-      <li>
-        <a href="#" class="footer-link">Sản phẩm mới</a>
-      </li>
-
-      <li>
-        <a href="#" class="footer-link">Best Sellers - Bán chạy</a>
-      </li>
-
-      <li>
-        <a href="#" class="footer-link">Lưu và giỏ hàng</a>
-      </li>
-
-      <li>
-        <a href="#" class="footer-link">Quà tặng Online</a>
-      </li>
-
-    </ul>
-
-    <ul class="footer-list">
-
-      <li>
-        <p class="footer-list-title">Thông tin</p>
-      </li>
-
-      <li>
-        <a href="#" class="footer-link">Bắt đầu lại</a>
-      </li>
-
-      <li>
-        <a href="#" class="footer-link">Liên hệ với chúng tôi</a>
-      </li>
-
-      <li>
-        <a href="#" class="footer-link">Huỷ đặt hàng</a>
-      </li>
-
-      <li>
-        <a href="#" class="footer-link">Chính sách và điều kiện</a>
-      </li>
-
-      <li>
-        <a href="#" class="footer-link">Bảo mật thông tin</a>
-      </li>
-
-    </ul>
-
-    <div class="footer-list">
-
-      <p class="newsletter-title">Emails</p>
-
-      <p class="newsletter-text">
-        Nhập email của bạn bên dưới để là người đầu tiên biết về các bộ sưu tập mới và ra mắt sản phẩm.
-      </p>
-
-      <form action="" class="newsletter-form">
-        <input type="email" name="email_address" placeholder="Nhập địa chỉ Email" required
-          class="email-field">
-
-        <button type="submit" class="btn btn-primary">Gửi</button>
-      </form>
-
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-
-    <div class="wrapper">
-      <p class="copyright">
-        &copy; 2024 code with love by QuynhAinXynh
-      </p>
-
-      <ul class="social-list">
+      <ul class="footer-list">
 
         <li>
-          <a href="#" class="social-link">
-            <ion-icon name="logo-twitter"></ion-icon>
-          </a>
+          <p class="footer-list-title">Company</p>
         </li>
 
         <li>
-          <a href="#" class="social-link">
-            <ion-icon name="logo-facebook"></ion-icon>
-          </a>
+          <p class="footer-list-text">
+            Tìm một địa điểm gần bạn nhất. <a href="#" class="link">Cửa hàng gần nhất</a>
+          </p>
         </li>
 
         <li>
-          <a href="#" class="social-link">
-            <ion-icon name="logo-instagram"></ion-icon>
-          </a>
+          <p class="footer-list-text bold"> +84 847891296</p>
         </li>
 
         <li>
-          <a href="#" class="social-link">
-            <ion-icon name="logo-youtube"></ion-icon>
-          </a>
+          <p class="footer-list-text">quynhanh07021997@gmail.com</p>
         </li>
 
       </ul>
+
+      <ul class="footer-list">
+
+        <li>
+          <p class="footer-list-title">Liên kết sản phẩm</p>
+        </li>
+
+        <li>
+          <a href="#" class="footer-link">Sản phẩm mới</a>
+        </li>
+
+        <li>
+          <a href="#" class="footer-link">Best Sellers - Bán chạy</a>
+        </li>
+
+        <li>
+          <a href="#" class="footer-link">Lưu và giỏ hàng</a>
+        </li>
+
+        <li>
+          <a href="#" class="footer-link">Quà tặng Online</a>
+        </li>
+
+      </ul>
+
+      <ul class="footer-list">
+
+        <li>
+          <p class="footer-list-title">Thông tin</p>
+        </li>
+
+        <li>
+          <a href="#" class="footer-link">Bắt đầu lại</a>
+        </li>
+
+        <li>
+          <a href="#" class="footer-link">Liên hệ với chúng tôi</a>
+        </li>
+
+        <li>
+          <a href="#" class="footer-link">Huỷ đặt hàng</a>
+        </li>
+
+        <li>
+          <a href="#" class="footer-link">Chính sách và điều kiện</a>
+        </li>
+
+        <li>
+          <a href="#" class="footer-link">Bảo mật thông tin</a>
+        </li>
+
+      </ul>
+
+      <div class="footer-list">
+
+        <p class="newsletter-title">Emails</p>
+
+        <p class="newsletter-text">
+          Nhập email của bạn bên dưới để là người đầu tiên biết về các bộ sưu tập mới và ra mắt sản phẩm.
+        </p>
+
+        <form action="" class="newsletter-form">
+          <input type="email" name="email_address" placeholder="Nhập địa chỉ Email" required
+                 class="email-field">
+
+          <button type="submit" class="btn btn-primary">Gửi</button>
+        </form>
+
+      </div>
+
     </div>
 
-    <a href="#" class="logo">
-      <img src="../logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="179" height="26" loading="lazy" alt="Glowing">
-    </a>
+    <div class="footer-bottom">
 
-    <img src="../logo/pay.png" width="313" height="28" alt="available all payment method" class="w-100">
+      <div class="wrapper">
+        <p class="copyright">
+          &copy; 2024 code with love by QuynhAinXynh
+        </p>
+
+        <ul class="social-list">
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+      <a href="#" class="logo">
+        <img src="../logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="179" height="26" loading="lazy" alt="Glowing">
+      </a>
+
+      <img src="../logo/pay.png" width="313" height="28" alt="available all payment method" class="w-100">
+
+    </div>
 
   </div>
-
-</div>
 </footer>
 
 
@@ -1368,19 +1374,19 @@
 -->
 
 <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
-<ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
+  <ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
 </a>
 
-  <!-- 
-    - custom js link
-  -->
-  <script src="/resources/js/script.js" defer></script>
+<!--
+  - custom js link
+-->
+<script src="/resources/js/script.js" defer></script>
 
-  <!-- 
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<!--
+  - ionicon link
+-->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
