@@ -1,6 +1,7 @@
 package com.ra.demo9.repository.impl;
 
 import com.ra.demo9.model.entity.Category;
+import com.ra.demo9.model.entity.Product;
 import com.ra.demo9.repository.ICategoryDao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,23 +15,28 @@ public class CategoryImpl implements ICategoryDao {
     @Autowired
     private SessionFactory sessionFactory;
     @Override
-    public List<Category> getCategory() {
+    public List<Category> getCategory(Integer currentPage, Integer size) {
         Session session = sessionFactory.openSession();
-        try{
-            List list = session.createQuery("from Category ").list();
-            return list;
-        }catch (Exception ex){
+        List<Category> categories = null;
+        try {
+            categories = session.createQuery("from Category ", Category.class)
+                    .setFirstResult(currentPage*size)
+                    .setMaxResults(size)
+                    .getResultList();
+        } catch (Exception ex) {
             ex.printStackTrace();
-        }finally {
-            session.close();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
-        return null;
+        return categories;
     }
 
     @Override
     public Category getCategoryById(Long cat_Id) {
         Session session = sessionFactory.openSession();
-        try{
+        try {
             Category category = session.get(Category.class,cat_Id);
             return category;
         }catch (Exception ex){
@@ -44,13 +50,13 @@ public class CategoryImpl implements ICategoryDao {
     @Override
     public boolean insertCategory(Category cat) {
         Session session = sessionFactory.openSession();
-        try{
+        try {
             session.beginTransaction();
             session.save(cat);
             session.getTransaction().commit();
             return true;
-        }catch (Exception ex){
-            ex.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
             session.getTransaction().rollback();
         }finally {
             session.close();
@@ -93,16 +99,18 @@ public class CategoryImpl implements ICategoryDao {
     }
 
     @Override
-    public List<Category> getCategoryByName(String name) {
+    public List<Category> getCategoryByName(String name,Integer currentPage,Integer size) {
         Session session = sessionFactory.openSession();
         try{
             if(name==null || name.length()==0)
                 name = "%";
             else
                 name = "%"+name+"%";
-            List list = session.createQuery("from Category where categoryName like : catName")
+            List list = session.createQuery("from Category where categoryName like :catName")
                     .setParameter("catName",name)
-                    .list();
+                    .setFirstResult(currentPage*size)
+                    .setMaxResults(size)
+                    .getResultList();
             return list;
         }catch (Exception ex){
             ex.printStackTrace();
@@ -110,5 +118,43 @@ public class CategoryImpl implements ICategoryDao {
             session.close();
         }
         return null;
+    }
+
+    @Override
+    public List<Category> sortByName(Integer currentPage, Integer size) {
+        Session session = sessionFactory.openSession();
+        List<Category> categories = session.createQuery("from Category order by categoryName", Category.class)
+                .setFirstResult(currentPage*size)
+                .setMaxResults(size)
+                .getResultList();
+        session.close();
+        return categories;
+    }
+
+    @Override
+    public Long countAllCategory() {
+        Session session = sessionFactory.openSession();
+        try {
+            return (Long) session.createQuery("select count(c.id) from Category c").getSingleResult();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public Long countCategoryByName(String name) {
+        Session session = sessionFactory.openSession();
+        name = "%" + name + "%";
+        try {
+            return (Long) session.createQuery("select count(c.id) from Category c where c.categoryName like :name")
+                    .setParameter("name", name)
+                    .getSingleResult();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            session.close();
+        }
     }
 }
