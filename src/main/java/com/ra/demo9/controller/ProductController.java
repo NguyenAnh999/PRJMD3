@@ -2,9 +2,8 @@ package com.ra.demo9.controller;
 
 import com.ra.demo9.model.dto.ProductRequest;
 import com.ra.demo9.model.entity.Product;
-import com.ra.demo9.service.ICategoryService;
-import com.ra.demo9.service.IProductService;
-import com.ra.demo9.service.FileService;
+import com.ra.demo9.model.entity.Users;
+import com.ra.demo9.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -13,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -21,9 +21,13 @@ import java.util.List;
 @Controller
 public class ProductController {
     @Autowired
+    UserService userService;
+    @Autowired
     private IProductService productService;
     @Autowired
     private ICategoryService categoryService;
+    @Autowired
+    private ShoppingCartService shoppingCartService;
     @Autowired
     private FileService fileService;
     LocalDateTime currentTime = LocalDateTime.now();
@@ -197,11 +201,32 @@ public class ProductController {
     @RequestMapping("/viewProductDetail/{id}")
     public String viewProductDetail(@PathVariable("id") Long id, Model model) {
         Product product = productService.getProductById(id);
-        List<Product> products = productService.listProductOfCategory(1,"a");
+        List<Product> products = productService.listProductOfCategory(1L,"a");
         model.addAttribute("product", product);
-        model.addAttribute("categories", categoryService.getCategory());
+//        model.addAttribute("categories", categoryService.getCategory());
         model.addAttribute("productList5",products);
 
         return "Productdetail";
+    }
+    @RequestMapping("/productList")
+    public String productHomeUser(Model model,@RequestParam (defaultValue = "0") int currentPage,@RequestParam(defaultValue = "8") int size) {
+        List<Product> products = productService.getProduct(currentPage,size);
+        model.addAttribute("totalMoney" ,shoppingCartService.getShoppingCartTotal());
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct()/size));
+        model.addAttribute("products", products);
+       // model.addAttribute("categories", categoryService.getCategory());
+        return "Product";
+
+    }
+
+    @RequestMapping("/addProductToCart/{id}")
+    public String addProductToCart(@PathVariable("id") Long productId, Model model, HttpSession session)
+    {
+        Product product = productService.getProductById(productId);
+        // Users user = (Users) session.getAttribute("user");
+        Users user = userService.findById(1L);
+        shoppingCartService.addToCart(product,user);
+        return "redirect:/productList";
     }
 }
