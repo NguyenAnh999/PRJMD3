@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout/head.html">
+    <link rel="stylesheet" href="/resources/css/admin.css">
+</head>
+<body>
+<div class="main">
+    <div class="topbar">
+        <div class="toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="search">
+            <h2>Welcome Back, Hoàng Quỳnh Anh</h2>
+        </div>
+        <div class="search">
+            <form th:action="@{/search}" method="get">
+                <label>
+                    <input type="text" name="search" placeholder="Search here">
+                    <button type="submit">Search</button>
+                </label>
+            </form>
+        </div>
+        <i class="fa-solid fa-bell" style="color: black; font-size: 30px;">
+            <span style="background-color: pink; color: white; border-radius: 50%; width: 20px;">0</span>
+        </i>
+        <div class="user">
+            <img src="../profile/avatar-dep-ngau-nu18.jpg" alt="">
+        </div>
+    </div>
+
+    <div class="dashboardSession mot"></div>
+    <div class="chitietOrder hai"></div>
+
+    <div class="dsOder">
+        <div class="cardHeader" style="justify-content: space-between;">
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-add" style="padding-left: 0;">
+                <i class="fa-solid fa-plus"></i> Thêm sản phẩm
+            </button>
+            <a th:href="@{/sortByName}" class="btn">Sắp xếp</a>
+        </div>
+
+        <!-- Modal Add -->
+        <div class="modal fade" id="modal-add" tabindex="-1" aria-labelledby="modal-add-label" aria-hidden="true" data-bs-backdrop="static">
+            <div class="modal-dialog">
+                <form th:action="@{/saveProduct}" method="post" style="max-width: 30rem; margin: 0 auto" class="p-4 mt-5" enctype="multipart/form-data" th:object="${productRequest}">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="modal-add-label">Thêm Sản Phẩm</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3" style="display: flex;">
+                                <div style="flex: 1; margin-right: 10px;">
+                                    <label class="form-label">Mã Sản Phẩm</label>
+                                    <input type="text" th:field="*{sku}" class="form-control"/>
+                                </div>
+                                <div style="flex: 1;">
+                                    <label class="form-label">Tên Sản Phẩm</label>
+                                    <input type="text" th:field="*{productName}" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Hình Ảnh</label>
+                                <input type="file" th:field="*{productImage}" id="image" class="form-control"/>
+                            </div>
+                            <div class="mb-3" style="display: flex;">
+                                <div style="flex: 1; margin-right: 10px;">
+                                    <label class="form-label">Giá</label>
+                                    <input type="text" th:field="*{unitPrice}" class="form-control"/>
+                                </div>
+                                <div style="flex: 1;">
+                                    <label class="form-label">Số Lượng</label>
+                                    <input type="text" th:field="*{stockQuantity}" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label>Tên Danh Mục</label>
+                                <select th:field="*{categoryId}" class="form-select">
+                                    <option th:each="category : ${categories}" th:value="${category.categoryId}" th:text="${category.categoryName}">Danh Mục 1</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Mô tả</label>
+                                <textarea class="form-control" th:field="*{description}" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <table id="customers">
+            <thead>
+            <tr>
+                <th style="text-align: center">ID</th>
+                <th style="text-align: center">Mã Sản Phẩm</th>
+                <th style="text-align: center">Tên Sản Phẩm</th>
+                <th style="text-align: center">Ảnh</th>
+                <th style="text-align: center">Tên Danh Mục</th>
+                <th style="text-align: center">Giá</th>
+                <th style="text-align: center">Số lượng</th>
+                <th style="text-align: center" colspan="3">Action</th>
+            </tr>
+            </thead>
+            <tbody id="tableProduct">
+            <tr th:each="p : ${products}">
+                <td th:text="${p.productId}"></td>
+                <td th:text="${p.sku}"></td>
+                <td th:text="${p.productName}"></td>
+                <td><img th:src="${p.image}" style="width: 100px; height: 100px; border-radius: 5px; object-fit: cover"></td>
+                <td th:text="${p.category.categoryName}"></td>
+                <td th:text="${p.unitPrice}"></td>
+                <td th:text="${p.stockQuantity}"></td>
+                <td>
+                    <button th:onclick="|handleEdit(${p.productId})|" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal-edit">Sửa</button>
+                </td>
+                <td><a th:href="@{/deleteProduct/{id}(id=${p.productId})}" onclick="return confirm('Bạn chắc chưa? 🤡')" class="btn btn-danger">Xóa</a></td>
+                <td><a th:href="@{/viewProduct/{id}(id=${p.productId})}" class="btn btn-success">Chi tiết</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <div style="display: flex;gap: 10px">
+            <!-- 1 2 3 4 5 -->
+            <p th:each="i : ${#numbers.sequence(1,totalPage)}">
+                <a th:href="@{'/Product?currentPage='+${i - 1}}" th:text="${i}"></a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal Edit -->
+    <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="modal-edit-label" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <form th:action="@{/updateProduct}" method="post" style="max-width: 30rem; margin: 0 auto" class="p-4 mt-5" enctype="multipart/form-data" th:object="${product}">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modal-edit-label">Sửa Sản Phẩm</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <input type="hidden" name="productId" id="productId_up" readonly class="form-control"/>
+                        </div>
+                        <div class="mb-3" style="display: flex;">
+                            <div style="flex: 1; margin-right: 10px;">
+                                <label class="form-label">Mã Sản Phẩm</label>
+                                <input type="text" name="sku" id="sku_up" class="form-control"/>
+                            </div>
+                            <div style="flex: 1;">
+                                <label class="form-label">Tên Sản Phẩm</label>
+                                <input type="text" name="productName" id="productName_up" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Hình Ảnh</label>
+                            <input type="file" name="productImage" id="image_up" class="form-control"/>
+                        </div>
+                        <div class="mb-3" style="display: flex;">
+                            <div style="flex: 1; margin-right: 10px;">
+                                <label class="form-label">Giá</label>
+                                <input type="text" name="unitPrice" id="unitPrice_up" class="form-control"/>
+                            </div>
+                            <div style="flex: 1;">
+                                <label class="form-label">Số Lượng</label>
+                                <input type="text" name="stockQuantity" id="stockQuantity_up" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label>Tên Danh Mục</label>
+                            <select name="categoryId" id="categoryId_up" class="form-select">
+                                <option th:each="category : ${categories}" th:value="${category.categoryId}" th:text="${category.categoryName}">Danh Mục 1</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mô tả</label>
+                            <textarea class="form-control" name="description" id="description_up" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        var modals = document.querySelectorAll('.modal');
+        modals.forEach(function(modal) {
+            modal.addEventListener('hidden.bs.modal', function () {
+                document.body.classList.remove('modal-open');
+                var backdrop = document.querySelector('.modal-backdrop');
+                if (backdrop) {
+                    backdrop.parentNode.removeChild(backdrop);
+                }
+            });
+        });
+
+        const handleEdit = (id) => {
+            fetch(`http://localhost:8080/api/v1/Product/` + id)
+                .then(response => response.json())
+                .then(product => {
+                    document.getElementById('productId_up').value = product.productId;
+                    document.getElementById('sku_up').value = product.sku;
+                    document.getElementById('productName_up').value = product.productName;
+                    document.getElementById('unitPrice_up').value = product.unitPrice;
+                    document.getElementById('stockQuantity_up').value = product.stockQuantity;
+                    document.getElementById('description_up').value = product.description;
+                    document.getElementById('categoryId_up').value = product.categoryId;
+                    var editModal = new bootstrap.Modal(document.getElementById('modal-edit'));
+                    editModal.show();
+                })
+                .catch(error => console.log('Error:'+ error));
+        };
+
+        window.handleEdit = handleEdit;
+    });
+</script>
+<th:block th:insert="layout/foot.html"></th:block>
+</body>
+</html>
