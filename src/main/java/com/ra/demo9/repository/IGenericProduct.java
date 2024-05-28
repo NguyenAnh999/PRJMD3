@@ -13,6 +13,7 @@ public interface IGenericProduct {
     public boolean updateProduct(Product pro, ProductRequest productRequest);
     public boolean deleteProduct(Long pro_Id);
     String getImageByProductId(Long pro_id);
+
     public List<Product> listProductOfCategory(Long category_id,String name);
 
     public List<Product> getProductByName(String name,Integer currentPage,Integer size);

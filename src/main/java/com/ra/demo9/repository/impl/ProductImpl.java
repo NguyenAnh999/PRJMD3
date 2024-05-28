@@ -209,6 +209,8 @@ public class ProductImpl implements IProductDao {
         }
     }
 
+
+
     @Override
     public List<Product> listProductOfCategory(Long category_id, String name) {
         Session session = sessionFactory.openSession();
@@ -220,10 +222,11 @@ public class ProductImpl implements IProductDao {
                     .getResultList();
         } catch (Exception e) {
             throw new RuntimeException(e);
-        } finally {
-            session.close();
+        }finally {
+        session.close();
         }
-    }
+}
+
 
     public Long countProductByName(String name) {
         Session session = sessionFactory.openSession();
