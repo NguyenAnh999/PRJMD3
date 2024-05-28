@@ -27,7 +27,7 @@ public class ProductImpl implements IProductDao {
     private FileService fileService;
 
     @Override
-    public List<Product> getProduct(Integer currentPage,Integer size) {
+    public List<Product> getProduct(Integer currentPage, Integer size) {
         Session session = sessionFactory.openSession();
         List<Product> products = null;
         try {
@@ -164,8 +164,7 @@ public class ProductImpl implements IProductDao {
     }
 
     @Override
-
-    public List<Product> getProductByName(String name,Integer currentPage,Integer size) {
+    public List<Product> getProductByName(String name, Integer currentPage, Integer size) {
         Session session = sessionFactory.openSession();
         try {
             if (name == null || name.length() == 0)
@@ -189,7 +188,7 @@ public class ProductImpl implements IProductDao {
     @Override
 
 
-    public List<Product> sortByName(Integer currentPage,Integer size) {
+    public List<Product> sortByName(Integer currentPage, Integer size) {
         Session session = sessionFactory.openSession();
         List<Product> products = session.createQuery("from Product order by productName", Product.class)
                 .setFirstResult(currentPage * size)
@@ -210,12 +209,14 @@ public class ProductImpl implements IProductDao {
         }
     }
 
-@Override
-    public List<Product> listProductOfCategory(Long category_id,String name) {
+
+
+    @Override
+    public List<Product> listProductOfCategory(Long category_id, String name) {
         Session session = sessionFactory.openSession();
         try {
             return session.createQuery("select p from Product p where p.category.categoryId=:id or p.productName like :name", Product.class)
-                    .setParameter("name", "%"+name+"%")
+                    .setParameter("name", "%" + name + "%")
                     .setParameter("id", category_id)
                     .setMaxResults(6)
                     .getResultList();
@@ -225,6 +226,7 @@ public class ProductImpl implements IProductDao {
         session.close();
         }
 }
+
 
     public Long countProductByName(String name) {
         Session session = sessionFactory.openSession();
@@ -239,4 +241,5 @@ public class ProductImpl implements IProductDao {
             session.close();
         }
     }
+
 }
