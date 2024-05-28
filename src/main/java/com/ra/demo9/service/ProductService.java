@@ -55,7 +55,7 @@ public class ProductService implements IProductService{
     }
 
     @Override
-    public List<Product> listProductOfCategory(int category_id, String name) {
+    public List<Product> listProductOfCategory(Long category_id, String name) {
         return productDao.listProductOfCategory(category_id,name);
     }
 
