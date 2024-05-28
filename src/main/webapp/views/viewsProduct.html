@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout/head.html">
+</head>
+<body>
+<div>
+    <h1 style="text-align: center">Thông tin chi tiết sản phẩm</h1>
+    <table class="table table-bordered">
+        <tbody>
+        <tr>
+            <th>ID Sản Phẩm:</th>
+            <td th:text="${product.productId}"></td>
+        </tr>
+        <tr>
+            <th>Mã:</th>
+            <td th:text="${product.sku}"></td>
+        </tr>
+        <tr>
+            <th>Tên Sản Phẩm:</th>
+            <td th:text="${product.productName}"></td>
+        </tr>
+
+        <tr>
+            <th>Giá:</th>
+            <td th:text="${product.unitPrice}"></td>
+        </tr>
+        <tr>
+            <th>Số Lượng:</th>
+            <td th:text="${product.stockQuantity}"></td>
+        </tr>
+        <tr>
+            <th>Ảnh:</th>
+            <td><img th:src="${product.image}" style="width: 100px; height: 100px; border-radius: 5px; object-fit: cover;"></td>
+        </tr>
+        <tr>
+            <th>Danh Mục:</th>
+            <td th:text="${product.category.categoryName}"></td>
+        </tr>
+        <tr>
+            <th>Ngày Tạo:</th>
+            <td th:text="${product.createdAt}"></td>
+        </tr>
+        <tr>
+            <th>Ngày Sửa:</th>
+            <td th:text="${product.updatedAt}"></td>
+        </tr>
+        <tr>
+            <th>Mô Tả:</th>
+            <td th:text="${product.description}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/Product">Back</a>
+</div>
+
+<th:block th:insert="layout/foot.html"></th:block>
+</body>
+</html>

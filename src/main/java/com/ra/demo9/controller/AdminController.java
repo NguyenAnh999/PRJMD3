@@ -1,8 +1,6 @@
 package com.ra.demo9.controller;
 
 import com.ra.demo9.model.dto.UsersDTO;
-import com.ra.demo9.model.entity.Users;
-import com.ra.demo9.service.AdminService;
 import com.ra.demo9.service.ProductService;
 import com.ra.demo9.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +16,7 @@ public class AdminController {
 
     @Autowired
     private UserService userService;
+
 
     @RequestMapping("/logoutadmin")
     public String logout(HttpSession session) {
