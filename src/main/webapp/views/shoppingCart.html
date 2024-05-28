@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/resources/css/cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div class="container">
+    <div style="background-color:  rgb(240, 148, 156);
+      height: 1.5rem;"
+    >
+        <!-- <p class="alert-text"></p>
+          Nếu muốn cho thông báo gì thêm thì viết vào luôn-->
+    </div>
+    <header id="header">
+        <a href="/" class="logo" >
+            <img src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="200" height="50" alt="Glowing">
+        </a>
+
+        <div class="shopping" active>
+            <ion-icon name="bag-handle-outline" aria-hidden="true"
+                      style="font-size: 40px;"></ion-icon>
+            <span class="quantity">0</span>
+        </div>
+
+
+    </header>
+    <div class="checkoutLayout">
+        <div class="returnCart">
+            <a href="/" style="color:  rgb(240, 148, 156) ; font-size: 18px" >Keep shopping</a>
+            <h1>List Product in Cart</h1>
+            <div class="list" th:each="s:${shoppingCart}">
+
+                <div class="item" style="  grid-template-columns: 80px 120px 10px 10px 10px 120px 20px;">
+                    <img th:src="*{s.productId.image}" alt="">
+                    <div class="info">
+                        <div class="name" th:text="${s.productId.productName}"> </div>
+                        <div class="price" th:text="${s.productId.unitPrice}+'/1'"></div>
+
+                    </div >
+                    <a><i class="fa-solid fa-minus"></i></a>
+                    <div class="quantity" th:text="${s.orderQuantity}"> </div>
+                    <a><i class="fa-solid fa-plus"></i></a>
+                    <div class="returnPrice" th:text="${s.productId.unitPrice*s.orderQuantity}+'Đ'">$433.3</div>
+                    <a th:href="@{/deleteItemShoppingCart/{id}(id=${s.shoppingCartId})}"><i style="color:  rgb(240, 148, 156)"  class="fa-solid fa-trash"></i></a>
+                </div>
+
+
+            </div>
+            <a th:href="@{/deleteAllShopCart}" style=" display: flex ;justify-content : flex-end  ">
+                <h3>Delete All</h3>
+                <div style=" margin-top: 15px ;　margin-left : 5px  ; color: palevioletred"><i class="fa-solid fa-trash"></i></div>
+            </a>
+        </div>
+
+
+        <div class="right">
+            <h1>Thanh Toán</h1>
+
+            <div class="form">
+                <div class="group">
+                    <label for="name">Họ Và Tên</label>
+                    <input style="color: rgb(240, 148, 156)" type="text" name="name" id="name">
+                </div>
+
+<!--                <div class="group">-->
+<!--                    <label for="phone">Số Điện Thoại</label>-->
+<!--                    <input style="color: rgb(240, 148, 156)" type="text" name="phone" id="phone">-->
+<!--                </div>-->
+
+                <div class="group">
+                    <label >Địa chỉ</label>
+                    <select >
+                        <option value="">Chọn..</option>
+                        <option value="">Địa Chỉ 1</option>
+                    </select>
+                </div>
+                <div class="group">
+                    <label >Hình Thức Thanh Toán</label>
+                    <select >
+                        <option value="">Chọn..</option>
+                        <option value="">Zalo Pay</option>
+                    </select>
+                </div>
+
+
+
+
+
+            </div>
+            <div class="return">
+                <div class="row">
+                    <div>Tổng sản phẩm</div>
+                    <div class="totalQuantity">70</div>
+                </div>
+                <div class="row">
+                    <div>Tổng Tiền</div>
+                    <div class="totalPrice">$900</div>
+                </div>
+            </div>
+            <button class="buttonCheckout">Thanh Toán</button>
+        </div>
+    </div>
+</div>
+<footer >
+    <p class="newsletter-text" style="margin-top: 50px;">
+        Xin chân thành cảm ơn quý khách đã luôn đồng hành cùng Marosa`s Qynh - Chúc quý khách shopping vui vẻ
+    </p>
+    <p class="copyright" style="margin: 50px 0 0 10px;">
+        &copy; 2024 code with love by QuynhAinXynh - AnhNguyen - Vantu
+    </p>
+
+
+    <a href="#" class="logo">
+        <img src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="200" height="50" loading="lazy" alt="Glowing">
+    </a>
+
+
+</footer>
+
+
+<script src="/resources/style/cart.js"></script>
+
+</body>
+</html>
