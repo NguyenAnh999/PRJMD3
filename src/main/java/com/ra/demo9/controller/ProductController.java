@@ -201,11 +201,11 @@ public class ProductController {
     @RequestMapping("/viewProductDetail/{id}")
     public String viewProductDetail(@PathVariable("id") Long id, Model model) {
         Product product = productService.getProductById(id);
-        List<Product> products = productService.listProductOfCategory(1L,"a");
-        model.addAttribute("product", product);
-//        model.addAttribute("categories", categoryService.getCategory());
-        model.addAttribute("productList5",products);
 
+        List<Product> products = productService.listProductOfCategory(id,product.getProductName());
+        model.addAttribute("product", product);
+
+        model.addAttribute("productList5",products);
         return "Productdetail";
     }
     @RequestMapping("/productList")
