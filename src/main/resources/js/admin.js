@@ -664,9 +664,6 @@ cursor: pointer;"><i class="fa-solid fa-less-than"></i> Back</label>
 
 </select>
 
-
-
-
       <br>
       <label>sale: </label><br>
       <input type="text" id="sale">
