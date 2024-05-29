@@ -19,63 +19,46 @@
 </head>
 <body>
 <div class="container">
-  <form th:object="${user}" th:action="@{/signupAfter}" method="post" enctype="multipart/form-data">
+  <form th:object="${user}" th:action="@{/user/UpdateAfter}" method="post" enctype="multipart/form-data">
     <h2>thêm admin</h2>
+    <input name="id" type="hidden" readonly th:value="${session.user.userId}" >
     <div class="form-control">
-      <input type="text" placeholder="Tên Người Dùng" id="username" th:field="*{username}"/>
-      <i class="fa-solid fa-user"></i>
-      <small></small>
-      <span></span>
-    </div>
-
-
-    <div class="form-control">
-      <input type="file" placeholder="ảnh"  th:field="*{avatar}"/>
+      <input type="text" placeholder="Tên Người Dùng" id="username" th:value="${session.user.username}" name="username"/>
       <i class="fa-solid fa-user"></i>
       <small></small>
       <span></span>
     </div>
 
     <div class="form-control">
-      <input type="text" placeholder="số điện thoại"  th:field="*{phone}"/>
+      <img th:src="${session.user.avatar}" style="width: 100px;height: 100px">
+      <input type="file" placeholder="ảnh"   th:field="*{avatar}"/>
       <i class="fa-solid fa-user"></i>
       <small></small>
       <span></span>
     </div>
 
     <div class="form-control">
-      <input type="text" placeholder="Họ Và Tên" id="name" th:field="*{fullName}"/>
+      <input type="text" placeholder="số điện thoại" th:value="${session.user.phone}"  name="phone"/>
       <i class="fa-solid fa-user"></i>
       <small></small>
       <span></span>
     </div>
 
     <div class="form-control">
-      <input type="text" placeholder="Email" id="email" th:field="*{email}"/>
+      <input type="text" placeholder="Họ Và Tên" id="name" th:value="${session.user.fullName}"  name="fullName"/>
+      <i class="fa-solid fa-user"></i>
+      <small></small>
+      <span></span>
+    </div>
+
+    <div class="form-control">
+      <input type="text" placeholder="Email" id="email" th:value="${session.user.email}"  name="email"/>
       <i class="fa-solid fa-envelope"></i>
       <small></small>
       <span></span>
     </div>
 
-    <div class="form-control">
-      <input type="password" placeholder="Mật Khẩu" id="password" th:field="*{password}" />
-      <i class="fa-regular fa-eye" id="show-password"></i>
-      <small></small>
-      <span></span>
-    </div>
-
-    <div class="form-control">
-      <input
-              type="password"
-              placeholder="Nhập lại mật khẩu"
-              id="cfPassword"
-      />
-      <i class="fa-regular fa-eye" id="show-cfPassword"></i>
-      <small></small>
-      <span></span>
-    </div>
-
-    <input type="submit" class="btn-submit" >Đăng ký</input>
+    <input type="submit" class="btn-submit" >Cập nhật</input>
 
   </form>
 </div>

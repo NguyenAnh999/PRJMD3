@@ -3,6 +3,7 @@ package com.ra.demo9.controller;
 import com.ra.demo9.model.dto.UsersDTO;
 import com.ra.demo9.model.entity.Users;
 import com.ra.demo9.service.AdminService;
+import com.ra.demo9.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
@@ -38,7 +39,11 @@ public class HomeController {
         Users users = adminService.getUser(username, password);
         if (users!=null) {
             session.setAttribute("user", users);
-            return "admin";
+            if (users.getRoleList().stream().anyMatch(role -> role.getRoleId()==1)){
+            return "admin";}
+            else {
+                return "index";
+            }
         } else {
             return "Adminlogin";
         }
@@ -58,4 +63,25 @@ public class HomeController {
 //        model.addAttribute("userProfile", facebook.userOperations().getUserProfile());
 //        return "profile";
 //    }
+@Autowired
+private UserService userService;
+
+
+    @RequestMapping("/signup")
+    public String addAdmin(Model model) {
+        model.addAttribute("user", new UsersDTO());
+        return "dangky";
+    }
+    @PostMapping("/signupAfter")
+    public String addAdminAfter(@ModelAttribute(name = "user") UsersDTO user,Model model) {
+        model.addAttribute("user", "isUser");
+        userService.save(user,false);
+        return "Dkythanhcong";
+    }
+
+    @RequestMapping("/loginUser")
+    public String loginUser() {
+        return "login";
+    }
+
 }
