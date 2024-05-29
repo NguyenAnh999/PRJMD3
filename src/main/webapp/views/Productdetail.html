@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi"  xmlns:th="http://www.thymeleaf.org">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
         }
+
         .header {
             background-color: rgb(240, 148, 156);
             color: white;
@@ -18,21 +19,25 @@
             text-align: center;
             border-radius: 0 0 15px 15px;
         }
+
         .header img {
             height: 40px;
             vertical-align: middle;
         }
+
         .header nav {
             display: inline-block;
             margin-left: 20px;
             vertical-align: middle;
         }
+
         .header nav a {
             color: white;
             text-decoration: none;
             margin: 0 10px;
             font-size: 16px;
         }
+
         .container {
             width: 80%;
             margin: 20px auto;
@@ -40,38 +45,46 @@
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
+            justify-content: space-between;
             flex-wrap: wrap;
             border-radius: 15px;
         }
+
         .image-container, .details-container {
             flex: 1;
             min-width: 300px;
             padding: 20px;
         }
+
         .image-container img {
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
             display: block;
-            margin: 0 auto;
+            margin-left: -0%;
             border-radius: 15px;
         }
+
         .details-container {
             max-width: 400px;
         }
+
         .product-title {
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 10px;
             color: rgb(240, 148, 156);
         }
+
         .product-price {
             color: rgb(200, 90, 98);
             font-size: 20px;
             margin: 10px 0;
         }
+
         .product-sizes, .product-colors {
             margin: 10px 0;
         }
+
         .product-sizes select, .product-colors select {
             width: 100%;
             padding: 10px;
@@ -79,9 +92,11 @@
             font-size: 16px;
             border-radius: 5px;
         }
+
         .buttons {
             margin-top: 20px;
         }
+
         .add-to-cart, .buy-now {
             display: inline-block;
             padding: 15px 30px;
@@ -92,14 +107,17 @@
             text-decoration: none;
             border-radius: 5px;
         }
+
         .add-to-cart {
             background-color: rgb(240, 148, 156);
             color: #fff;
         }
+
         .buy-now {
             background-color: rgb(200, 90, 98);
             color: #fff;
         }
+
         .related-products {
             width: 80%;
             margin: 20px auto;
@@ -108,10 +126,12 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 15px;
         }
+
         .related-products h2 {
             color: rgb(240, 148, 156);
             margin-bottom: 20px;
         }
+
         .related-product-item {
             display: inline-block;
             width: 23%;
@@ -121,16 +141,19 @@
             background-color: #fff;
             border-radius: 15px;
         }
+
         .related-product-item img {
             width: 100%;
             height: auto;
             border-radius: 15px;
         }
+
         .related-product-item p {
             margin: 10px 0;
             color: rgb(240, 148, 156);
             font-weight: bold;
         }
+
         .footer {
             background-color: rgb(240, 148, 156);
             color: white;
@@ -139,9 +162,11 @@
             border-radius: 15px 15px 0 0;
             margin-top: 20px;
         }
+
         .footer p {
             margin: 5px 0;
         }
+
         .footer a {
             color: white;
             text-decoration: none;
@@ -161,32 +186,34 @@
 </div>
 <div class="container">
     <div class="image-container">
-        <img src="https://optech.vn/uploads/images/giao-dien-web-dep-mien-phi.jpg" alt="Product Image">
+        <img th:src="${product.image}" alt="Product Image">
+    </div>
+    <div  style=" width: 32%;height: 350px; ">
+        <h1 style="color: #F0949C">Thông tin chi tiết sản phẩm</h1>
+        <p th:text="${product.description}"></p>
     </div>
     <div class="details-container">
-        <div class="product-title">Áo Sơ Mi Nam Ngắn Tay Hàn Quốc Cổ Tàu</div>
-        <div class="product-price">185,000₫</div>
-        <div class="product-colors">
-            <label for="colors">Màu Sắc:</label>
-            <select id="colors">
-                <option>Áo Cọc Trắng Cổ Tàu</option>
-                <option>Áo Cọc Đen Cổ Tàu</option>
-                <option>Áo Cọc Xanh Cổ Tàu</option>
-            </select>
-        </div>
-        <div class="product-sizes">
-            <label for="sizes">Kích Cỡ:</label>
-            <select id="sizes">
-                <option>Size M (40-53kg)</option>
-                <option>Size L (54-59kg)</option>
-                <option>Size XL (60-68kg)</option>
-                <option>Size XXL (69-74kg)</option>
-            </select>
-        </div>
-        <div class="buttons">
-            <a href="#" class="add-to-cart">Thêm Vào Giỏ Hàng</a>
-            <a href="#" class="buy-now">Mua Ngay</a>
-        </div>
+        <form th:action="@{/addProductDetail}" method="post" style="max-width: 30rem; margin: 0 auto"
+              class="p-4 mt-5" enctype="multipart/form-data" th:object="${product}">
+            <div class="product-title"><p th:text="${product.productName}"></p></div>
+            <div class="product-price" th:text="'Giá : '+${product.unitPrice}"></div>
+            <div class="product-colors">
+                <label for="colors">Màu Sắc:</label>
+                <select id="colors">
+                    <option th:each="pd : ${productDetailList2}" th:value="${pd.color}" th:text="${pd.color}"></option>
+                </select>
+            </div>
+            <div class="product-sizes">
+                <label for="sizes">Kích Cỡ:</label>
+                <select id="sizes">
+                    <option th:each="pd : ${productDetailList2}" th:value="${pd.size}" th:text="${pd.size}"></option>
+                </select>
+            </div>
+            <div class="buttons">
+                <a href="#" class="add-to-cart">Thêm Vào Giỏ Hàng</a>
+                <a href="#" class="buy-now">Mua Ngay</a>
+            </div>
+        </form>
     </div>
 </div>
 <div class="related-products">
@@ -194,23 +221,23 @@
     <div class="related-product-item" th:each="p : ${productList5}">
         <img th:src="${p.image}" alt="Related Product 1">
         <p th:text="${p.productName}"></p>
-        <div class="product-price" th:text="${p.unitPrice}" >150,000₫</div>
+        <div class="product-price" th:text="${p.unitPrice}">150,000₫</div>
     </div>
-<!--    <div class="related-product-item">-->
-<!--        <img src="https://optech.vn/uploads/images/giao-dien-web-dep-mien-phi.jpg" alt="Related Product 2">-->
-<!--        <p>Sản Phẩm 2</p>-->
-<!--        <div class="product-price">170,000₫</div>-->
-<!--    </div>-->
-<!--    <div class="related-product-item">-->
-<!--        <img src="https://optech.vn/uploads/images/giao-dien-web-dep-mien-phi.jpg" alt="Related Product 3">-->
-<!--        <p>Sản Phẩm 3</p>-->
-<!--        <div class="product-price">200,000₫</div>-->
-<!--    </div>-->
-<!--    <div class="related-product-item">-->
-<!--        <img src="https://optech.vn/uploads/images/giao-dien-web-dep-mien-phi.jpg" alt="Related Product 4">-->
-<!--        <p>Sản Phẩm 4</p>-->
-<!--        <div class="product-price">220,000₫</div>-->
-<!--    </div>-->
+    <!--    <div class="related-product-item">-->
+    <!--        <img src="https://optech.vn/uploads/images/giao-dien-web-dep-mien-phi.jpg" alt="Related Product 2">-->
+    <!--        <p>Sản Phẩm 2</p>-->
+    <!--        <div class="product-price">170,000₫</div>-->
+    <!--    </div>-->
+    <!--    <div class="related-product-item">-->
+    <!--        <img src="https://optech.vn/uploads/images/giao-dien-web-dep-mien-phi.jpg" alt="Related Product 3">-->
+    <!--        <p>Sản Phẩm 3</p>-->
+    <!--        <div class="product-price">200,000₫</div>-->
+    <!--    </div>-->
+    <!--    <div class="related-product-item">-->
+    <!--        <img src="https://optech.vn/uploads/images/giao-dien-web-dep-mien-phi.jpg" alt="Related Product 4">-->
+    <!--        <p>Sản Phẩm 4</p>-->
+    <!--        <div class="product-price">220,000₫</div>-->
+    <!--    </div>-->
 </div>
 <div class="footer">
     <p>&copy; 2024 Thương Hiệu của Bạn. Tất cả các quyền được bảo lưu.</p>
