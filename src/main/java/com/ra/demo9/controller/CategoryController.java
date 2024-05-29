@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
+@RequestMapping("/admin")
 public class CategoryController {
     @Autowired
     private ICategoryService categoryService;
@@ -45,14 +46,14 @@ public class CategoryController {
             return "/admincategory";
         }
         categoryService.insertCategory(category);
-        return "redirect:/Category";
+        return "redirect:/admin/Category";
     }
 
 
     @GetMapping("/deleteCategory/{id}")
     public String deleteCategory(@PathVariable("id") Long id) {
         categoryService.deleteCategory(id);
-        return "redirect:/Category";
+        return "redirect:/admin/Category";
     }
 
     @GetMapping("/editCategory/{id}")
@@ -64,7 +65,7 @@ public class CategoryController {
     @PostMapping("/updateCategory")
     public String updateCategory(@Valid @ModelAttribute("category") Category category) {
         categoryService.updateCategory(category);
-        return "redirect:/Category";
+        return "redirect:/admin/Category";
     }
 
     @GetMapping("/sortByNameCategory")

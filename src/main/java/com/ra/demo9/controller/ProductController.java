@@ -19,6 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
+@RequestMapping("/admin")
 public class ProductController {
     @Autowired
     UserService userService;
@@ -86,7 +87,7 @@ public class ProductController {
                 .build();
         boolean bl = productService.insertProduct(product);
         if (bl) {
-            return "redirect:/Product";
+            return "redirect:/admin/Product";
         } else {
             model.addAttribute("productRequest", product);
             return "/adminproduct";
@@ -96,7 +97,7 @@ public class ProductController {
     @GetMapping("/deleteProduct/{id}")
     public String deleteProduct(@PathVariable("id") Long id) {
         productService.deleteProduct(id);
-        return "redirect:/Product";
+        return "redirect:/admin/Product";
     }
 
     @GetMapping("/editProduct/{id}")
@@ -166,7 +167,7 @@ public class ProductController {
         }
 
         productService.updateProduct(existingProduct, productRequest);
-        return "redirect:/Product";
+        return "redirect:/admin/Product";
     }
 
 
@@ -175,7 +176,7 @@ public class ProductController {
         Product product = productService.getProductById(id);
         if (product == null) {
             model.addAttribute("error", "Product not found");
-            return "redirect:/Product";
+            return "redirect:/admin/Product";
         }
         model.addAttribute("product", product);
         return "/viewsProduct";
@@ -205,35 +206,7 @@ public class ProductController {
         return "/adminproduct";
     }
 
-    @RequestMapping("/productList")
-    public String productHomeUser(Model model,@RequestParam (defaultValue = "0") int currentPage,@RequestParam(defaultValue = "8") int size) {
-        List<Product> products = productService.getProduct(currentPage,size);
-        model.addAttribute("totalMoney" ,shoppingCartService.getShoppingCartTotal());
-        model.addAttribute("currentPage", currentPage);
-        model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct()/size));
-        model.addAttribute("products", products);
-       // model.addAttribute("categories", categoryService.getCategory());
-        return "Product";
 
-    }
 
-    @RequestMapping("/addProductToCart/{id}")
-    public String addProductToCart(@PathVariable("id") Long productId, Model model, HttpSession session)
-    {
-        Product product = productService.getProductById(productId);
-        // Users user = (Users) session.getAttribute("user");
-        Users user = userService.findById(1L);
-        shoppingCartService.addToCart(product,user);
-        return "redirect:/productList";
-    }
 
-    @RequestMapping("/addProductToWishList/{id}")
-    public String addProductToWishList(@PathVariable("id") Long productId, Model model, HttpSession session)
-    {
-        Product product = productService.getProductById(productId);
-        // Users user = (Users) session.getAttribute("user");
-        Users user = userService.findById(1L);
-        shoppingCartService.addToCart(product,user);
-        return "redirect:/productList";
-    }
 }

@@ -47,11 +47,10 @@ public class Users {
     @Column(name = "avatar")
     private String avatar;
 
-    @Pattern(regexp = "^\\+?[0-9. ()-]{7,25}$", message = "Số điện thoại không hợp lệ")
+    @NotBlank(message = "sdt là bắt buộc")
     @Column(name = "phone")
     private String phone;
 
-    @PastOrPresent(message = "Ngày tạo phải là ngày trong quá khứ hoặc hiện tại")
     @Column(name = "created_at")
     private Date createdAt;
 

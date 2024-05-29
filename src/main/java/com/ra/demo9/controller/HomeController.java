@@ -1,17 +1,22 @@
 package com.ra.demo9.controller;
 
 import com.ra.demo9.model.dto.UsersDTO;
+import com.ra.demo9.model.entity.Product;
 import com.ra.demo9.model.entity.Users;
 import com.ra.demo9.service.AdminService;
+import com.ra.demo9.service.ProductService;
+import com.ra.demo9.service.ShoppingCartService;
 import com.ra.demo9.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -66,14 +71,21 @@ public class HomeController {
 @Autowired
 private UserService userService;
 
-
+@Autowired
+private ProductService productService;
+@Autowired
+private ShoppingCartService shoppingCartService;
     @RequestMapping("/signup")
     public String addAdmin(Model model) {
         model.addAttribute("user", new UsersDTO());
         return "dangky";
     }
     @PostMapping("/signupAfter")
-    public String addAdminAfter(@ModelAttribute(name = "user") UsersDTO user,Model model) {
+    public String addAdminAfter(@Valid @ModelAttribute(name = "user") UsersDTO user, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("user",user);
+            return "dangky";
+        }
         model.addAttribute("user", "isUser");
         userService.save(user,false);
         return "Dkythanhcong";
@@ -82,6 +94,19 @@ private UserService userService;
     @RequestMapping("/loginUser")
     public String loginUser() {
         return "login";
+    }
+
+
+    @RequestMapping("/productList")
+    public String productHomeUser(Model model,@RequestParam (defaultValue = "0") int currentPage,@RequestParam(defaultValue = "8") int size) {
+        List<Product> products = productService.getProduct(currentPage,size);
+        model.addAttribute("totalMoney" ,shoppingCartService.getShoppingCartTotal());
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct()/size));
+        model.addAttribute("products", products);
+        // model.addAttribute("categories", categoryService.getCategory());
+        return "Product";
+
     }
 
 }

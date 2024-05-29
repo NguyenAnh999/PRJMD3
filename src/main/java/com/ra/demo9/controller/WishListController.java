@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
+@RequestMapping("/user")
 public class WishListController {
     @Autowired
     private WishListService wishListService;
