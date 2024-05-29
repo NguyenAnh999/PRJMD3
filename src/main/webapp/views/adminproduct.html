@@ -270,21 +270,15 @@
                                 <label class="form-label" style="width: 150px;height: 30px">Hình Ảnh</label>
                                 <input type="file" th:field="*{productImage}" id="image" class="form-control"/>
                             </div>
-                            <div class="mb-3" style="display: flex;">
-                                <div style="flex: 1; margin-right: 10px;">
+                                <div class="mb-3">
                                     <label class="form-label" style="width: 150px;height: 30px">Giá</label>
                                     <input type="text" th:field="*{unitPrice}" class="form-control"/>
                                 </div>
-                                <div style="flex: 1;">
-                                    <label class="form-label" style="width: 150px;height: 30px">Số Lượng</label>
-                                    <input type="text" th:field="*{stockQuantity}" class="form-control"/>
-                                </div>
-                            </div>
                             <div class="mb-3">
                                 <label style="width: 150px;height: 30px">Tên Danh Mục</label>
                                 <select th:field="*{categoryId}" class="form-select">
                                     <option th:each="category : ${categories}" th:value="${category.categoryId}"
-                                            th:text="${category.categoryName}">Danh Mục 1
+                                            th:text="${category.categoryName}">
                                     </option>
                                 </select>
                             </div>
@@ -332,16 +326,10 @@
                                 <label class="form-label" style="width: 150px;height: 30px">Hình Ảnh</label>
                                 <input type="file" name="productImage" id="image_up" class="form-control"/>
                             </div>
-                            <div class="mb-3" style="display: flex;">
-                                <div style="flex: 1; margin-right: 10px;">
+                                <div class="mb-3">
                                     <label class="form-label" style="width: 150px;height: 30px">Giá</label>
                                     <input type="text" name="unitPrice" id="unitPrice_up" class="form-control"/>
                                 </div>
-                                <div style="flex: 1;">
-                                    <label class="form-label" style="width: 150px;height: 30px">Số Lượng</label>
-                                    <input type="text" name="stockQuantity" id="stockQuantity_up" class="form-control"/>
-                                </div>
-                            </div>
                             <div class="mb-3">
                                 <label style="width: 150px;height: 30px">Tên Danh Mục</label>
                                 <select name="categoryId" id="categoryId_up" class="form-select">
@@ -390,7 +378,6 @@
                     document.getElementById('sku_up').value = product.sku;
                     document.getElementById('productName_up').value = product.productName;
                     document.getElementById('unitPrice_up').value = product.unitPrice;
-                    document.getElementById('stockQuantity_up').value = product.stockQuantity;
                     document.getElementById('description_up').value = product.description;
                     document.getElementById('categoryId_up').value = product.categoryId.categoryName;
                     const editModal = new bootstrap.Modal(document.getElementById('modal-edit'));

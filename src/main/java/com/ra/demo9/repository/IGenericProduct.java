@@ -11,6 +11,7 @@ public interface IGenericProduct {
     public Product getProductById(Long pro_Id);
     public boolean insertProduct(Product pro);
     public boolean updateProduct(Product pro, ProductRequest productRequest);
+    public boolean updateProductStock(Product pro);
     public boolean deleteProduct(Long pro_Id);
     String getImageByProductId(Long pro_id);
 

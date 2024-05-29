@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/resources/css/cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div class="container">
+    <div style="background-color:  rgb(240, 148, 156);
+      height: 1.5rem;"
+    >
+        <!-- <p class="alert-text"></p>
+          Nếu muốn cho thông báo gì thêm thì viết vào luôn-->
+    </div>
+    <header id="header">
+        <a href="/" class="logo" >
+            <img src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="200" height="50" alt="Glowing">
+        </a>
+
+        <div class="shopping" active>
+            <ion-icon name="bag-handle-outline" aria-hidden="true"
+                      style="font-size: 40px;"></ion-icon>
+            <span class="quantity">0</span>
+        </div>
+
+
+    </header>
+    <div class="checkoutLayout">
+        <div class="returnCart">
+            <p>Vui lòng chọn hình thức thanh toán:</p>
+            <div class="mb-1">
+                <label><input type="radio" name="iCheck" class="iradio_flat-blue"> Ví <img src="images/logo-zalopay.svg" alt=""></label>
+            </div>
+            <div class="mb-1">
+                <label><input type="radio" name="iCheck" class="iradio_flat-blue"> Visa, Mastercard, JCB <span class="txtGray">(qua cổng ZaloPay)</span></label>
+            </div>
+            <div class="mb-1">
+                <label><input type="radio" name="iCheck" class="iradio_flat-blue" checked> Thẻ ATM <span class="txtGray">(qua cổng ZaloPay)</span></label>
+            </div>
+        </div>
+
+
+        <div class="right">
+            <h1>Thanh Toán</h1>
+
+            <div class="form">
+                <div class="group">
+                    <label for="name">Họ Và Tên</label>
+                    <input style="color: rgb(240, 148, 156)" type="text" name="name" id="name">
+                </div>
+
+                <!--                <div class="group">-->
+                <!--                    <label for="phone">Số Điện Thoại</label>-->
+                <!--                    <input style="color: rgb(240, 148, 156)" type="text" name="phone" id="phone">-->
+                <!--                </div>-->
+
+                <div class="group">
+                    <label >Địa chỉ</label>
+                    <select >
+                        <option value="">Chọn..</option>
+                        <option value="">Địa Chỉ 1</option>
+                    </select>
+                </div>
+                <div class="group">
+                    <label >Hình Thức Thanh Toán</label>
+                    <select >
+                        <option value="">Chọn..</option>
+                        <option value="">Zalo Pay</option>
+                        <option value="">Voucher </option>
+                    </select>
+                </div>
+
+
+
+
+
+            </div>
+            <div class="return">
+                <div class="row">
+                    <div>Tổng sản phẩm</div>
+                    <div class="totalQuantity">70</div>
+                </div>
+                <div class="row">
+                    <div>Tổng Tiền</div>
+                    <div class="totalPrice">$900</div>
+                </div>
+            </div>
+            <button class="buttonCheckout">Thanh Toán</button>
+        </div>
+    </div>
+</div>
+<footer >
+    <p class="newsletter-text" style="margin-top: 50px;">
+        Xin chân thành cảm ơn quý khách đã luôn đồng hành cùng Marosa`s Qynh - Chúc quý khách shopping vui vẻ
+    </p>
+    <p class="copyright" style="margin: 50px 0 0 10px;">
+        &copy; 2024 code with love by QuynhAinXynh - AnhNguyen - Vantu
+    </p>
+
+
+    <a href="#" class="logo">
+        <img src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="200" height="50" loading="lazy" alt="Glowing">
+    </a>
+
+
+</footer>
+
+
+<script src="/resources/style/cart.js"></script>
+
+</body>
+</html>

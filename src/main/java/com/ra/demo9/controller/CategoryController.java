@@ -22,7 +22,7 @@ public class CategoryController {
     @Autowired
     private ICategoryService categoryService;
     @RequestMapping(value = {"/Category"})
-    public String categoryHome(Model model, @RequestParam(defaultValue = "0") Integer currentPage, @RequestParam(defaultValue = "3") Integer size) {
+    public String categoryHome(Model model, @RequestParam(defaultValue = "0") Integer currentPage, @RequestParam(defaultValue = "4") Integer size) {
         List<Category> categories = categoryService.getCategory(currentPage, size);
         model.addAttribute("category", new Category());
         model.addAttribute("iscategory", "category");

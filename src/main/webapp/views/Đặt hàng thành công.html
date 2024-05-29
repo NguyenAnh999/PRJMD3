@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/resources/css/DKTC.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <button type="submit" class="btn" onclick="openPopup()"> Gửi</button>
+    <div class="popup" id="popup">
+        <img src="../logo/404-tick.png" alt="">
+        <h2>Xin chân thành cảm ơn</h2>
+        <p>Đặt hàng thành công </p>
+
+        <a type="button" th:href="@{/user}">Vào trang cá Nhân/</a>
+        <a type="button" th:href="@{/user}">Tiếp tục mua hàng</a>
+
+    </div>
+</div>
+
+<script>
+    let popup = document.getElementById("popup")
+
+    function openPopup() {
+        popup.classList.add("open-popup");
+    }
+    function closePopup() {
+        popup.classList.remove("open-popup");
+    }
+
+</script>
+</body>
+</html>
