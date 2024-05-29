@@ -31,30 +31,16 @@
     </header>
     <div class="checkoutLayout">
         <div class="returnCart">
-            <a href="/" style="color:  rgb(240, 148, 156) ; font-size: 18px" >Keep shopping</a>
-            <h1>List Product in Cart</h1>
-            <div class="list" th:each="s:${shoppingCart}">
-
-                <div class="item" style="  grid-template-columns: 80px 120px 10px 10px 10px 120px 20px;">
-                    <img th:src="*{s.productId.image}" alt="">
-                    <div class="info">
-                        <div class="name" th:text="${s.productId.productName}"> </div>
-                        <div class="price" th:text="${s.productId.unitPrice}+'/1'"></div>
-
-                    </div >
-                    <a><i class="fa-solid fa-minus"></i></a>
-                    <div class="quantity" th:text="${s.orderQuantity}"> </div>
-                    <a><i class="fa-solid fa-plus"></i></a>
-                    <div class="returnPrice" th:text="${s.productId.unitPrice*s.orderQuantity}+'Đ'">$433.3</div>
-                    <a th:href="@{/deleteItemShoppingCart/{id}(id=${s.shoppingCartId})}"><i style="color:  rgb(240, 148, 156)"  class="fa-solid fa-trash"></i></a>
-                </div>
-
-
+            <p>Vui lòng chọn hình thức thanh toán:</p>
+            <div class="mb-1">
+                <label><input type="radio" name="iCheck" class="iradio_flat-blue"> Ví <img src="images/logo-zalopay.svg" alt=""></label>
             </div>
-            <a th:href="@{/deleteAllShopCart}" style=" display: flex ;justify-content : flex-end  ">
-                <h3>Delete All</h3>
-                <div style=" margin-top: 15px ;　margin-left : 5px  ; color: palevioletred"><i class="fa-solid fa-trash"></i></div>
-            </a>
+            <div class="mb-1">
+                <label><input type="radio" name="iCheck" class="iradio_flat-blue"> Visa, Mastercard, JCB <span class="txtGray">(qua cổng ZaloPay)</span></label>
+            </div>
+            <div class="mb-1">
+                <label><input type="radio" name="iCheck" class="iradio_flat-blue" checked> Thẻ ATM <span class="txtGray">(qua cổng ZaloPay)</span></label>
+            </div>
         </div>
 
 
@@ -67,10 +53,10 @@
                     <input style="color: rgb(240, 148, 156)" type="text" name="name" id="name">
                 </div>
 
-<!--                <div class="group">-->
-<!--                    <label for="phone">Số Điện Thoại</label>-->
-<!--                    <input style="color: rgb(240, 148, 156)" type="text" name="phone" id="phone">-->
-<!--                </div>-->
+                <!--                <div class="group">-->
+                <!--                    <label for="phone">Số Điện Thoại</label>-->
+                <!--                    <input style="color: rgb(240, 148, 156)" type="text" name="phone" id="phone">-->
+                <!--                </div>-->
 
                 <div class="group">
                     <label >Địa chỉ</label>
