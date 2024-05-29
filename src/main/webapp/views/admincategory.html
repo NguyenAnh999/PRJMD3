@@ -155,7 +155,7 @@
                 </h2>
             </div>
             <div class="search" style="margin-top: 3%">
-                <form th:action="@{/searchCategory}" method="get">
+                <form th:action="@{/admin/searchCategory}" method="get">
                     <label>
                         <input type="text" name="search" placeholder="Search here">
                         <button type="submit"><i class="fa-solid fa-magnifying-glass" style="margin-top: 10px"></i>
@@ -176,7 +176,7 @@
                     <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-add"
                             style="padding-left: 0;"><i class="fa-solid fa-plus"></i>Thêm sản phẩm
                     </button>
-                    <a th:href="@{/sortByNameCategory}" class="btn">Sắp xếp<i style="padding: 6px;"
+                    <a th:href="@{/admin/sortByNameCategory}" class="btn">Sắp xếp<i style="padding: 6px;"
                                                                               class="fa-solid fa-v"></i></a>
                 </div>
                 <table>
@@ -200,7 +200,7 @@
                                     data-bs-toggle="modal" data-bs-target="#modal-edit">Sửa
                             </button>
                         </td>
-                        <td><a th:href="@{/deleteCategory/{id}(id=${c.categoryId})}"
+                        <td><a th:href="@{/admin/deleteCategory/{id}(id=${c.categoryId})}"
                                onclick="return confirm('Bạn chắc chưa? 🤡')" class="btn btn-danger">Xóa</a></td>
                     </tr>
                     </tbody>
@@ -242,7 +242,7 @@
         <div class="modal fade" id="modal-add" tabindex="-1" aria-labelledby="modal-add-label" aria-hidden="true"
              data-bs-backdrop="static">
             <div class="modal-dialog">
-                <form th:action="@{/saveCategory}" method="post" style="max-width: 30rem; margin: 0 auto"
+                <form th:action="@{/admin/saveCategory}" method="post" style="max-width: 30rem; margin: 0 auto"
                       class="p-4 mt-5" enctype="multipart/form-data" th:object="${category}">
                     <div class="modal-content" style=" width: 150%;height: 60% ; font-size: 20px">
                         <div class="modal-header">
@@ -285,7 +285,7 @@
 <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="modal-edit-label" aria-hidden="true"
      data-bs-backdrop="static">
     <div class="modal-dialog">
-        <form th:action="@{/updateCategory}" method="post" style="max-width: 30rem; margin: 0 auto"
+        <form th:action="@{/admin/updateCategory}" method="post" style="max-width: 30rem; margin: 0 auto"
               class="p-4 mt-5" enctype="multipart/form-data" th:object="${categories}">
             <div class="modal-content" style="width: 150% ;height: 60%; font-size: 20px">
                 <div class="modal-header">
