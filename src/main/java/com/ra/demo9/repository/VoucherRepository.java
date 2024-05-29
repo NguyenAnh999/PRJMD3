@@ -42,11 +42,11 @@ public class VoucherRepository {
     }
 
     public void save(Voucher voucher) {
-       Session session = sessionFactory.openSession();
-       session.beginTransaction();
-       session.save(voucher);
-       session.getTransaction().commit();
-       session.close();
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.save(voucher);
+        session.getTransaction().commit();
+        session.close();
     }
 
 //    private static final class VoucherRowMapper implements RowMapper<Voucher> {
@@ -61,4 +61,3 @@ public class VoucherRepository {
 //        }
 //    }
 }
-
