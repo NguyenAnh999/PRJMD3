@@ -134,6 +134,23 @@ public class ProductImpl implements IProductDao {
     }
 
     @Override
+    public boolean updateProductStock(Product pro) {
+        Session session = sessionFactory.openSession();
+        try{
+            session.beginTransaction();
+            session.update(pro);
+            session.getTransaction().commit();
+            return true;
+        }catch (Exception ex){
+            ex.printStackTrace();
+            session.getTransaction().rollback();
+        }finally {
+            session.close();
+        }
+        return false;
+    }
+
+    @Override
     public boolean deleteProduct(Long pro_Id) {
         Session session = sessionFactory.openSession();
         try {
