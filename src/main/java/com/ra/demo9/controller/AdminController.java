@@ -17,7 +17,10 @@ import javax.servlet.http.HttpSession;
 public class AdminController {
     @Autowired
     private UserService userService;
-
+@RequestMapping("/")
+public String index(Model model) {
+    return "admin";
+}
     @RequestMapping("/logoutadmin")
     public String logout(HttpSession session) {
         session.invalidate();
@@ -38,8 +41,10 @@ public class AdminController {
         return "addadmin";
     }
     @PostMapping("/addaffter")
-    public String addAdminAfter(@ModelAttribute(name = "user") UsersDTO user, HttpSession session) {
+    public String addAdminAfter(@ModelAttribute(name = "user") UsersDTO user, Model model) {
           userService.save(user,true);
+        model.addAttribute("admin", "isAdmin");
+
           return "Dkythanhcong";
     }
     @RequestMapping("/blockacc/{id}")

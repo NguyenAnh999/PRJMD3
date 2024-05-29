@@ -68,7 +68,9 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
         source.setDriverClassName("com.mysql.cj.jdbc.Driver");
         source.setUrl("jdbc:mysql://localhost:3306/quanlybanhang_thoitrang");
         source.setUsername("root");
-        source.setPassword("Extratuz123");
+
+        source.setPassword("123456");
+
 
         return source;
     }
@@ -93,6 +95,7 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new Auth()).addPathPatterns("/admin/**");
+        registry.addInterceptor(new AuthUser()).addPathPatterns("/user/**");
     }
 
     @Override

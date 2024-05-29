@@ -16,7 +16,8 @@
             <img src="../logo/404-tick.png" alt="">
             <h2>Xin chân thành cảm ơn</h2>
             <p>Đăng ký thành công</p>
-            <a type="button" th:href="@{/user}">OK</a>
+            <a th:if="${admin!=null}" type="button" th:href="@{/user}">OK</a>
+            <a th:if="${user!=null}" type="button" th:href="@{/}">OK</a>
 
         </div>
     </div>
