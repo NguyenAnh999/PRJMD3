@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang Sản Phẩm</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -38,7 +41,7 @@
             font-size: 16px;
         }
 
-        .container {
+        .container-one {
             width: 80%;
             margin: 20px auto;
             background-color: #fff;
@@ -50,13 +53,13 @@
             border-radius: 15px;
         }
 
-        .image-container, .details-container {
+        .image-container-one, .details-container-one {
             flex: 1;
             min-width: 300px;
             padding: 20px;
         }
 
-        .image-container img {
+        .image-container-one img {
             width: 100%;
             max-width: 500px;
             display: block;
@@ -64,7 +67,7 @@
             border-radius: 15px;
         }
 
-        .details-container {
+        .details-container-one {
             max-width: 400px;
         }
 
@@ -172,6 +175,65 @@
             text-decoration: none;
             margin: 0 10px;
         }
+
+        .comment {
+            display: flex;
+            justify-content: center;
+            margin-left: 20%;
+            height: 60px;
+        }
+
+        .star-rating i {
+            color: gold; /* Màu sắc của icon sao */
+        }
+
+        .review-box {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 200px;
+        }
+
+        .review-box h3 {
+            margin: 0 0 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .average-rating {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .stars i {
+            color: #ffc107;
+            font-size: 24px;
+            margin: 0 2px;
+        }
+
+        .reviews-count {
+            font-size: 14px;
+            color: #666;
+        }
+        .star-one {
+            font-family: Arial, sans-serif;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -184,19 +246,19 @@
         <a href="#">Giới Thiệu</a>
     </nav>
 </div>
-<div class="container">
-    <div class="image-container">
-        <img th:src="${product.image}" alt="Product Image">
+<div class="container-one">
+    <div class="image-container-one">
+        <img th:src="${productDel.image}" alt="Product Image">
     </div>
-    <div  style=" width: 32%;height: 350px; ">
-        <h1 style="color: #F0949C">Thông tin chi tiết sản phẩm</h1>
-        <p th:text="${product.description}"></p>
+    <div style="width: 30%">
+        <h1 style="color: #F0949C;font-size: 23px; text-align: center">Thông tin chi tiết sản phẩm :</h1>
+        <p th:text="${productDel.description}"></p>
     </div>
-    <div class="details-container">
-        <form th:action="@{/addProductDetail}" method="post" style="max-width: 30rem; margin: 0 auto"
-              class="p-4 mt-5" enctype="multipart/form-data" th:object="${product}">
-            <div class="product-title"><p th:text="${product.productName}"></p></div>
-            <div class="product-price" th:text="'Giá : '+${product.unitPrice}"></div>
+    <div class="details-container-one">
+        <form th:action="@{/user/showProductDetail}" method="post" style="max-width: 30rem; margin: 0 auto"
+              class="p-4 mt-5" enctype="multipart/form-data" th:object="${productDel}">
+            <div class="product-title"><p th:text="${productDel.productName}"></p></div>
+            <div class="product-price" th:text="'Giá : '+${productDel.unitPrice}"></div>
             <div class="product-colors">
                 <label for="colors">Màu Sắc:</label>
                 <select id="colors">
@@ -216,6 +278,109 @@
         </form>
     </div>
 </div>
+
+
+<div class="related-products">
+    <section>
+        <h2 style="position: absolute">Để lại bình luận</h2>
+        <form th:action="@{/user/addComment}" method="post" th:object="${comment}">
+            <input type="hidden" name="productId" th:value="${productDel.productId}"/>
+            <div style="display: flex; position: relative; top:60px">
+                <div class="star-one">
+                    <div class="review-box">
+                        <h3>ĐÁNH GIÁ SẢN PHẨM</h3>
+                        <div class="average-rating">
+                            <span class="rating-number">4.9</span>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="reviews-count">
+                            <span>16 đánh giá</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment">
+                    <div class="dropdown">
+                        <label for="star"><strong>Đánh Giá :</strong></label>
+                        <select id="star" name="star"
+                                style="color: hotpink; border: none; margin-left: 80px;font-size: 22px; border-radius: 17px;background-color: lavender;padding: 8px 30px">
+                            <option value="1">1 Sao</option>
+                            <option value="2">2 Sao</option>
+                            <option value="3">3 Sao</option>
+                            <option value="4">4 Sao</option>
+                            <option value="5">5 Sao</option>
+                        </select>
+                    </div>
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false"
+                           style="color: hotpink; border: none; margin-left: 80px;font-size: 20px; border-radius: 17px;background-color: lavender;padding: 8px 40px">
+                            Ảnh
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Ảnh</a></li>
+                            <li><a class="dropdown-item" href="#">Có ảnh</a></li>
+                            <li><a class="dropdown-item" href="#">Không ảnh</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false"
+                           style="color: hotpink; border: none; margin-left: 80px;font-size: 20px; border-radius: 17px;background-color: lavender;padding: 8px 15px">
+                            Phản hồi
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Phản hồi</a></li>
+                            <li><a class="dropdown-item" href="#">Đã phản hồi</a></li>
+                            <li><a class="dropdown-item" href="#">Chưa phản hồi</a></li>
+                        </ul>
+                    </div>
+                    <button style="margin-left: 100px;background-color: lightgreen; border: none;border-radius: 5px;padding: 3px 15px;height: 50px;"
+                            type="submit">Gửi
+                    </button>
+                </div>
+            </div>
+            <div style="position:relative;top : -80px;margin: 0 0 10px 29%">
+                <label class="form-label" for="commentText"><strong>Bình luận :</strong></label>
+                <textarea class="form-control" id="commentText" name="commentText" rows="3"></textarea>
+                <br>
+                <hr style="margin: 10px 0;">
+            </div>
+
+            <div th:each="c:${commentList}" style="position: relative;top : -80px; max-height: 200px;">
+                <div style="margin: 0 0 10px 29%; ">
+                    <div style="display: flex">
+                        <strong style="color: #ffc107; margin-right: 30px" th:text="${c.user.fullName}"></strong>
+                        <div>
+                            <span th:each="star : ${#numbers.sequence(1, c.star)}">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                      class="bi bi-star-fill" viewBox="0 0 16 16">
+  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+</svg>
+                            </span>
+                        </div>
+                    </div>
+                    <p th:text="${c.commentText}"></p>
+                    <hr style="margin: 10px 0;">
+                </div>
+            </div>
+        </form>
+    </section>
+    <!-- Hiển thị hình ảnh ngôi sao tương ứng với số sao đã vote -->
+    <!--                <div class="star-rating">-->
+    <!--                    <i th:each="i : ${#numbers.sequence(1, comment.star)}" class="bi bi-star-fill"></i>-->
+    <!--                </div>-->
+    <!--                &lt;!&ndash; Hiển thị tên tài khoản người đánh giá (nếu có) &ndash;&gt;-->
+    <!--                <div>-->
+    <!--                    <p>Người đánh giá: <span th:text="${session.user.username}"></span></p>-->
+    <!--                </div>-->
+
+    <!-- Code để hiển thị tất cả bình luận -->
+
+</div>
+
+
 <div class="related-products">
     <h2>Sản Phẩm Liên Quan</h2>
     <div class="related-product-item" th:each="p : ${productList5}">
@@ -247,5 +412,8 @@
         <a href="#">Liên Hệ</a>
     </p>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 </body>
 </html>

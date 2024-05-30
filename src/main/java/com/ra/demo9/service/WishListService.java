@@ -19,8 +19,12 @@ public class WishListService {
     public boolean addWishList(WishList wishList){
         return wishlistDao.addWishList(wishList);
     }
+    public WishList getWishListById(Long wl_Id){
+        return wishlistDao.getWishListById(wl_Id);
+    }
 
-    public void deleteWishList(Integer wishListId){
-        wishlistDao.deleteWishList(wishListId);
+    public boolean deleteWishList(Long userId,Long productId){
+        WishList wishList = wishlistDao.getWishListByIdProduct(userId,productId);
+       return wishlistDao.deleteWishList(wishList);
     }
 }

@@ -34,56 +34,56 @@
 <body>
 <div class="container">
     <div class="navigation">
-        <ul style="top: 80px">
+        <ul style="top: 80px;margin-left: -11%">
             <li style="top: -80px">
                 <a href="index.html">
                         <span class="icon">
-                            <img style="width: 250px;"
-                                 src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png"
+                            <img style="width: 250px;" src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png"
                                  alt="">
                         </span>
                 </a>
 
             </li>
 
-            <li>
-                <a>
+            <li style="color: white">
+                <a >
                         <span class="icon">
                             <i class="fa-solid fa-table"></i>
                         </span>
-                    <span class="title">Dashboard</span>
+                    <span  class="title" >Dashboard</span>
                 </a>
             </li>
 
             <li>
-                <a>
+                <a th:href="@{/admin/Product}">
                         <span class="icon">
                             <i class="fa-solid fa-bag-shopping"></i>
                         </span>
-                    <span class="title">Products</span>
+                    <span  class="title">Products</span>
                 </a>
             </li>
 
-            <li>
+            <li style="color: white">
                 <a>
                         <span class="icon">
                             <i class="fa-regular fa-note-sticky"></i>
                         </span>
-                    <span class="title">Orders</span>
+                    <span class="title" >Orders</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a  th:href="@{/admin/user}">
                         <span class="icon">
                             <i class="fa-solid fa-user"></i>
                         </span>
                     <span class="title">User</span>
                 </a>
             </li>
+
             <li>
-                <a href="#">
+                <a  th:href="@{/admin/Category}">
                         <span class="icon">
-                            <i class="fa-solid fa-user"></i>
+                             <i class="fa-solid fa-bag-shopping"></i>
                         </span>
                     <span class="title">Category</span>
                 </a>
@@ -103,11 +103,11 @@
 
             </li>
         </ul>
-        <ul style="top: 75%">
-            <li>
-                <a>
+        <ul style="top: 75% ;margin-left: -11%">
+            <li style="color: white">
+                <a  >
                         <span class="icon">
-                            <i class="fa-solid fa-gear"></i>
+
                         </span>
                     <span class="title">Menu Admin</span>
                 </a>
@@ -154,7 +154,7 @@
                 </h2>
             </div>
             <div class="search" style="margin-top: 3%">
-                <form th:action="@{/search}" method="get">
+                <form th:action="@{/admin/search}" method="get">
                     <label>
                         <input type="text" name="search" placeholder="Search here">
                         <button type="submit"><i class="fa-solid fa-magnifying-glass" style="margin-top: 10px; border: 0"></i></button>
@@ -174,7 +174,7 @@
                     <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-add"
                             style="padding-left: 0;"><i class="fa-solid fa-plus"></i>Thêm sản phẩm
                     </button>
-                    <a th:href="@{/sortByName}" class="btn">Sắp xếp<i style="padding: 6px;"
+                    <a th:href="@{/admin/sortByName}" class="btn">Sắp xếp<i style="padding: 6px;"
                                                                       class="fa-solid fa-v"></i></a>
                 </div>
                 <table>
@@ -200,7 +200,7 @@
                                     data-bs-toggle="modal" data-bs-target="#modal-edit">Sửa
                             </button>
                         </td>
-                        <td><a th:href="@{/deleteProductDetail/{id}(id=${pd.productDetailId})}"
+                        <td><a th:href="@{/admin/deleteProductDetail/{id}(id=${pd.productDetailId})}"
                                onclick="return confirm('Bạn chắc chưa? 🤡')" class="btn btn-danger">Xóa</a></td>
                     </tr>
                     </tbody>
@@ -209,7 +209,7 @@
                     <div th:if="${isProductDetail!=null}" style="display: flex;gap: 10px">
                         <!-- 1 2 3 4 5 -->
                         <p th:each="i : ${#numbers.sequence(1,totalPage)}">
-                            <a th:href="@{'/productDetail?currentPage='+${i - 1}}" th:text="${i}"></a>
+                            <a th:href="@{'/admin/productDetail?currentPage='+${i - 1}}" th:text="${i}"></a>
                         </p>
                         <!-- 1/2	-->
                     </div>
@@ -241,7 +241,7 @@
         <div class="modal fade" id="modal-add" tabindex="-1" aria-labelledby="modal-add-label" aria-hidden="true"
              data-bs-backdrop="static">
             <div class="modal-dialog">
-                <form th:action="@{/saveProductDetail}" method="post" style="max-width: 30rem; margin: 0 auto"
+                <form th:action="@{/admin/saveProductDetail}" method="post" style="max-width: 30rem; margin: 0 auto"
                       class="p-4 mt-5" enctype="multipart/form-data" th:object="${productDetailDTO}">
                     <div class="modal-content" style="width: 150%">
                         <div class="modal-header">
