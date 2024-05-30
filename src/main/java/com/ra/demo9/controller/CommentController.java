@@ -42,9 +42,11 @@ public class CommentController {
     @RequestMapping("/comment/{id}")
     public String showComment(@PathVariable Long id, Model model,@SessionAttribute("user") Users users) {
         Product product = productService.getProductById(id);
-        List<Comment> commentList = commentService.getAllComment(users.getUserId());
+        List<Comment> commentList = commentService.getAllComment(id);
         List<ProductDetail> productDetails = productDetailService.findByProductId(id);
         List<Product> products = productService.listProductOfCategory(id, product.getProductName());
+        double avgRating = commentService.calculateAverageRating(id);
+        model.addAttribute("avgRating", avgRating);
         model.addAttribute("productDel", product);
         model.addAttribute("product", product);
         model.addAttribute("commentList", commentList);

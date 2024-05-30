@@ -291,68 +291,53 @@
         </div>
 
 
-        <!--        Modal Edit-->
-<!--        <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="modal-edit-label" aria-hidden="true"-->
-<!--             data-bs-backdrop="static">-->
-<!--            <div class="modal-dialog">-->
-<!--                <form th:action="@{/updateProduct}" method="post" style="max-width: 30rem; margin: 0 auto"-->
-<!--                      class="p-4 mt-5" enctype="multipart/form-data" th:object="${product}">-->
-<!--                    <div class="modal-content" style="width: 150%">-->
-<!--                        <div class="modal-header">-->
-<!--                            <h1 class="modal-title fs-5" id="modal-edit-label">Sửa Sản Phẩm</h1>-->
-<!--                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--                        </div>-->
-<!--                        <div class="modal-body">-->
-<!--                            <div class="mb-3">-->
-<!--                                <input type="hidden" name="productId" id="productId_up" readonly class="form-control"/>-->
-<!--                            </div>-->
-<!--                            <div class="mb-3" style="display: flex;">-->
-<!--                                <div style="flex: 1; margin-right: 10px;">-->
-<!--                                    <label class="form-label" style="width: 150px;height: 30px">Mã Sản Phẩm</label>-->
-<!--                                    <input type="text" name="sku" id="sku_up" class="form-control"/>-->
-<!--                                </div>-->
-<!--                                <div style="flex: 1;">-->
-<!--                                    <label class="form-label" style="width: 150px;height: 30px">Tên Sản Phẩm</label>-->
-<!--                                    <input type="text" name="productName" id="productName_up" class="form-control"/>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="mb-3">-->
-<!--                                <label class="form-label" style="width: 150px;height: 30px">Hình Ảnh</label>-->
-<!--                                <input type="file" name="productImage" id="image_up" class="form-control"/>-->
-<!--                            </div>-->
-<!--                            <div class="mb-3" style="display: flex;">-->
-<!--                                <div style="flex: 1; margin-right: 10px;">-->
-<!--                                    <label class="form-label" style="width: 150px;height: 30px">Giá</label>-->
-<!--                                    <input type="text" name="unitPrice" id="unitPrice_up" class="form-control"/>-->
-<!--                                </div>-->
-<!--                                <div style="flex: 1;">-->
-<!--                                    <label class="form-label" style="width: 150px;height: 30px">Số Lượng</label>-->
-<!--                                    <input type="text" name="stockQuantity" id="stockQuantity_up" class="form-control"/>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="mb-3">-->
-<!--                                <label style="width: 150px;height: 30px">Tên Danh Mục</label>-->
-<!--                                <select name="categoryId" id="categoryId_up" class="form-select">-->
-<!--                                    <option th:each="category : ${categories}" th:value="${category.categoryId}"-->
-<!--                                            th:text="${category.categoryName}">Danh Mục 1-->
-<!--                                    </option>-->
-<!--                                </select>-->
-<!--                            </div>-->
-<!--                            <div class="mb-3">-->
-<!--                                <label class="form-label" style="width: 150px;height: 30px">Mô tả</label>-->
-<!--                                <textarea class="form-control" name="description" id="description_up"-->
-<!--                                          rows="3"></textarea>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="modal-footer">-->
-<!--                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-<!--                            <button type="submit" class="btn btn-primary">Update</button>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+        <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="modal-edit-label" aria-hidden="true" data-bs-backdrop="static">
+            <div class="modal-dialog">
+                <form th:action="@{/admin/updateProductDetail}" method="post" style="max-width: 30rem; margin: 0 auto" class="p-4 mt-5" enctype="multipart/form-data" th:object="${productDetailDTO}">
+                    <div class="modal-content" style="width: 150%">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="modal-edit-label">Sửa Sản Phẩm</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label style="width: 150px;height: 30px">Tên Sản Phẩm</label>
+                                <select name="productId" id="productId_up" class="form-select">
+                                    <option th:each="product : ${products}" th:value="${product.productId}" th:text="${product.productName}">
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" style="width: 150px;height: 30px">Màu Sắc</label>
+                                <input type="text" name="color" id="color_up" class="form-control" th:value="${productDetailDTO.color}"/>
+                            </div>
+                            <div class="mb-3" style="display: flex;">
+                                <div style="flex: 1; margin-right: 10px;">
+                                    <label class="form-label" style="width: 150px;height: 30px">Kích cỡ (Size)</label>
+                                    <select name="size" id="size_up" class="form-control" th:value="${productDetailDTO.size}">
+                                        <option th:value="XS">XS</option>
+                                        <option th:value="S">S</option>
+                                        <option th:value="M">M</option>
+                                        <option th:value="L">L</option>
+                                        <option th:value="XL">XL</option>
+                                        <option th:value="XXL">XXL</option>
+                                    </select>
+                                </div>
+                                <div style="flex: 1;">
+                                    <label class="form-label" style="width: 150px;height: 30px">Số Lượng</label>
+                                    <input type="text" name="quantity" id="quantity_up" class="form-control" th:value="${productDetailDTO.quantity}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 </div>
@@ -370,24 +355,21 @@
             });
         });
 
-    //     const handleEdit = (id) => {
-    //         fetch(`http://localhost:8080/api/v1/Product/` + id)
-    //             .then(response => response.json())
-    //             .then(product => {
-    //                 document.getElementById('productId_up').value = product.productId;
-    //                 document.getElementById('sku_up').value = product.sku;
-    //                 document.getElementById('productName_up').value = product.productName;
-    //                 document.getElementById('unitPrice_up').value = product.unitPrice;
-    //                 document.getElementById('stockQuantity_up').value = product.stockQuantity;
-    //                 document.getElementById('description_up').value = product.description;
-    //                 document.getElementById('categoryId_up').value = product.categoryId.categoryName;
-    //                 const editModal = new bootstrap.Modal(document.getElementById('modal-edit'));
-    //                 editModal.show();
-    //             })
-    //             .catch(error => console.log('Error:' + error));
-    //     };
-    //
-    //     window.handleEdit = handleEdit;
+        const handleEdit = (id) => {
+            fetch(`http://localhost:8080/api/v1/ProductDetail/` + id)
+                .then(response => response.json())
+                .then(productDetail => {
+                    document.getElementById('productId_up').value = productDetail.productId;
+                    document.getElementById('color_up').value = productDetail.color;
+                    document.getElementById('size_up').value = productDetail.size;
+                    document.getElementById('quantity_up').value = productDetail.quantity;
+                    const editModal = new bootstrap.Modal(document.getElementById('modal-edit'));
+                    editModal.show();
+                })
+                .catch(error => console.log('Error:' + error));
+        };
+
+        window.handleEdit = handleEdit;
     });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"

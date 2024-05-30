@@ -103,7 +103,7 @@ private ShoppingCartService shoppingCartService;
 
     @RequestMapping("/productList")
     public String productHomeUser(Model model,@RequestParam (defaultValue = "0") int currentPage,@RequestParam(defaultValue = "8") int size, @SessionAttribute("user") Users user) {
-        List<Product> products = productService.getProduct(currentPage,size);
+        List<Product> products = productService.getProduct(currentPage,size,false);
         model.addAttribute("totalMoney" ,shoppingCartService.getShoppingCartTotal(user.getUserId()));
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct()/size));

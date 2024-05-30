@@ -55,7 +55,7 @@ public class UserController {
     public String addProductToWishList(@PathVariable("id") Long productId, Model model, HttpSession session, @RequestParam(defaultValue = "0") int currentPage, @RequestParam(defaultValue = "8") int size,@SessionAttribute ("user") Users user) {
         Product product = productService.getProductById(productId);
         shoppingCartService.addToCart(product, user);
-        List<Product> products = productService.getProduct(currentPage, size);
+        List<Product> products = productService.getProduct(currentPage, size,false);
 
         model.addAttribute("totalMoney", shoppingCartService.getShoppingCartTotal(user.getUserId()));
 
@@ -70,7 +70,7 @@ public class UserController {
     public String addProductToCart(@PathVariable("id") Long productId, Model model, @RequestParam(defaultValue = "0") int currentPage, @RequestParam(defaultValue = "8") int size,@SessionAttribute ("user") Users user) {
         Product product = productService.getProductById(productId);
         shoppingCartService.addToCart(product,user );
-        List<Product> products = productService.getProduct(currentPage, size);
+        List<Product> products = productService.getProduct(currentPage, size,false);
         model.addAttribute("totalMoney", shoppingCartService.getShoppingCartTotal(user.getUserId()));
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct() / size));

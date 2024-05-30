@@ -292,10 +292,15 @@
                     <div class="review-box">
                         <h3>ĐÁNH GIÁ SẢN PHẨM</h3>
                         <div class="average-rating">
-                            <span class="rating-number">4.9</span>
+                            <span class="rating-number" th:text="${avgRating}"></span>
                         </div>
                         <div class="stars">
-                            <i class="fas fa-star"></i>
+                            <th:block th:each="starNumber : ${#numbers.sequence(1, avgRating)}">
+                                <i class="fas fa-star"></i>
+                            </th:block>
+                            <th:block th:if="${avgRating %1 != 0}">
+                                <i class="fas fa-star-half-alt"></i>
+                            </th:block>
                         </div>
                         <div class="reviews-count">
                             <span>16 đánh giá</span>
