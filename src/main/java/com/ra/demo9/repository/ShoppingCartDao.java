@@ -29,10 +29,12 @@ public class ShoppingCartDao
         }
     }
 
-    public double getShoppingCartTotal()
+    public double getShoppingCartTotal(Long userId)
     {
         Session session = sessionFactory.openSession();
-        Double total= session.createQuery("SELECT SUM(s.orderQuantity * p.unitPrice) FROM ShoppingCart s JOIN Product p on s.productId.productId = p.productId", Double.class).getSingleResult();
+        Double total= session.createQuery("SELECT SUM(s.orderQuantity * p.unitPrice) FROM ShoppingCart s  JOIN Product p on s.productId.productId = p.productId where s.userId.userId=:userId", Double.class)
+                .setParameter("userId", userId)
+                .getSingleResult();
         session.close();
         return total!=null?total:0.0;
     }

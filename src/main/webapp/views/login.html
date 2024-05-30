@@ -15,22 +15,20 @@
     />
 
     <!-- Link CSS -->
-    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="/resources/css/login.css" />
   </head>
   <body>
     <div class="container">
-      <form>
+      <form th:action="@{/admincheck}" method="post">
         <h2>Đăng Nhập</h2>
         <div class="form-control">
-          <input type="text" placeholder="Tên Người Dùng" id="username" />
+          <input type="text" name="username" placeholder="Tên Người Dùng" id="username" />
           <i class="fa-solid fa-user"></i>
           <small></small>
           <span></span>
         </div>
-       
-
         <div class="form-control">
-          <input type="password" placeholder="Mật Khẩu" id="password" />
+          <input type="password" name="password" placeholder="Mật Khẩu" id="password" />
           <i class="fa-regular fa-eye" id="show-password"></i>
           <small></small>
           <span></span>
@@ -40,12 +38,12 @@
          <input type="checkbox" style="width: 30px;"> <label>Remember me</label></div>
           <a href="#">Forgot a password?</a>
       </div>
-        <button onclick="login()" class="btn-submit">Đăng Nhập</button>
-        <div>Bạn chưa có tài khoản? <a href="dangky.html">Đăng ký</a></div>
+        <button type="submit" class="btn-submit">Đăng Nhập</button>
+        <div>Bạn chưa có tài khoản? <a th:href="@{/signup}">Đăng ký</a></div>
+        <div> <a th:href="@{/login/facebook}">Đăng nhập bằng facebook</a></div>
       </form>
-      div
       <div class="popup" id="popup">
-        <img src="../logo/icone-fermer-et-x-rouge.png" alt="">
+        <img src="/resources/logo/icone-fermer-et-x-rouge.png" alt="">
         <h2 id="mksai">Tai Khoan Hoac Mat khau khong chinh xac</h2>
         <p id="lienhe">Ban quen mat khau</p>
         <button type="button" onclick="closePopup()">OK</button>
@@ -53,6 +51,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../js/login.js"></script>
+    <script src="/resources/js/login.js"></script>
   </body>
 </html>

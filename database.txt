@@ -1,0 +1,138 @@
+create database quanlybanhang_thoitrang;
+use quanlybanhang_thoitrang;
+
+
+
+create table users(
+                      user_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                      username VARCHAR(100) NOT NULL UNIQUE,
+                      email VARCHAR(255) NOT NULL UNIQUE,
+                      fullname VARCHAR(100) NOT NULL,
+                      status BIT NOT NULL DEFAULT 1,
+                      password VARCHAR(255) NOT NULL,
+                      avatar VARCHAR(255),
+                      phone VARCHAR(15) UNIQUE,
+                      created_at DATETIME DEFAULT (curdate()),
+                      updated_at DATETIME DEFAULT NULL,
+                      views BIGINT DEFAULT 0,
+                      is_deleted BIT NOT NULL DEFAULT 1 CHECK (is_deleted IN (0, 1))
+);
+
+create table roles (
+                       role_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                       role_name ENUM('ADMIN', 'USER', 'MANAGER', '...') NOT NULL
+);
+
+create table vouchers (
+                          voucher_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                          code VARCHAR(100) UNIQUE,
+                          discount_amount INT
+
+);
+
+
+
+create table categories (
+                            category_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                            category_name VARCHAR(100) NOT NULL,
+                            description TEXT,
+                            status BIT NOT NULL DEFAULT 1
+);
+
+create table products (
+                          product_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                          sku VARCHAR(100) NOT NULL UNIQUE,
+                          product_name VARCHAR(100) NOT NULL UNIQUE,
+                          description TEXT,
+                          unit_price DECIMAL(10, 2),
+                          stock_quantity INT ,
+                          image VARCHAR(255),
+                          category_id BIGINT,
+                          created_at DATETIME DEFAULT (curdate()),
+                          updated_at DATETIME DEFAULT NULL,
+                          views INT DEFAULT 0,
+                          FOREIGN KEY (category_id) REFERENCES categories(category_id)
+);
+create table addresses (
+                           address_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                           user_id BIGINT NOT NULL,
+                           full_address VARCHAR(255),
+                           phone VARCHAR(15),
+                           receive_name VARCHAR(50),
+                           FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+create table orders (
+                        order_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                        serial_number VARCHAR(100) NOT NULL UNIQUE,
+                        user_id BIGINT NOT NULL,
+                        total_price DECIMAL(10, 2),
+                        status ENUM('WAITING', 'CONFIRM', 'DELIVERY', 'SUCCESS', 'CANCEL', 'DENIED') NOT NULL,
+                        note VARCHAR(100),
+                        voucher_id BIGINT,
+                        receive_name VARCHAR(100),
+                        receive_address VARCHAR(255),
+                        receive_phone VARCHAR(15),
+                        created_at DATETIME DEFAULT (curdate()),
+                        received_at DATETIME DEFAULT NULL,
+                        FOREIGN KEY (user_id) REFERENCES users(user_id),
+                        FOREIGN KEY (voucher_id) REFERENCES vouchers(voucher_id)
+);
+
+create table order_details (
+                               oder_detail_id INT AUTO_INCREMENT PRIMARY KEY ,
+                               order_id BIGINT NOT NULL,
+                               product_id BIGINT NOT NULL,
+                               name VARCHAR(100),
+                               unit_price DECIMAL(10, 2),
+                               order_quantity INT ,
+                               FOREIGN KEY (order_id) REFERENCES orders(order_id),
+                               FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+create table shopping_cart (
+                               shopping_cart_id INT AUTO_INCREMENT PRIMARY KEY,
+                               product_id BIGINT NOT NULL,
+                               user_id BIGINT NOT NULL,
+                               order_quantity INT ,
+                               FOREIGN KEY (product_id) REFERENCES products(product_id),
+                               FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+
+
+create table wish_list (
+                           wish_list_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                           user_id BIGINT NOT NULL,
+                           product_id BIGINT NOT NULL,
+                           FOREIGN KEY (user_id) REFERENCES users(user_id),
+                           FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+create table userrole(
+                         user_id BIGINT,
+                         role_id BIGINT,
+                         foreign key (user_id) references users(user_id),
+                         foreign key (role_id) references roles(role_id)
+
+);
+
+create table if not exists product_details (
+                                               product_detail_id INT AUTO_INCREMENT PRIMARY KEY ,
+                                               order_id BIGINT,
+                                               product_id BIGINT,
+                                               color VARCHAR(255),
+                                               size VARCHAR(10),
+                                               detail_quantity INT,
+                                               FOREIGN KEY (order_id) REFERENCES orders(order_id),
+                                               FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+create table comment(
+                        comment_id INT AUTO_INCREMENT PRIMARY KEY ,
+                        user_id BIGINT,
+                        product_id BIGINT,
+                        comment_text TEXT,
+                        star INT,
+                        foreign key (user_id) references users(user_id),
+                        FOREIGN KEY (product_id) REFERENCES products(product_id)
+
+);

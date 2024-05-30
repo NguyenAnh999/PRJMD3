@@ -27,8 +27,8 @@
                 <li style="top: -80px">
                     <a href="index.html">
                         <span class="icon">
-                            <img style="width: 250px;" src="../logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png"
-                                alt="">
+                            <img style="width: 250px;" src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png"
+                                 alt="">
                         </span>
                     </a>
 
@@ -44,7 +44,7 @@
                 </li>
 
                 <li>
-                    <a onclick="themsp()">
+                    <a th:href="@{/admin/Product}">
                         <span class="icon">
                             <i class="fa-solid fa-bag-shopping"></i>
                         </span>
@@ -61,11 +61,20 @@
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/admin/user}">
+                    <a  th:href="@{/admin/user}">
                         <span class="icon">
                             <i class="fa-solid fa-user"></i>
                         </span>
                         <span class="title">User</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a  th:href="@{/admin/Category}">
+                        <span class="icon">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </span>
+                        <span class="title">Category</span>
                     </a>
                 </li>
 
@@ -83,13 +92,13 @@
 
                 </li>
             </ul>
-            <ul style="top: 80%; z-index: 1000">
+            <ul style="top: 75%">
                 <li>
-                    <a href="#">
+                    <a >
                         <span class="icon">
-                            <i class="fa-solid fa-gear"></i>
+
                         </span>
-                        <span class="title">Settings</span>
+                            <span class="title">Menu Admin</span>
                     </a>
                 </li>
 
@@ -98,10 +107,18 @@
                         <span class="icon">
                             <i class="fa-solid fa-lock"></i>
                         </span>
-                        <span class="title">Password</span>
+                        <span class="title">New Password</span>
                     </a>
                 </li>
 
+                <li>
+                    <a th:href="@{/admin/addadmin}">
+                        <span class="icon">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </span>
+                        <span class="title">New Admin</span>
+                    </a>
+                </li>
                 <li>
                     <a th:href="@{/admin/logoutadmin}">
                         <span class="icon">
@@ -111,7 +128,7 @@
                     </a>
                 </li>
             </ul>
-            
+
         </div>
         <!-- Main-->
         

@@ -20,9 +20,11 @@ public class WishList {
     @Column(name = "wish_list_id")
     private Long wishListId;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private Users user;
 
-    @Column(name = "product_id", nullable = false)
-    private Long productId;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 }

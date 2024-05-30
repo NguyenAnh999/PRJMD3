@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -39,6 +40,9 @@ public class Product {
 
     @Column(name = "image", length = 255)
     private String image;
+
+//    @OneToMany(mappedBy = "product")
+//    private List<ProductDetail> productDetails;
 
     @ManyToOne
     @JoinColumn(name = "category_id")

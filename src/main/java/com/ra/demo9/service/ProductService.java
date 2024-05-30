@@ -3,6 +3,7 @@ package com.ra.demo9.service;
 
 import com.ra.demo9.model.dto.ProductRequest;
 import com.ra.demo9.model.entity.Product;
+import com.ra.demo9.model.entity.ProductDetail;
 import com.ra.demo9.repository.IProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,8 @@ public class ProductService implements IProductService{
 
     @Autowired
     private IProductDao productDao;
+    @Autowired
+    private IProductDetailService productDetailService;
     @Override
     public List<Product> getProduct(Integer currentPage,Integer size) {
         return productDao.getProduct(currentPage,size);
@@ -32,6 +35,11 @@ public class ProductService implements IProductService{
     @Override
     public boolean updateProduct(Product product,ProductRequest productRequest) {
         return productDao.updateProduct(product,productRequest);
+    }
+
+    @Override
+    public boolean updateProductStock(Product pro) {
+        return productDao.updateProductStock(pro);
     }
 
     @Override
@@ -68,5 +76,14 @@ public class ProductService implements IProductService{
     @Override
     public Long countProductByName(String name) {
         return productDao.countProductByName(name);
+    }
+
+    public Integer getTotalQuantityByProductId(Long productId) {
+        List<ProductDetail> productDetails = productDetailService.findByProductId(productId);
+        int totalQuantity = 0;
+        for (ProductDetail pd : productDetails) {
+            totalQuantity += pd.getQuantity();
+        }
+        return totalQuantity;
     }
 }

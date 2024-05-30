@@ -19,6 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
+@RequestMapping("/admin")
 public class ProductController {
     @Autowired
     UserService userService;
@@ -30,20 +31,22 @@ public class ProductController {
     private ShoppingCartService shoppingCartService;
     @Autowired
     private FileService fileService;
+    @Autowired
+    private IProductDetailService productDetailService;
     LocalDateTime currentTime = LocalDateTime.now();
 
     @Value("${file-upload}")
     private String fileUpload;
 
     @RequestMapping(value = {"/Product"})
-    public String productHome(Model model, @RequestParam(defaultValue = "0") Integer currentPage, @RequestParam(defaultValue = "3") Integer size) {
+    public String productHome(Model model, @RequestParam(defaultValue = "0") Integer currentPage, @RequestParam(defaultValue = "4") Integer size) {
         List<Product> products = productService.getProduct(currentPage, size);
         model.addAttribute("isproduct", "product");
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct() / size));
         model.addAttribute("products", products);
         model.addAttribute("productRequest", new ProductRequest());
-        model.addAttribute("categories", categoryService.getCategory(currentPage,size));
+        model.addAttribute("categories", categoryService.getCategory(currentPage,10));
         return "/adminproduct";
     }
 
@@ -54,10 +57,10 @@ public class ProductController {
     }
 
     @PostMapping("/saveProduct")
-    public String actionCreateProduct(@Valid @ModelAttribute("productRequest") ProductRequest productRequest, BindingResult result, Model model,Integer currentPage, Integer size) {
+    public String actionCreateProduct(@Valid @ModelAttribute("productRequest") ProductRequest productRequest, BindingResult result, Model model) {
         if (result.hasErrors()) {
             model.addAttribute("productRequest", productRequest);
-            model.addAttribute("categories", categoryService.getCategory(currentPage,size));
+            model.addAttribute("categories", categoryService.getCategory(0,10));
             return "/adminproduct";
         }
 
@@ -76,7 +79,7 @@ public class ProductController {
                 .productName(productRequest.getProductName())
                 .description(productRequest.getDescription())
                 .unitPrice(productRequest.getUnitPrice())
-                .stockQuantity(productRequest.getStockQuantity())
+                .stockQuantity(productService.getTotalQuantityByProductId(productRequest.getProductId()))
                 .createdAt(currentTime)
                 .updatedAt(currentTime)
                 .category(categoryService.getCategoryById(productRequest.getCategoryId()))
@@ -84,7 +87,7 @@ public class ProductController {
                 .build();
         boolean bl = productService.insertProduct(product);
         if (bl) {
-            return "redirect:/Product";
+            return "redirect:/admin/Product";
         } else {
             model.addAttribute("productRequest", product);
             return "/adminproduct";
@@ -94,11 +97,11 @@ public class ProductController {
     @GetMapping("/deleteProduct/{id}")
     public String deleteProduct(@PathVariable("id") Long id) {
         productService.deleteProduct(id);
-        return "redirect:/Product";
+        return "redirect:/admin/Product";
     }
 
     @GetMapping("/editProduct/{id}")
-    public String editProduct(@PathVariable Long id, Model model,Integer currentPage, Integer size) {
+    public String editProduct(@PathVariable Long id, Model model) {
         Product product = productService.getProductById(id);
         ProductRequest productRequest = new ProductRequest();
         productRequest.setProductId(product.getProductId());
@@ -107,26 +110,26 @@ public class ProductController {
         productRequest.setDescription(product.getDescription());
         productRequest.setUnitPrice(product.getUnitPrice());
         productRequest.setUpdatedAt(currentTime);
-        productRequest.setStockQuantity(product.getStockQuantity());
+        productRequest.setStockQuantity(productService.getTotalQuantityByProductId(product.getProductId()));
         productRequest.setCategoryId(product.getCategory().getCategoryId());
 
         model.addAttribute("productRequest", productRequest);
-        model.addAttribute("categories", categoryService.getCategory(currentPage,size));
+        model.addAttribute("categories", categoryService.getCategory(0,10));
         return "/adminproduct";
     }
 
     @PostMapping("/updateProduct")
-    public String updateProduct(@Valid @ModelAttribute("productRequest") ProductRequest productRequest, BindingResult result, Model model,Integer currentPage, Integer size) {
+    public String updateProduct(@Valid @ModelAttribute("productRequest") ProductRequest productRequest, BindingResult result, Model model, Integer currentPage, Integer size) {
         if (result.hasErrors()) {
             model.addAttribute("productRequest", productRequest);
-            model.addAttribute("categories", categoryService.getCategory(currentPage,size));
+            model.addAttribute("categories", categoryService.getCategory(currentPage, size));
             return "/adminproduct";
         }
 
         Long productId = productRequest.getProductId();
         if (productId == null) {
             result.rejectValue("productId", "error.product", "Product ID is required");
-            model.addAttribute("categories", categoryService.getCategory(currentPage,size));
+            model.addAttribute("categories", categoryService.getCategory(currentPage, size));
             return "/adminproduct";
         }
 
@@ -134,7 +137,7 @@ public class ProductController {
         Product existingProduct = productService.getProductById(productId);
         if (existingProduct == null) {
             result.rejectValue("productId", "error.product", "Product not found");
-            model.addAttribute("categories", categoryService.getCategory(currentPage,size));
+            model.addAttribute("categories", categoryService.getCategory(currentPage, size));
             return "/adminproduct";
         }
 
@@ -143,9 +146,12 @@ public class ProductController {
         existingProduct.setSku(productRequest.getSku());
         existingProduct.setDescription(productRequest.getDescription());
         existingProduct.setUnitPrice(productRequest.getUnitPrice());
-        existingProduct.setStockQuantity(productRequest.getStockQuantity());
         existingProduct.setUpdatedAt(currentTime);
         existingProduct.setCategory(categoryService.getCategoryById(productRequest.getCategoryId()));
+
+        // Tính toán và cập nhật stockQuantity
+        Integer totalQuantity = productService.getTotalQuantityByProductId(productId);
+        existingProduct.setStockQuantity(totalQuantity);
 
         // Cập nhật hình ảnh nếu có
         if (productRequest.getProductImage() != null && !productRequest.getProductImage().isEmpty()) {
@@ -155,21 +161,22 @@ public class ProductController {
             } catch (Exception e) {
                 e.printStackTrace();
                 result.rejectValue("productImage", "error.product", "Failed to upload image");
-                model.addAttribute("categories", categoryService.getCategory(currentPage,size));
+                model.addAttribute("categories", categoryService.getCategory(currentPage, size));
                 return "/adminproduct";
             }
         }
 
         productService.updateProduct(existingProduct, productRequest);
-        return "redirect:/Product";
+        return "redirect:/admin/Product";
     }
+
 
     @GetMapping("/viewProduct/{id}")
     public String viewProduct(@PathVariable Long id, Model model) {
         Product product = productService.getProductById(id);
         if (product == null) {
             model.addAttribute("error", "Product not found");
-            return "redirect:/Product";
+            return "redirect:/admin/Product";
         }
         model.addAttribute("product", product);
         return "/viewsProduct";
@@ -198,35 +205,8 @@ public class ProductController {
 
         return "/adminproduct";
     }
-    @RequestMapping("/viewProductDetail/{id}")
-    public String viewProductDetail(@PathVariable("id") Long id, Model model) {
-        Product product = productService.getProductById(id);
 
-        List<Product> products = productService.listProductOfCategory(id,product.getProductName());
-        model.addAttribute("product", product);
 
-        model.addAttribute("productList5",products);
-        return "Productdetail";
-    }
-    @RequestMapping("/productList")
-    public String productHomeUser(Model model,@RequestParam (defaultValue = "0") int currentPage,@RequestParam(defaultValue = "8") int size) {
-        List<Product> products = productService.getProduct(currentPage,size);
-        model.addAttribute("totalMoney" ,shoppingCartService.getShoppingCartTotal());
-        model.addAttribute("currentPage", currentPage);
-        model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct()/size));
-        model.addAttribute("products", products);
-       // model.addAttribute("categories", categoryService.getCategory());
-        return "Product";
 
-    }
 
-    @RequestMapping("/addProductToCart/{id}")
-    public String addProductToCart(@PathVariable("id") Long productId, Model model, HttpSession session)
-    {
-        Product product = productService.getProductById(productId);
-        // Users user = (Users) session.getAttribute("user");
-        Users user = userService.findById(1L);
-        shoppingCartService.addToCart(product,user);
-        return "redirect:/productList";
-    }
 }

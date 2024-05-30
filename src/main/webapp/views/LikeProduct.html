@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAROSA'S Jewelry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/resources/css/product.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    .sevillana-regular {
+      font-family: "Sevillana", cursive;
+      font-weight: 400;
+      font-style: normal;
+    }
+  </style>
+</head>
+
+
+<body id="top">
+<!--
+  - #HEADER
+-->
+<header class="header">
+
+
+  <div class="container" style="background-color:  rgb(240, 148, 156);
+      height: 1.5rem;"
+  >
+    <!-- <p class="alert-text"></p>
+      Nếu muốn cho thông báo gì thêm thì viết vào luôn-->
+
+  </div>
+
+
+  <div class="header-top" data-header>
+    <div class="container">
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+        <span class="line line-3"></span>
+      </button>
+
+      <div class="input-wrapper">
+        <input type="search" name="search" placeholder="Tìm kiếm sản phẩm" class="search-field">
+
+        <button class="search-submit" aria-label="search">
+          <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+        </button>
+      </div>
+
+      <a href="#" class="logo">
+        <img src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="300" height="50" alt="Glowing">
+      </a>
+
+      <div class="header-actions">
+
+        <button class="header-action-btn" aria-label="user">
+          <ion-icon name="person-outline" aria-hidden="true" ></ion-icon>
+        </button>
+
+        <button class="header-action-btn" aria-label="favourite item">
+          <ion-icon name="star-outline" aria-hidden="true" ></ion-icon>
+
+          <span class="btn-badge">0</span>
+        </button>
+
+        <a th:href="@{/myCart}" class="header-action-btn" aria-label="cart item">
+          <data class="btn-text" value="0" th:text="${totalMoney}+'Đ'"></data>
+
+          <ion-icon name="bag-handle-outline" aria-hidden="true" ></ion-icon>
+
+          <span class="btn-badge">0</span>
+        </a>
+
+      </div>
+
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li>
+            <a href="index.html" class="navbar-link has-after">Home</a>
+          </li>
+          <li>
+            <a href="#collection" class="navbar-link has-after">Bộ Sưu Tập</a>
+          </li>
+
+          <li>
+            <a href="#shop" class="navbar-link has-after">Shop</a>
+          </li>
+          <li>
+            <a href="#sale" class="navbar-link has-after">Sale</a>
+          </li>
+
+
+
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+
+</header>
+<!--
+  - #MOBILE NAVBAR side bar
+-->
+
+<div class="sidebar">
+  <div class="mobile-navbar" data-navbar>
+
+    <div class="wrapper">
+      <a href="#" class="logo">
+        <img src="../logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="179" height="26" alt="Glowing">
+      </a>
+
+      <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+        <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+      </button>
+    </div>
+
+    <ul class="navbar-list">
+      <li>
+        <a href="#collection" class="navbar-link" data-nav-link>Bộ sưu tập</a>
+      </li>
+
+      <li>
+        <a href="#shop" class="navbar-link" data-nav-link>Shop</a>
+      </li>
+
+      <li>
+        <a href="#sale" class="navbar-link" data-nav-link>Sale</a>
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="overlay" data-nav-toggler data-overlay></div>
+</div>
+<div><h1 class="sevillana-regular" style="color: #F0949C; text-align: center">Bộ Sưu Tập Sản Phẩm Yêu Thích</h1></div>
+    <!--Bộ sưu tập-->
+
+    <section class="section shop" id="shop" aria-label="shop" data-section>
+      <div class="container">
+        <ul class="products">
+          <li class="scrollbar-item" th:each="w : ${productWishList}">
+            <div class="shop-card">
+              <div class="card-banner img-holder" style="--width: 540; --height: 720;">
+                <img th:src="*{w.image}" width="540" height="720"
+                     alt="Pandora" class="img-cover">
+
+                <!--                  <span class="badge" aria-label="20% off">-20%</span>-->
+
+                <div class="card-actions">
+
+                  <button class="action-btn" aria-label="add to cart">
+                    <a th:href="@{/user/addProductWishList/{id}(id=${w.productId})}" onclick="return confirm('bạn có chắc muốn thêm nó vào giỏ hàng không ?')"
+                    ><ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon></a>
+                  </button>
+
+                  <button class="action-btn" aria-label="add to whishlist">
+                    <a th:href="@{/user/deleteWishList/{id}(id=${w.productId})}" onclick="return confirm('bạn có chắc muốn xóa sản phẩm yêu thích này không ?')"
+                    ><ion-icon name="trash-outline" aria-hidden="true"></ion-icon></a>
+                  </button>
+
+                  <button class="action-btn" aria-label="compare"> <a
+                          th:href="@{/user/showProductDetail/{id}(id=${w.productId})}"    >
+                    <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
+                  </a>
+                  </button>
+
+                </div>
+              </div>
+
+              <div class="card-content">
+
+                <div class="price">
+                  <!--                    <del class="del">1.200.000Đ</del>-->
+
+                  <span class="span" th:text="*{w.unitPrice}"></span>
+                </div>
+
+                <h3>
+                  <a th:href="@{/user/showProductDetail/{id}(id=${w.productId})}" class="card-title"  th:text="*{w.productName}"></a>
+                </h3>
+
+                <div class="card-rating">
+
+                  <div class="rating-wrapper" aria-label="5 start rating">
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                    <ion-icon name="star" aria-hidden="true"></ion-icon>
+                  </div>
+
+                  <p class="rating-text">1700 reviews</p>
+
+                </div>
+
+              </div>
+
+            </div>
+          </li>
+        </ul>
+        <ul class="listPage">
+<!--          <li class="active" th:each="i : ${#numbers.sequence(1,totalPage)}">-->
+<!--            <a class="active" th:href="@{'/productList?currentPage='+${i - 1}}" th:text="${i}"></a>-->
+<!--          </li>-->
+
+
+        </ul>
+      </div>
+    </section>
+
+
+
+
+    <!-- Sản phẩm sale-->
+
+
+
+    <footer class="footer" data-section>
+      <div class="container">
+
+        <div class="footer-top">
+
+
+          <div class="footer-list">
+
+
+            <p class="newsletter-text">
+              Xin chân thành cảm ơn quý khách đã luôn đồng hành cùng Marosa`s Qynh - Chúc quý khách shopping vui vẻ
+            </p>
+
+
+          </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+          <div class="wrapper">
+            <p class="copyright">
+              &copy; 2024 code with love by QuynhAinXynh
+            </p>
+
+
+          </div>
+
+          <a href="#" class="logo">
+            <img src="../logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png" width="179" height="26" loading="lazy" alt="Glowing">
+          </a>
+
+
+
+        </div>
+
+      </div>
+    </footer>
+
+    <!--
+     Lên đầu trang
+    -->
+
+    <a href="#top" class="back-top-btn" aria-label="back to top" data-back-top-btn>
+      <ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
+    </a>
+
+    <!--
+    link JS
+    -->
+    <script src="/resources/js/product.js"></script>
+    <script src="/resources/js/script.js" defer></script>
+
+    <!--
+      - ionicon link
+    -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+</body>
+</html>
