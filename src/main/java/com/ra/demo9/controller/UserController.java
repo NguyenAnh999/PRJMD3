@@ -52,13 +52,11 @@ public class UserController {
     }
 
     @RequestMapping("/addProductToWishList/{id}")
-    public String addProductToWishList(@PathVariable("id") Long productId, Model model, HttpSession session, @RequestParam(defaultValue = "0") int currentPage, @RequestParam(defaultValue = "8") int size) {
+    public String addProductToWishList(@PathVariable("id") Long productId, Model model, HttpSession session, @RequestParam(defaultValue = "0") int currentPage, @RequestParam(defaultValue = "8") int size,@SessionAttribute ("user") Users user) {
         Product product = productService.getProductById(productId);
-        // Users user = (Users) session.getAttribute("user");
-        Users user = userService.findById(1L);
         shoppingCartService.addToCart(product, user);
         List<Product> products = productService.getProduct(currentPage, size);
-        model.addAttribute("totalMoney", shoppingCartService.getShoppingCartTotal());
+        model.addAttribute("totalMoney", shoppingCartService.getShoppingCartTotal(user.getUserId()));
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct() / size));
         model.addAttribute("products", products);
@@ -68,14 +66,12 @@ public class UserController {
     }
 
     @RequestMapping("/addProductToCart/{id}")
-    public String addProductToCart(@PathVariable("id") Long productId, Model model, @RequestParam(defaultValue = "0") int currentPage, @RequestParam(defaultValue = "8") int size) {
+    public String addProductToCart(@PathVariable("id") Long productId, Model model, @RequestParam(defaultValue = "0") int currentPage, @RequestParam(defaultValue = "8") int size,@SessionAttribute ("user") Users user) {
         Product product = productService.getProductById(productId);
-        // Users user = (Users) session.getAttribute("user");
-        Users user = userService.findById(1L);
-        shoppingCartService.addToCart(product, user);
+        shoppingCartService.addToCart(product,user );
 
         List<Product> products = productService.getProduct(currentPage, size);
-        model.addAttribute("totalMoney", shoppingCartService.getShoppingCartTotal());
+        model.addAttribute("totalMoney", shoppingCartService.getShoppingCartTotal(user.getUserId()));
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct() / size));
         model.addAttribute("products", products);

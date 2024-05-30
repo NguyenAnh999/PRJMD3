@@ -39,9 +39,11 @@ public class ShoppingCartDao
         return total!=null?total:0.0;
     }
 
-    public List<ShoppingCart> getAllShoppingCarts(){
+    public List<ShoppingCart> getAllShoppingCarts(Long userId){
         Session session = sessionFactory.openSession();
-        List<ShoppingCart> shoppingCarts= session.createQuery("SELECT s FROM ShoppingCart s", ShoppingCart.class).getResultList();
+        List<ShoppingCart> shoppingCarts= session.createQuery("SELECT s FROM ShoppingCart s where s.userId.userId=:userId", ShoppingCart.class)
+                .setParameter("userId", userId)
+                .getResultList();
         session.close();
         return shoppingCarts;
     }
