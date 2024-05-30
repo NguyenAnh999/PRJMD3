@@ -56,7 +56,9 @@ public class UserController {
         Product product = productService.getProductById(productId);
         shoppingCartService.addToCart(product, user);
         List<Product> products = productService.getProduct(currentPage, size);
+
         model.addAttribute("totalMoney", shoppingCartService.getShoppingCartTotal(user.getUserId()));
+
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct() / size));
         model.addAttribute("products", products);
@@ -71,7 +73,9 @@ public class UserController {
         shoppingCartService.addToCart(product,user );
 
         List<Product> products = productService.getProduct(currentPage, size);
+
         model.addAttribute("totalMoney", shoppingCartService.getShoppingCartTotal(user.getUserId()));
+
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct() / size));
         model.addAttribute("products", products);
