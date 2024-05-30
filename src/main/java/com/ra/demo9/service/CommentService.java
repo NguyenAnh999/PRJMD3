@@ -24,4 +24,8 @@ public class CommentService {
     public boolean addComment(Comment comment)  {
         return commentDao.addComment(comment);
     }
+
+    public double calculateAverageRating(Long productId){
+        return commentDao.calculateAverageRating(productId);
+    }
 }

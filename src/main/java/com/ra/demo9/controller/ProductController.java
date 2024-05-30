@@ -40,7 +40,7 @@ public class ProductController {
 
     @RequestMapping(value = {"/Product"})
     public String productHome(Model model, @RequestParam(defaultValue = "0") Integer currentPage, @RequestParam(defaultValue = "4") Integer size) {
-        List<Product> products = productService.getProduct(currentPage, size);
+        List<Product> products = productService.getProduct(currentPage, size,true);
         model.addAttribute("isproduct", "product");
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct() / size));

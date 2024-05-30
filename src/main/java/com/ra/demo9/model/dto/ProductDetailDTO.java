@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ProductDetailDTO {
-    private Integer productDetailId;
+    private Long productDetailId;
 
     private Long orderId;
 

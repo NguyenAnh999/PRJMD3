@@ -161,7 +161,7 @@
                 <div class="card-actions">
 
                   <button class="action-btn" aria-label="add to cart">
-                    <a th:href="@{/user/addProductWishList/{id}(id=${w.productId})}" onclick="return confirm('bạn có chắc muốn thêm nó vào giỏ hàng không ?')"
+                    <a th:href="@{/user/addProductToCart/{id}(id=${w.productId})}" onclick="return confirm('bạn có chắc muốn thêm nó vào giỏ hàng không ?')"
                     ><ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon></a>
                   </button>
 

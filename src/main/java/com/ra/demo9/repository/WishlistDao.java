@@ -69,11 +69,14 @@ public class WishlistDao {
         return null;
     }
 
-    public boolean deleteWishList(WishList wishList) {
+    public boolean deleteWishList(Long userId,Long productId) {
         Session session = sessionFactory.openSession();
         try {
             session.beginTransaction();
-            session.delete(wishList);
+            session.createQuery("DELETE from WishList w where w.product.productId=:productId and w.user.userId=:userId")
+                    .setParameter("userId",userId)
+                            .setParameter("productId",productId)
+                                    .executeUpdate();
             session.getTransaction().commit();
             return true;
         } catch (Exception ex) {

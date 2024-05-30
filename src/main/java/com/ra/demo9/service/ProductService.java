@@ -18,8 +18,8 @@ public class ProductService implements IProductService{
     @Autowired
     private IProductDetailService productDetailService;
     @Override
-    public List<Product> getProduct(Integer currentPage,Integer size) {
-        return productDao.getProduct(currentPage,size);
+    public List<Product> getProduct(Integer currentPage,Integer size,Boolean isAdmin) {
+        return productDao.getProduct(currentPage,size,isAdmin);
     }
 
     @Override

@@ -15,10 +15,10 @@ public class CommentDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public List<Comment> getAllComment(Long userId){
+    public List<Comment> getAllComment(Long productId){
         Session session = sessionFactory.openSession();
-        List<Comment> commentList = session.createQuery("from Comment c where c.product.productId in (select c.product.productId from Comment cm where cm.user.userId =: userId )", Comment.class)
-                .setParameter("userId",userId)
+        List<Comment> commentList = session.createQuery("from Comment c where c.product.productId =:productId", Comment.class)
+                .setParameter("productId",productId)
                 .getResultList();
         return commentList;
     }
@@ -37,5 +37,20 @@ public class CommentDao {
             session.close();
         }
         return false;
+    }
+
+    public double calculateAverageRating(Long productId) {
+        List<Comment> comments = getAllComment(productId);
+        if (comments.isEmpty()) {
+            return 0.0;
+        }
+
+        double sum = 0.0;
+        for (Comment comment : comments) {
+            sum += comment.getStar();
+        }
+
+        double avgRating = sum / comments.size();
+        return Math.round(avgRating * 10.0) / 10.0;
     }
 }
