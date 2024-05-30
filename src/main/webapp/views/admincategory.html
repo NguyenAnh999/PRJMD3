@@ -35,56 +35,56 @@
 <body>
 <div class="container">
     <div class="navigation">
-        <ul style="top: 80px">
+        <ul style="top: 80px;margin-left: -11%">
             <li style="top: -80px">
                 <a href="index.html">
                         <span class="icon">
-                            <img style="width: 250px;"
-                                 src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png"
+                            <img style="width: 250px;" src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png"
                                  alt="">
                         </span>
                 </a>
 
             </li>
 
-            <li>
-                <a>
+            <li style="color: white">
+                <a >
                         <span class="icon">
                             <i class="fa-solid fa-table"></i>
                         </span>
-                    <span class="title">Dashboard</span>
+                    <span  class="title" >Dashboard</span>
                 </a>
             </li>
 
             <li>
-                <a>
+                <a th:href="@{/admin/Product}">
                         <span class="icon">
                             <i class="fa-solid fa-bag-shopping"></i>
                         </span>
-                    <span class="title">Products</span>
+                    <span  class="title">Products</span>
                 </a>
             </li>
 
-            <li>
+            <li style="color: white">
                 <a>
                         <span class="icon">
                             <i class="fa-regular fa-note-sticky"></i>
                         </span>
-                    <span class="title">Orders</span>
+                    <span class="title" >Orders</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a  th:href="@{/admin/user}">
                         <span class="icon">
                             <i class="fa-solid fa-user"></i>
                         </span>
                     <span class="title">User</span>
                 </a>
             </li>
+
             <li>
-                <a href="#">
+                <a  th:href="@{/admin/Category}">
                         <span class="icon">
-                            <i class="fa-solid fa-user"></i>
+                             <i class="fa-solid fa-bag-shopping"></i>
                         </span>
                     <span class="title">Category</span>
                 </a>
@@ -104,11 +104,11 @@
 
             </li>
         </ul>
-        <ul style="top: 75%">
-            <li>
-                <a>
+        <ul style="top: 75% ;margin-left: -11%">
+            <li style="color: white">
+                <a  >
                         <span class="icon">
-                            <i class="fa-solid fa-gear"></i>
+
                         </span>
                     <span class="title">Menu Admin</span>
                 </a>
@@ -174,7 +174,7 @@
             <div class="dsOder">
                 <div class="cardHeader" style="justify-content: space-between;">
                     <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-add"
-                            style="padding-left: 0;"><i class="fa-solid fa-plus"></i>Thêm sản phẩm
+                            style="padding-left: 0;"><i class="fa-solid fa-plus"></i>Thêm Danh Mục
                     </button>
                     <a th:href="@{/admin/sortByNameCategory}" class="btn">Sắp xếp<i style="padding: 6px;"
                                                                               class="fa-solid fa-v"></i></a>
@@ -209,7 +209,7 @@
                     <div th:if="${iscategory!=null}" style="display: flex;gap: 10px">
                         <!-- 1 2 3 4 5 -->
                         <p th:each="i : ${#numbers.sequence(1,totalPage)}">
-                            <a th:href="@{'/Category?currentPage='+${i - 1}}" th:text="${i}"></a>
+                            <a th:href="@{'/admin/Category?currentPage='+${i - 1}}" th:text="${i}"></a>
                         </p>
                         <!-- 1/2	-->
                     </div>
@@ -218,7 +218,7 @@
                     <div th:if="${issearch!=null}" style="display: flex;gap: 10px">
                         <!-- 1 2 3 4 5 -->
                         <p th:each="i : ${#numbers.sequence(1,totalPage)}">
-                            <a th:href="@{'/searchCategory?currentPage='+${i - 1}+'&search='+${issearch}}"
+                            <a th:href="@{'/admin/searchCategory?currentPage='+${i - 1}+'&search='+${issearch}}"
                                th:text="${i}"></a>
                         </p>
                         <!-- 1/2	-->
@@ -228,7 +228,7 @@
                     <div th:if="${issort!=null}" style="display: flex;gap: 10px">
                         <!-- 1 2 3 4 5 -->
                         <p th:each="i : ${#numbers.sequence(1,totalPage)}">
-                            <a th:href="@{'/sortByNameCategory?currentPage='+${i - 1}}" th:text="${i}"></a>
+                            <a th:href="@{'/admin/sortByNameCategory?currentPage='+${i - 1}}" th:text="${i}"></a>
                         </p>
                         <!-- 1/2	-->
                     </div>

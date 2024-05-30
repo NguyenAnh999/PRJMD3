@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
+@RequestMapping("/admin")
 public class ProductDetailController {
     @Autowired
     private IProductService productService;
@@ -64,22 +65,11 @@ public class ProductDetailController {
         Integer totalQuantity = productService.getTotalQuantityByProductId(product.getProductId());
         product.setStockQuantity(totalQuantity);
         productService.updateProductStock(product);
-        return "redirect:/productDetail";
+        return "redirect:/admin/productDetail";
     }
-
-    @RequestMapping("/showProductDetail/{id}")
-    public String showProductDetail(@PathVariable("id") Long id, Model model) {
-        Product product = productService.getProductById(id);
-        List<ProductDetail> productDetails = productDetailService.findByProductId(id);
-        List<Product> products = productService.listProductOfCategory(id,product.getProductName());
-        model.addAttribute("product", product);
-        model.addAttribute("productDetailList2", productDetails);;
-        model.addAttribute("productList5",products);
-        return "Productdetail";
-    }
-
     @PostMapping("/addProductDetail")
     public String addProductDetail( @ModelAttribute("category") Category category) {
+
         return "/adminProductDetail";
     }
 }

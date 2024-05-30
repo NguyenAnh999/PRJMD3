@@ -217,17 +217,17 @@
                 <div class="card-actions">
 
                   <button class="action-btn" aria-label="add to cart">
-                    <a th:href="@{/addProductToCart/{id}(id=${p.productId})}" onclick="return confirm('bạn có chắc muốn thêm nó vào giỏ hàng không')"
+                    <a th:href="@{/user/addProductToCart/{id}(id=${p.productId})}" onclick="return confirm('bạn có chắc muốn thêm nó vào giỏ hàng không')"
                     ><ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon></a>
                   </button>
 
                   <button class="action-btn" aria-label="add to whishlist">
-                    <a th:href="@{/addWishList/{id}(id=${p.productId})}">
+                    <a th:href="@{/user/addWishList/{id}(id=${p.productId})}">
                     <ion-icon name="star-outline" aria-hidden="true"></ion-icon></a>
                   </button>
 
                   <button class="action-btn" aria-label="compare"> <a
-                          th:href="@{/showProductDetail/{id}(id=${p.productId})}"    >
+                          th:href="@{/user/showProductDetail/{id}(id=${p.productId})}"    >
                     <ion-icon name="repeat-outline" aria-hidden="true"></ion-icon>
                   </a>
                   </button>
@@ -244,7 +244,7 @@
                 </div>
 
                 <h3>
-                  <a th:href="@{/showProductDetail/{id}(id=${p.productId})}" class="card-title"  th:text="*{p.productName}"></a>
+                  <a th:href="@{/user/showProductDetail/{id}(id=${p.productId})}" class="card-title"  th:text="*{p.productName}"></a>
                 </h3>
 
                 <div class="card-rating">
