@@ -26,13 +26,13 @@ public class Users {
     @NotBlank(message = "Tên người dùng là bắt buộc")
     @Size(min = 3, max = 50, message = "Tên người dùng phải từ 3 đến 50 ký tự")
     @Column(name = "username")
-    @UniqueUsername(message = "tài khoản đã tồn tại")
+//    @UniqueUsername(message = "tài khoản đã tồn tại")
     private String username;
 
     @NotBlank(message = "Email là bắt buộc")
     @Email(message = "Email không hợp lệ")
     @Column(name = "email")
-    @UniqueEmail(message = "email đã tồn tại")
+//    @UniqueEmail(message = "email đã tồn tại")
     private String email;
 
     @NotBlank(message = "Họ và tên là bắt buộc")

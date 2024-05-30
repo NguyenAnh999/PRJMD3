@@ -29,9 +29,9 @@ public class ShoppingCartService
        return shoppingCartDao.getShoppingCartTotal(userId);
     }
 
-    public List<ShoppingCart> getShoppingCart()
+    public List<ShoppingCart> getShoppingCart(Long userId)
     {
-      return   shoppingCartDao.getAllShoppingCarts();
+      return   shoppingCartDao.getAllShoppingCarts(userId);
     }
 
 
