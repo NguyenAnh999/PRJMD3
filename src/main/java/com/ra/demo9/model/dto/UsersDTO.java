@@ -1,5 +1,7 @@
 package com.ra.demo9.model.dto;
 
+import com.ra.demo9.model.validation.UniqueEmail;
+import com.ra.demo9.model.validation.UniqueUsername;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,9 +19,11 @@ import java.nio.file.Path;
 public class UsersDTO {
     @NotBlank(message = "Tên người dùng là bắt buộc")
     @Size(min = 3, max = 50, message = "Tên người dùng phải từ 3 đến 50 ký tự")
+    @UniqueUsername(message = "tài khoản đã tồn tại")
     private String username;
     @NotBlank(message = "Email là bắt buộc")
     @Email(message = "Email không hợp lệ")
+    @UniqueEmail(message = "email trùng")
     private String email;
     @NotBlank(message = "Họ và tên là bắt buộc")
     @Size(max = 100, message = "Họ và tên phải ít hơn 100 ký tự")

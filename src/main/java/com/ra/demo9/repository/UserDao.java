@@ -123,5 +123,40 @@ public class UserDao {
             return null;
         }
     }
+
+    public boolean existByEmail(String email) {
+        Session session = sessionFactory.openSession();
+        try {
+            Long count = 0L;
+            count = (Long) session.createQuery("select count(u.id) from Users u where u.email like :email")
+                    .setParameter("email", email)
+                    .getSingleResult();
+            return count > 0;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            session.close();
+        }
+    }
+
+
+    public boolean existByUsername(String username) {
+        Session session = sessionFactory.openSession();
+        try {
+            Long count = 0L;
+            count = (Long) session.createQuery("select count(u.id) from Users u where u.username like :username")
+                    .setParameter("username", username)
+                    .getSingleResult();
+            return count > 0;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            session.close();
+        }
+    }
+
+
+
+
 }
 
