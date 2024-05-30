@@ -31,7 +31,7 @@ public class ProductImpl implements IProductDao {
         Session session = sessionFactory.openSession();
         List<Product> products = null;
         try {
-            products = session.createQuery("from Product ", Product.class)
+            products = session.createQuery("from Product where stockQuantity>0", Product.class)
                     .setFirstResult(currentPage * size)
                     .setMaxResults(size)
                     .getResultList();

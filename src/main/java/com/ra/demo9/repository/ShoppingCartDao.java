@@ -39,6 +39,28 @@ public class ShoppingCartDao
         return total!=null?total:0.0;
     }
 
+
+public List<Product> getShoppingProduct(Long userId)
+    {
+        Session session = sessionFactory.openSession();
+        List<Product> list= session.createQuery("select p FROM Product p  JOIN ShoppingCart s   on s.productId.productId = p.productId where s.userId.userId=:userId", Product.class)
+                .setParameter("userId", userId)
+                .getResultList();
+        session.close();
+        return list;
+
+    }
+
+    public Long getShoppingCartTotalPrd(Long userId)
+    {
+        Session session = sessionFactory.openSession();
+        Long total= session.createQuery("SELECT sum(s.orderQuantity) FROM ShoppingCart s  JOIN Product p on s.productId.productId = p.productId where s.userId.userId=:userId", Long.class)
+                .setParameter("userId", userId)
+                .getSingleResult();
+        session.close();
+        return total!=null?total:0;
+    }
+
     public List<ShoppingCart> getAllShoppingCarts(Long userId){
         Session session = sessionFactory.openSession();
         List<ShoppingCart> shoppingCarts= session.createQuery("SELECT s FROM ShoppingCart s where s.userId.userId=:userId", ShoppingCart.class)
@@ -48,11 +70,13 @@ public class ShoppingCartDao
         return shoppingCarts;
     }
 
-    public void deleteAllShoppingCart()
+    public void deleteAllShoppingCart(Long userId)
     {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.createQuery("DELETE FROM ShoppingCart s").executeUpdate();
+        session.createQuery("DELETE FROM ShoppingCart s where s.userId.userId=:userId")
+                .setParameter("userId", userId)
+                .executeUpdate();
         session.getTransaction().commit();
         session.close();
     }

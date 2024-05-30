@@ -57,16 +57,15 @@
             </a>
         </div>
 
-
+<form th:action="@{/user/payall}" method="post" >
         <div class="right">
             <h1>Thanh Toán</h1>
 
             <div class="form">
                 <div class="group">
                     <label for="name">Họ Và Tên</label>
-                    <input style="color: rgb(240, 148, 156)" type="text" name="name" id="name">
+                    <input th:value="${session.user.fullName}" style="color: rgb(240, 148, 156)" type="text" name="name" id="name">
                 </div>
-
 <!--                <div class="group">-->
 <!--                    <label for="phone">Số Điện Thoại</label>-->
 <!--                    <input style="color: rgb(240, 148, 156)" type="text" name="phone" id="phone">-->
@@ -74,39 +73,37 @@
 
                 <div class="group">
                     <label >Địa chỉ</label>
-                    <select >
-                        <option value="">Chọn..</option>
-                        <option value="">Địa Chỉ 1</option>
+                    <select name="choiceAddress" >
+                        <option  th:value="${p.addressId}" th:each=" p:${session.address}" th:text="${p.fullAddress}"></option>
                     </select>
                 </div>
                 <div class="group">
                     <label >Hình Thức Thanh Toán</label>
                     <select >
-                        <option value="">Chọn..</option>
-                        <option value="">Zalo Pay</option>
-                        <option value="">Voucher </option>
+                        <option value="1">Zalo Pay</option>
+                        <option value="2">thanh toan khi nhan </option>
+                        <option value="2">credit </option>
+                        <option value="2">point </option>
                     </select>
                 </div>
-
-
-
-
 
             </div>
             <div class="return">
                 <div class="row">
                     <div>Tổng sản phẩm</div>
-                    <div class="totalQuantity">70</div>
+                    <div class="totalQuantity" th:text="${totalPro}"></div>
                 </div>
                 <div class="row">
                     <div>Tổng Tiền</div>
-                    <div class="totalPrice">$900</div>
+                    <div class="totalPrice" th:text="${money}"></div>
                 </div>
             </div>
-            <button class="buttonCheckout">Thanh Toán</button>
+           <button type="submit" class="buttonCheckout">Thanh Toán</button>
         </div>
+</form>
     </div>
 </div>
+
 <footer >
     <p class="newsletter-text" style="margin-top: 50px;">
         Xin chân thành cảm ơn quý khách đã luôn đồng hành cùng Marosa`s Qynh - Chúc quý khách shopping vui vẻ

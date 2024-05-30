@@ -274,8 +274,8 @@
                 </select>
             </div>
             <div class="buttons">
-                <a href="#" class="add-to-cart">Thêm Vào Giỏ Hàng</a>
-                <a href="#" class="buy-now">Mua Ngay</a>
+                <a th:href="@{/user/addProductToCart/{id}(id=${product.productId})}" onclick="return confirm('bạn có chắc muốn thêm nó vào giỏ hàng không')" class="add-to-cart">Thêm Vào Giỏ Hàng</a>
+                <a th:href="@{/user/addProductToCart/{id}(id=${product.productId})}" onclick="return confirm('bạn có chắc muốn thêm nó vào giỏ hàng không')" class="buy-now">Mua Ngay</a>
             </div>
         </form>
     </div>
@@ -388,7 +388,7 @@
     <div class="related-product-item" th:each="p : ${productList5}">
         <img th:src="${p.image}" alt="Related Product 1">
         <p th:text="${p.productName}"></p>
-        <div class="product-price" th:text="${p.unitPrice}">150,000₫</div>
+        <div class="product-price" th:text="${p.unitPrice}"></div>
     </div>
     <!--    <div class="related-product-item">-->
     <!--        <img src="https://optech.vn/uploads/images/giao-dien-web-dep-mien-phi.jpg" alt="Related Product 2">-->

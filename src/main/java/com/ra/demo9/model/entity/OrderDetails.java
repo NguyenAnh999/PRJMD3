@@ -27,11 +27,6 @@ public class OrderDetails {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @Column(name = "name", length = 100)
-    private String name;
-
-    @Column(name = "unit_price", nullable = false, precision = 10, scale = 2)
-    private Double unitPrice;
 
     @Column(name = "order_quantity", nullable = false)
     private Integer orderQuantity;
