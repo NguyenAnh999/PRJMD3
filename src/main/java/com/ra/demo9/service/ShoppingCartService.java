@@ -25,8 +25,8 @@ public class ShoppingCartService
                 .build();
         shoppingCartDao.addShoppingCart(shoppingCart);
     }
-    public Double getShoppingCartTotal(){
-       return shoppingCartDao.getShoppingCartTotal();
+    public Double getShoppingCartTotal(Long userId){
+       return shoppingCartDao.getShoppingCartTotal(userId);
     }
 
     public List<ShoppingCart> getShoppingCart()
