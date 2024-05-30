@@ -8,6 +8,9 @@ import lombok.Builder;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,35 +23,34 @@ public class Order {
     @Column(name = "order_id")
     private Long orderId;
 
-    @Column(name = "serial_number", nullable = false, unique = true, length = 100)
-    private String serialNumber;
-
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "total_price", nullable = false, precision = 10, scale = 2)
-    private BigDecimal totalPrice;
+    @Column(name = "total_price")
+    private Double totalPrice;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
-    private OrderStatus status;
+    @Column(name = "status")
+    private String status;
 
-    @Column(name = "note", length = 100)
-    private String note;
-
-    @Column(name = "receive_name", length = 100)
+    @Column(name = "receive_name")
     private String receiveName;
 
-    @Column(name = "receive_address", length = 255)
+    @Column(name = "receive_address")
     private String receiveAddress;
 
-    @Column(name = "receive_phone", length = 15)
+    @Column(name = "receive_phone")
     private String receivePhone;
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at")
     private Date createdAt;
 
     @Column(name = "received_at")
     private Date receivedAt;
-
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "voicher_user",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "voicecher_id")
+    )
+    Set<Voucher> vouchers = new HashSet<>();
 }

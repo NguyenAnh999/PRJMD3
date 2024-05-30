@@ -31,6 +31,7 @@ public class ProductImpl implements IProductDao {
         Session session = sessionFactory.openSession();
         List<Product> products = null;
         try {
+
             if (isAdmin){
                 products = session.createQuery("from Product", Product.class)
                         .setFirstResult(currentPage * size)

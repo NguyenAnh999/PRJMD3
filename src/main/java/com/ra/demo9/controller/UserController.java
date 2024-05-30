@@ -64,24 +64,19 @@ public class UserController {
         model.addAttribute("products", products);
         // model.addAttribute("categories", categoryService.getCategory());
         return "Product";
-
     }
 
     @RequestMapping("/addProductToCart/{id}")
     public String addProductToCart(@PathVariable("id") Long productId, Model model, @RequestParam(defaultValue = "0") int currentPage, @RequestParam(defaultValue = "8") int size,@SessionAttribute ("user") Users user) {
         Product product = productService.getProductById(productId);
         shoppingCartService.addToCart(product,user );
-
         List<Product> products = productService.getProduct(currentPage, size,false);
-
         model.addAttribute("totalMoney", shoppingCartService.getShoppingCartTotal(user.getUserId()));
-
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct() / size));
         model.addAttribute("products", products);
         // model.addAttribute("categories", categoryService.getCategory());
         return "Product";
-
     }
 
     @Autowired

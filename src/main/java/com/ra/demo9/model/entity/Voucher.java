@@ -5,25 +5,21 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.Date;
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "/voucher")
-public class Voucher
-
-{
+@Table(name = "vouchers")
+public class Voucher {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "voucher_id")
     private Long voucherId;
+    @Column(name = "code")
     private String code;
-    private double discountAmount;
-    private Date expiryDate;
-
-
+    @Column(name = "discount_amount")
+    private int discountAmount;
 }

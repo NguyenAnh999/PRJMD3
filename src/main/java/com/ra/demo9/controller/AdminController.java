@@ -2,6 +2,7 @@ package com.ra.demo9.controller;
 
 import com.ra.demo9.model.dto.UsersDTO;
 import com.ra.demo9.model.entity.Users;
+import com.ra.demo9.repository.OrderDao;
 import com.ra.demo9.service.AdminService;
 import com.ra.demo9.service.ProductService;
 import com.ra.demo9.service.UserService;
@@ -17,6 +18,8 @@ import javax.servlet.http.HttpSession;
 public class AdminController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private OrderDao orderDao;
 @RequestMapping("/")
 public String index(Model model) {
     return "admin";
@@ -67,5 +70,10 @@ public String index(Model model) {
         model.addAttribute("totalPages",Math.ceil( (double) userService.getCountUser() / size));
         model.addAttribute("userList", userService.findOderByFullName(currentPage,size));
         return "adminuser";
+    }
+    @RequestMapping("/oder")
+    public String oder(Model model) {
+        model.addAttribute("oders",orderDao.findAll());
+    return "adminoder";
     }
 }

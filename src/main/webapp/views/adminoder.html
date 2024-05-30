@@ -7,269 +7,287 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
     <link rel="stylesheet" href="/resources/css/admin.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+          rel="stylesheet">
 
 </head>
 
 <body>
 
-    <div class="container">
-        <div class="navigation">
-            <ul style="top: 80px">
-                <li style="top: -80px">
-                    <a href="index.html">
+<div class="container">
+    <div class="navigation">
+        <ul style="top: 80px">
+            <li style="top: -80px">
+                <a href="index.html">
                         <span class="icon">
-                            <img style="width: 250px;" src="../logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png"
-                                alt="">
+                            <img style="width: 250px;" src="/resources/logo/z5183538530354_f739e2fd01cb8c6a551e37fd2981b4f9.png"
+                                 alt="">
                         </span>
-                    </a>
+                </a>
 
-                </li>
+            </li>
 
-                <li>
-                    <a onclick="renderSp()">
+            <li>
+                <a >
                         <span class="icon">
                             <i class="fa-solid fa-table"></i>
                         </span>
-                        <span  class="title">Dashboard</span>
-                    </a>
-                </li>
+                    <span  class="title">Dashboard</span>
+                </a>
+            </li>
 
-                <li>
-                    <a onclick="themsp()">
+            <li>
+                <a th:href="@{/admin/Product}">
                         <span class="icon">
                             <i class="fa-solid fa-bag-shopping"></i>
                         </span>
-                        <span  class="title">Products</span>
-                    </a>
-                </li>
+                    <span  class="title">Products</span>
+                </a>
+            </li>
 
-                <li>
-                    <a onclick="hienOder()">
+            <li>
+                <a>
                         <span class="icon">
                             <i class="fa-regular fa-note-sticky"></i>
                         </span>
-                        <span class="title">Orders</span>
-                    </a>
-                </li>
-                <li>
-                    <a  onclick="hienUser()">
+                    <span class="title">Orders</span>
+                </a>
+            </li>
+            <li>
+                <a  th:href="@{/admin/user}">
                         <span class="icon">
                             <i class="fa-solid fa-user"></i>
                         </span>
-                        <span class="title">User</span>
-                    </a>
-                </li>
+                    <span class="title">User</span>
+                </a>
+            </li>
 
-                <li>
-                    <a href="#">
+            <li>
+                <a  th:href="@{/admin/Category}">
+                        <span class="icon">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </span>
+                    <span class="title">Category</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
                         <span class="icon">
                             <i class="fa-regular fa-comment"></i>
                         </span>
-                        <span class="title">Messages</span>
-                    </a>
-                </li>
-                <li style=" border: solid rgb(242, 241, 241) 1px ; margin-top: 100px;
+                    <span class="title">Messages</span>
+                </a>
+            </li>
+            <li style=" border: solid rgb(242, 241, 241) 1px ; margin-top: 100px;
                 width: 95%;">
 
 
-                </li>
-            </ul>
-            <ul style="top: 80%">
-                <li>
-                    <a href="#">
-                        <span class="icon" style="margin-bottom: 0px;">
-                            <i class="fa-solid fa-question"></i>
-                        </span>
-                        <span class="title">Help</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
+            </li>
+        </ul>
+        <ul style="top: 75%">
+            <li>
+                <a >
                         <span class="icon">
-                            <i class="fa-solid fa-gear"></i>
-                        </span>
-                        <span class="title">Settings</span>
-                    </a>
-                </li>
 
-                <li>
-                    <a href="">
+                        </span>
+                    <span class="title">Menu Admin</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="">
                         <span class="icon">
                             <i class="fa-solid fa-lock"></i>
                         </span>
-                        <span class="title">Password</span>
-                    </a>
-                </li>
+                    <span class="title">New Password</span>
+                </a>
+            </li>
 
-                <li>
-                    <a href="index.html">
+            <li>
+                <a th:href="@{/admin/addadmin}">
                         <span class="icon">
                             <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         </span>
-                        <span class="title">Sign Out</span>
-                    </a>
-                </li>
-            </ul>
-            
-        </div>
-        <!-- Main-->
-        
-        <div class="main">
-            <div class="topbar">
-                <div class="toggle">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-                <div class="search">
-                    <h2 th:text="'hello'+${session.user.fullName}">
-                    </h2>
-                </div>
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </label>
-                </div>
-                <i class="fa-solid fa-bell" style="color: black; font-size: 30px;"><span style="background-color: pink;
-                color: white; border-radius: 50%; width: 20px;">0</span>
-                </i>
-                <div class="user">
-                    <img src="../profile/avatar-dep-ngau-nu18.jpg" alt="">
-                </div>
-            </div>
-           
-           <div class="dashboardSession mot">
-            </div>  
-            <div class="chitietOrder hai">
-            </div>
-            <!-- <div class="chitietOrder ba">
-                <div class="dsOder">
-                    <div class="cardHeader" style="justify-content: space-between;">
-                        <button onclick="hienAdd()" style="padding-left: 0;"> <i class="fa-solid fa-plus"></i>Thêm sản phẩm</button>
-                        <a href="#" class="btn">Sắp xếp<i style="padding: 6px;" class="fa-solid fa-v"></i></a>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>STT</th>
-                                <th>Tên Sản Phẩm </th>
-                                <th>Giá</th>
-                                <th> Mã sản phẩm</th>
-                                <th>Số lượng</th>
-                                <th>Ngày tháng</th>
-                                <th>Ghi chú</th>
-                                <th>Action</th>
+                    <span class="title">New Admin</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/admin/logoutadmin}">
+                        <span class="icon">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        </span>
+                    <span class="title">Sign Out</span>
+                </a>
+            </li>
+        </ul>
 
-                            </tr>
-                        </thead>
-                        <tbody id="tableProduct">
-                        </tbody>
-                    </table>
-
-                    <ul class="listPage">
-                    </ul>
-                </div>
-
-            </div> -->
-
-            <!-- <div class="chitietOrder bon">
-             
-            </div> -->
-        
-        </div>
-
-
-
-        <!-- <div class="recentCustomers">
-                    <div class="cardHeader">
-                        <h2>Recent Customers</h2>
-                    </div>
-
-                    <table>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Nguyen Van A <br> <span>Viet Nam</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Yoshida Moto <br> <span>Japan</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Nguyen Van A <br> <span>Viet Nam</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Yoshida Moto <br> <span>Japan</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Nguyen Van A <br> <span>Viet Nam</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Yoshida Moto <br> <span>Japan</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Nguyen Van A <br> <span>Viet Nam</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Yoshida Moto <br> <span>Japan</span></h4>
-                            </td>
-                        </tr>
-                    </table>
-                </div> 
-          </div>   -->
     </div>
-    <script src="/resources/js/admin.js"></script>
+    <!-- Main-->
+
+    <div class="main">
+        <div class="topbar">
+            <div class="toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="search">
+                <h2 th:text="'xin chào admin'">
+
+                </h2>
+            </div>
+            <div class="search">
+                <form th:action="@{/admin/search}" method="get">
+                    <label>
+                        <input type="text" name="username" placeholder="Search here">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </label>
+                </form>
+            </div>
+            <i class="fa-solid fa-bell" style="color: black; font-size: 30px;"><span style="background-color: pink;
+                color: white; border-radius: 50%; width: 20px;">0</span>
+            </i>
+            <div class="user">
+                <img src="/resources/profile/avatar-dep-ngau-nu18.jpg" alt="">
+            </div>
+        </div>
+
+
+
+
+
+        <div class="chitietOrder ba">
+            <div class="dsOder">
+                <div class="cardHeader" style="justify-content: space-between;">
+
+                    <button onclick="hienAdd()" style="padding-left: 0;"> </i>Danh sách Order</button>
+                    <a href="#" class="btn">Sắp xếp<i style="padding: 6px;" class="fa-solid fa-v"></i></a>
+                </div>
+                <table>
+                    <thead>
+                    <tr>
+
+                        <th>Full Name </th>
+                        <th> Số Tien</th>
+                        <th> Trạng Thái</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tableProduct">
+                    <tr th:each="o:${oders}">
+                        <th th:text="${o.receiveName}"></th>
+                        <th th:text="${o.totalPrice}"></th>
+                        <th th:text="${o.status}"></th>
+                        <th><a th:href="@{/admin/oderdetail/{id}(id=${o.orderId})}" class="btn">chi tiet</a></th>
+                        <th th:if="${o.status=='WAITING'}"><a th:href="@{/admin/finish/{id}(id=${o.orderId})}" class="btn">hoàn thành</a></th>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <ul class="listPage">
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- <div class="chitietOrder bon">
+
+    </div> -->
+
+</div>
+
+
+
+<!--         <div class="recentCustomers">-->
+<!--                    <div class="cardHeader">-->
+<!--                        <h2>Recent Customers</h2>-->
+<!--                    </div>-->
+
+<!--                    <table>-->
+<!--                        <tr>-->
+<!--                            <td width="60px">-->
+<!--                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <h4>Nguyen Van A <br> <span>Viet Nam</span></h4>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+
+<!--                        <tr>-->
+<!--                            <td width="60px">-->
+<!--                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <h4>Yoshida Moto <br> <span>Japan</span></h4>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+
+<!--                        <tr>-->
+<!--                            <td width="60px">-->
+<!--                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <h4>Nguyen Van A <br> <span>Viet Nam</span></h4>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+
+<!--                        <tr>-->
+<!--                            <td width="60px">-->
+<!--                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <h4>Yoshida Moto <br> <span>Japan</span></h4>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+
+<!--                        <tr>-->
+<!--                            <td width="60px">-->
+<!--                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <h4>Nguyen Van A <br> <span>Viet Nam</span></h4>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+
+<!--                        <tr>-->
+<!--                            <td width="60px">-->
+<!--                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <h4>Yoshida Moto <br> <span>Japan</span></h4>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+
+<!--                        <tr>-->
+<!--                            <td width="60px">-->
+<!--                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <h4>Nguyen Van A <br> <span>Viet Nam</span></h4>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+
+<!--                        <tr>-->
+<!--                            <td width="60px">-->
+<!--                                <div class="imgBx"><img src="../profile/avatar-dep-ngau-nu18.jpg" alt=""></div>-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <h4>Yoshida Moto <br> <span>Japan</span></h4>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+<!--                    </table>-->
+<!--                </div> -->
+<!--          </div>-->
+</div>
+<script src="/resources/js/admin.js"></script>
 </body>
 
 </html>
