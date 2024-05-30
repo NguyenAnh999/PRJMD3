@@ -3,6 +3,7 @@ package com.ra.demo9.controller;
 import com.ra.demo9.model.dto.UsersDTO;
 import com.ra.demo9.model.entity.Product;
 import com.ra.demo9.model.entity.Users;
+import com.ra.demo9.repository.AddressDao;
 import com.ra.demo9.service.AdminService;
 import com.ra.demo9.service.ProductService;
 import com.ra.demo9.service.ShoppingCartService;
@@ -28,6 +29,8 @@ public class HomeController {
 //    private ConnectionRepository connectionRepository;
     @Autowired
     AdminService adminService;
+    @Autowired
+    AddressDao addressDao;
 
     @RequestMapping("/")
     public String home() {
@@ -44,6 +47,7 @@ public class HomeController {
         Users users = adminService.getUser(username, password);
         if (users!=null) {
             session.setAttribute("user", users);
+            session.setAttribute("address",addressDao.getAllAddress(users.getUserId()));
             if (users.getRoleList().stream().anyMatch(role -> role.getRoleId()==1)){
             return "admin";}
             else {

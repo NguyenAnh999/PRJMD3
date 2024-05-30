@@ -25,15 +25,15 @@ public class Address {
     @JoinColumn(name = "user_id", nullable = false)
     private Users users;
 
-    @Column(name = "full_address", nullable = false, length = 255)
+    @Column(name = "full_address", nullable = false)
     @NotEmpty
     private String fullAddress;
 
-    @Column(name = "phone", nullable = false, length = 15)
+    @Column(name = "phone", nullable = false)
     @NotEmpty
     private String phone;
 
-    @Column(name = "receive_name", nullable = false, length = 50)
+    @Column(name = "receive_name", nullable = false)
     @NotEmpty
     private String receiveName;
 }

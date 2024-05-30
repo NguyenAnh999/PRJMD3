@@ -1,8 +1,10 @@
 package com.ra.demo9.controller;
 
 import com.ra.demo9.model.dto.UsersDTO;
+import com.ra.demo9.model.entity.Address;
 import com.ra.demo9.model.entity.Product;
 import com.ra.demo9.model.entity.Users;
+import com.ra.demo9.repository.AddressDao;
 import com.ra.demo9.service.ProductService;
 import com.ra.demo9.service.ShoppingCartService;
 import com.ra.demo9.service.UserService;
@@ -18,9 +20,9 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    ProductService productService;
+    private ProductService productService;
     @Autowired
-    ShoppingCartService
+    private ShoppingCartService
             shoppingCartService;
     @Autowired
     private UserService userService;
@@ -50,15 +52,15 @@ public class UserController {
     }
 
     @RequestMapping("/addProductToWishList/{id}")
-    public String addProductToWishList(@PathVariable("id") Long productId, Model model, HttpSession session,@RequestParam (defaultValue = "0") int currentPage,@RequestParam(defaultValue = "8") int size) {
+    public String addProductToWishList(@PathVariable("id") Long productId, Model model, HttpSession session, @RequestParam(defaultValue = "0") int currentPage, @RequestParam(defaultValue = "8") int size) {
         Product product = productService.getProductById(productId);
         // Users user = (Users) session.getAttribute("user");
         Users user = userService.findById(1L);
         shoppingCartService.addToCart(product, user);
-        List<Product> products = productService.getProduct(currentPage,size);
-        model.addAttribute("totalMoney" ,shoppingCartService.getShoppingCartTotal());
+        List<Product> products = productService.getProduct(currentPage, size);
+        model.addAttribute("totalMoney", shoppingCartService.getShoppingCartTotal());
         model.addAttribute("currentPage", currentPage);
-        model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct()/size));
+        model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct() / size));
         model.addAttribute("products", products);
         // model.addAttribute("categories", categoryService.getCategory());
         return "Product";
@@ -66,22 +68,36 @@ public class UserController {
     }
 
     @RequestMapping("/addProductToCart/{id}")
-    public String addProductToCart(@PathVariable("id") Long productId,Model model,@RequestParam (defaultValue = "0") int currentPage,@RequestParam(defaultValue = "8") int size)
-    {
+    public String addProductToCart(@PathVariable("id") Long productId, Model model, @RequestParam(defaultValue = "0") int currentPage, @RequestParam(defaultValue = "8") int size) {
         Product product = productService.getProductById(productId);
         // Users user = (Users) session.getAttribute("user");
         Users user = userService.findById(1L);
-        shoppingCartService.addToCart(product,user);
+        shoppingCartService.addToCart(product, user);
 
-        List<Product> products = productService.getProduct(currentPage,size);
-        model.addAttribute("totalMoney" ,shoppingCartService.getShoppingCartTotal());
+        List<Product> products = productService.getProduct(currentPage, size);
+        model.addAttribute("totalMoney", shoppingCartService.getShoppingCartTotal());
         model.addAttribute("currentPage", currentPage);
-        model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct()/size));
+        model.addAttribute("totalPage", Math.ceil((double) productService.countAllProduct() / size));
         model.addAttribute("products", products);
         // model.addAttribute("categories", categoryService.getCategory());
         return "Product";
 
     }
 
+    @Autowired
+    AddressDao addressDao;
 
+    @RequestMapping("/add/address")
+    public String addAddress(Model model) {
+        model.addAttribute("address", new Address());
+        return "addAddress";
+    }
+
+    @RequestMapping("/add/address/after")
+    public String add(@ModelAttribute("address") Address address,HttpSession session,@SessionAttribute ("user") Users users) {
+        address.setUsers(users);
+        addressDao.addAddress(address);
+        session.setAttribute("address",addressDao.getAllAddress(users.getUserId()));
+        return "userinfo";
+    }
 }

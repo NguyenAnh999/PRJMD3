@@ -3,6 +3,7 @@ package com.ra.demo9.controller;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ra.demo9.model.entity.Users;
+import com.ra.demo9.repository.AddressDao;
 import com.ra.demo9.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +23,8 @@ import javax.servlet.http.HttpSession;
 public class SocialFacebookController {
     @Autowired
     private UserService userService;
-
+    @Autowired
+    AddressDao addressDao;
     @Value("${facebook.redirect.uri}")
     private String redirectUri;
 
@@ -56,6 +58,7 @@ public class SocialFacebookController {
             // xử lí lưu session
             model.addAttribute("user", user);
             session.setAttribute("user", user);
+            session.setAttribute("address",addressDao.getAllAddress(user.getUserId()));
             return "redirect:/";
         } else {
             return "redirect:/login?error";

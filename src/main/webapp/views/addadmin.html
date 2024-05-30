@@ -24,7 +24,7 @@
         <div class="form-control">
           <input type="text" placeholder="Tên Người Dùng" id="username" th:field="*{username}"/>
           <i class="fa-solid fa-user"></i>
-          <small></small>
+          <small th:errors="*{username}"></small>
           <span></span>
         </div>
 
@@ -32,35 +32,35 @@
         <div class="form-control">
           <input type="file" placeholder="ảnh"  th:field="*{avatar}"/>
           <i class="fa-solid fa-user"></i>
-          <small></small>
+          <small  th:errors="*{avatar}"></small>
           <span></span>
         </div>
 
         <div class="form-control">
           <input type="text" placeholder="số điện thoại"  th:field="*{phone}"/>
           <i class="fa-solid fa-user"></i>
-          <small></small>
+          <small  th:errors="*{phone}"></small>
           <span></span>
         </div>
 
         <div class="form-control">
           <input type="text" placeholder="Họ Và Tên" id="name" th:field="*{fullName}"/>
           <i class="fa-solid fa-user"></i>
-          <small></small>
+          <small  th:errors="*{fullName}"></small>
           <span></span>
         </div>
 
         <div class="form-control">
           <input type="text" placeholder="Email" id="email" th:field="*{email}"/>
           <i class="fa-solid fa-envelope"></i>
-          <small></small>
+          <small  th:errors="*{email}"></small>
           <span></span>
         </div>
 
         <div class="form-control">
           <input type="password" placeholder="Mật Khẩu" id="password" th:field="*{password}" />
           <i class="fa-regular fa-eye" id="show-password"></i>
-          <small></small>
+          <small  th:errors="*{password}"></small>
           <span></span>
         </div>
 
