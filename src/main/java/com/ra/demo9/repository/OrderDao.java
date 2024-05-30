@@ -48,8 +48,11 @@ public class OrderDao {
         tx.commit();
         session.close();
     }
-//    public List<Product> findByOrderId(Long orderId, Long userId) {
-//        Session session = sessionFactory.openSession();
-//        List<Product> list=session.createQuery("from Product ")
-//    }
+    public List<Product> findByProductId(Long orderId) {
+        Session session = sessionFactory.openSession();
+        List<Product> list = session
+                .createQuery("SELECT p from Product p join OrderDetails od on p.productId = od.product.productId join Order o on od.order.orderId = o.orderId where o.orderId=:orderId", Product.class)
+                .setParameter("orderId",orderId).getResultList();
+        return list;
+    }
 }

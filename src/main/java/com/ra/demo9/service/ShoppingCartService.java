@@ -19,6 +19,8 @@ public class ShoppingCartService
     @Autowired
     ShoppingCartDao shoppingCartDao;
     @Autowired
+    ProductService productService;
+    @Autowired
     OrderDao orderDao;
     public void addToCart(Product product, Users user){
         ShoppingCart shoppingCart = ShoppingCart.builder()
@@ -49,9 +51,9 @@ public class ShoppingCartService
     public Long totalPro(Long userId){
         return shoppingCartDao.getShoppingCartTotalPrd(userId);
     }
-    public void cartToOrder(Long userId,Address address,Double price,List<Product> products){
+    public void cartToOrder(Users userId,Address address,Double price,List<Product> products){
         Order order = Order.builder()
-                .userId(userId)
+                .users(userId)
                 .createdAt(new Date())
                 .receiveAddress(address.getFullAddress())
                 .receivedAt(new Date())
@@ -67,6 +69,7 @@ public class ShoppingCartService
                     .order(order)
                     .product(product)
                     .build();
+            productService.minusePr(product);
             orderDao.saveDetail(orderDetails);
         }
 
