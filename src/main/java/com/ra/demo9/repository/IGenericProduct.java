@@ -7,7 +7,7 @@ import com.ra.demo9.model.entity.Product;
 import java.util.List;
 
 public interface IGenericProduct {
-    List<Product> getProduct(Integer currentPage,Integer size);
+    List<Product> getProduct(Integer currentPage,Integer size,Boolean isAdmin);
     public Product getProductById(Long pro_Id);
     public boolean insertProduct(Product pro);
     public boolean updateProduct(Product pro, ProductRequest productRequest);

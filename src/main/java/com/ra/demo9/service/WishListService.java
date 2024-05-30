@@ -24,7 +24,6 @@ public class WishListService {
     }
 
     public boolean deleteWishList(Long userId,Long productId){
-        WishList wishList = wishlistDao.getWishListByIdProduct(userId,productId);
-       return wishlistDao.deleteWishList(wishList);
+       return wishlistDao.deleteWishList(userId,productId);
     }
 }

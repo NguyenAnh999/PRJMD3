@@ -1,5 +1,6 @@
 package com.ra.demo9.service;
 
+import com.ra.demo9.model.dto.ProductDetailDTO;
 import com.ra.demo9.model.entity.ProductDetail;
 import com.ra.demo9.repository.IProductDetailDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,8 @@ public class ProductDetailService implements IProductDetailService{
     }
 
     @Override
-    public boolean updateProductDetail(ProductDetail proDetail) {
-        return productDetailDao.updateProductDetail(proDetail);
+    public boolean updateProductDetail(ProductDetail proDetail, ProductDetailDTO productDetailDTO) {
+        return productDetailDao.updateProductDetail(proDetail,productDetailDTO);
     }
 
     @Override

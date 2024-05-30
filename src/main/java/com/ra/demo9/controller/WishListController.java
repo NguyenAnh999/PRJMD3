@@ -51,12 +51,16 @@ public class WishListController {
         return "redirect:/user/myWishList";
     }
 
+
+
     @RequestMapping("/showProductDetail/{id}")
     public String showProductDetail(@PathVariable("id") Long id, Model model,@SessionAttribute("user") Users users) {
         Product product = productService.getProductById(id);
         List<ProductDetail> productDetails = productDetailService.findByProductId(id);
         List<Product> products = productService.listProductOfCategory(id, product.getProductName());
-        List<Comment> commentList = commentService.getAllComment(users.getUserId());
+        List<Comment> commentList = commentService.getAllComment(id);
+        double avgRating = commentService.calculateAverageRating(id);
+        model.addAttribute("avgRating", avgRating);
         model.addAttribute("productDel", product);
         model.addAttribute("productDetailList2", productDetails);
         model.addAttribute("productList5", products);

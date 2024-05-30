@@ -27,14 +27,22 @@ public class ProductImpl implements IProductDao {
     private FileService fileService;
 
     @Override
-    public List<Product> getProduct(Integer currentPage, Integer size) {
+    public List<Product> getProduct(Integer currentPage, Integer size,Boolean isAdmin) {
         Session session = sessionFactory.openSession();
         List<Product> products = null;
         try {
-            products = session.createQuery("from Product ", Product.class)
-                    .setFirstResult(currentPage * size)
-                    .setMaxResults(size)
-                    .getResultList();
+            if (isAdmin){
+                products = session.createQuery("from Product", Product.class)
+                        .setFirstResult(currentPage * size)
+                        .setMaxResults(size)
+                        .getResultList();
+            }else {
+                products = session.createQuery("from Product p where p.stockQuantity>0", Product.class)
+                        .setFirstResult(currentPage * size)
+                        .setMaxResults(size)
+                        .getResultList();
+            }
+
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {

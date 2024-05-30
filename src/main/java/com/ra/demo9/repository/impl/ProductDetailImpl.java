@@ -1,8 +1,10 @@
 package com.ra.demo9.repository.impl;
 
 
+import com.ra.demo9.model.dto.ProductDetailDTO;
 import com.ra.demo9.model.entity.ProductDetail;
 import com.ra.demo9.repository.IProductDetailDao;
+import com.ra.demo9.service.IProductService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -18,6 +20,8 @@ import java.util.List;
 public class ProductDetailImpl implements IProductDetailDao {
     @Autowired
     private SessionFactory sessionFactory;
+    @Autowired
+    private IProductService productService;
     @Override
     public List<ProductDetail> getProductDetail(Integer currentPage, Integer size) {
         Session session = sessionFactory.openSession();
@@ -68,21 +72,36 @@ public class ProductDetailImpl implements IProductDetailDao {
         return false;
     }
 
+
     @Override
-    public boolean updateProductDetail(ProductDetail proDetail) {
-        Session session = sessionFactory.openSession();
-        try{
-            session.beginTransaction();
-            session.update(proDetail);
-            session.getTransaction().commit();
+    public boolean updateProductDetail(ProductDetail productDetail, ProductDetailDTO productDetailDTO) {
+        Session session = null;
+        Transaction transaction = null;
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            ProductDetail existingProductDetail = session.get(ProductDetail.class, productDetail.getProductDetailId());
+            if (existingProductDetail == null) {
+                return false;
+            }
+            existingProductDetail.setColor(productDetail.getColor());
+            existingProductDetail.setSize(productDetail.getSize());
+            existingProductDetail.setQuantity(productDetail.getQuantity());
+            existingProductDetail.setProduct(productService.getProductById(productDetailDTO.getProductId()));
+            session.update(existingProductDetail);
+            transaction.commit();
             return true;
-        }catch (Exception ex){
-            ex.printStackTrace();
-            session.getTransaction().rollback();
-        }finally {
-            session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
-        return false;
     }
 
     @Override
