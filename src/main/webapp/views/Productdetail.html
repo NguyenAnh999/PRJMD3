@@ -228,6 +228,8 @@
         .star-one {
             font-family: Arial, sans-serif;
             position: relative;
+            left: 90px;
+            top: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -282,7 +284,7 @@
 
 <div class="related-products">
     <section>
-        <h2 style="position: absolute">Để lại bình luận</h2>
+        <h2 style="position: absolute; margin-left: 80px">Để lại bình luận</h2>
         <form th:action="@{/user/addComment}" method="post" th:object="${comment}">
             <input type="hidden" name="productId" th:value="${productDel.productId}"/>
             <div style="display: flex; position: relative; top:60px">
