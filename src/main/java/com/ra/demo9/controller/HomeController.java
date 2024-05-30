@@ -4,6 +4,7 @@ import com.ra.demo9.model.dto.UsersDTO;
 import com.ra.demo9.model.entity.Product;
 import com.ra.demo9.model.entity.Users;
 import com.ra.demo9.repository.AddressDao;
+import com.ra.demo9.repository.impl.DashBroadDao;
 import com.ra.demo9.service.AdminService;
 import com.ra.demo9.service.ProductService;
 import com.ra.demo9.service.ShoppingCartService;
@@ -31,6 +32,8 @@ public class HomeController {
     AdminService adminService;
     @Autowired
     AddressDao addressDao;
+    @Autowired
+    DashBroadDao dashBroadDao;
 
     @RequestMapping("/")
     public String home() {
@@ -43,12 +46,16 @@ public class HomeController {
     }
 
     @PostMapping("/admincheck")
-    public String adminCheck(@RequestParam String username, @RequestParam String password, HttpSession session) {
+    public String adminCheck(@RequestParam String username, @RequestParam String password, HttpSession session, Model model) {
         Users users = adminService.getUser(username, password);
         if (users!=null) {
             session.setAttribute("user", users);
             session.setAttribute("address",addressDao.getAllAddress(users.getUserId()));
             if (users.getRoleList().stream().anyMatch(role -> role.getRoleId()==1)){
+                model.addAttribute("AllProducts",dashBroadDao.getAllQuantityProduct() );
+                model.addAttribute("allSaleProduct",dashBroadDao.getAllQuantitySale());
+                model.addAttribute("allMoney",dashBroadDao.getAllPriceSale());
+                model.addAttribute("allUser",dashBroadDao.getCountAllUser());
             return "admin";}
             else {
                 return "index";

@@ -37,7 +37,8 @@ public class ShoppingCartController {
     }
     @PostMapping("/payall")
     public String payAll(@SessionAttribute("user") Users user, @SessionAttribute ("address") List<Address> address, Model model, @RequestParam ("choiceAddress") Integer addressId) {
-        shoppingCartService.cartToOrder(user.getUserId(),address.get(addressId),shoppingCartService.getShoppingCartTotal(user.getUserId()),shoppingCartService.getShoppingProduct(user.getUserId()));
+        shoppingCartService.cartToOrder(user,address.get(addressId),shoppingCartService.getShoppingCartTotal(user.getUserId()),shoppingCartService.getShoppingProduct(user.getUserId()));
+
        shoppingCartService.deleteAllShopCart(user.getUserId());
         return "index";
     }

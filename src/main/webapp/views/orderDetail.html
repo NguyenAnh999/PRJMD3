@@ -172,40 +172,31 @@
                 <tbody>
                 <tr>
                     <td>Mã đơn hàng </td>
-                    <td> <input type="text"></td>
+                    <td> <input readonly th:value="${oder.orderId}" type="text"></td>
                 </tr>
                 <tr>
                     <td>Tổng tiền </td>
-                    <td> <input type="number"></td>
-                </tr>
-                <tr>
-                    <td>ID </td>
-                    <td> <input type="number"></td>
+                    <td> <input readonly th:value="${oder.totalPrice}" type="number"></td>
                 </tr>
                 <tr>
                     <td>Tên người dùng </td>
-                    <td> <input type="text"></td>
-                </tr>
-
-                <tr>
-                    <td>Ghi chú </td>
-                    <td> <input type="text"></td>
-                </tr>
-                <tr>
-                    <td>Số lượng</td>
-                    <td> <input type="number"></td>
+                    <td> <input readonly th:value="${oder.users.fullName}" type="text"></td>
                 </tr>
                 <tr>
                     <td> Trạng thái </td>
-                    <td> <input type="text"></td>
+                    <td> <input readonly th:value="${oder.status}" type="text"></td>
                 </tr>
                 <tr>
                     <td> Thời gian đặt hàng </td>
-                    <td> <input type="number"></td>
+<!--                    <td> <input readonly th:value="'ngày:'+${oder.createdAt.getDate()}+'tháng:'+${oder.createdAt.getMonth()}+'năm:'+${oder.createdAt.getYear()}" type="number"></td>-->
+                    <td>
+                        <input readonly th:value="'ngày: ' + ${#dates.format(oder.createdAt, 'dd')} + ' tháng: ' + ${#dates.format(oder.createdAt, 'MM')} + ' năm: ' + ${#dates.format(oder.createdAt, 'yyyy')}" type="text">
+                    </td>
+
                 </tr>
                 <tr>
                     <td> Địa chỉ đặt hàng </td>
-                    <td> <input type="text"></td>
+                    <td> <input th:value="${oder.receiveAddress}" type="text"></td>
                 </tr>
                 </tbody>
                 <tfoot>
@@ -226,15 +217,19 @@
                 <table>
                     <thead>
                     <tr>
-                        <th>STT</th>
                         <th>Tên Sản Phẩm Đã Mua </th>
                         <th>Giá</th>
                         <th> Mã sản phẩm</th>
-                        <th>Số lượng</th>
-                        <th>Action</th>
+                        <th> anh</th>
                     </tr>
                     </thead>
                     <tbody id="tableProduct">
+                    <tr th:each="p:${productListByOder}">
+                        <td th:text="${p.productName}"></td>
+                        <td th:text="${p.unitPrice}"></td>
+                        <td th:text="${p.productId}"></td>
+                        <td><img style="width: 100px;height: 100px;object-fit: cover" th:src="${p.image}"></td>
+                    </tr>
                     </tbody>
                 </table>
 

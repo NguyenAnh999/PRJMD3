@@ -270,4 +270,12 @@ public class ProductImpl implements IProductDao {
         }
     }
 
+    public void minusePr(Product product) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.update(product);
+        session.getTransaction().commit();
+        session.close();
+    }
+
 }

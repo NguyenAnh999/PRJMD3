@@ -3,6 +3,7 @@ package com.ra.demo9.controller;
 import com.ra.demo9.model.dto.UsersDTO;
 import com.ra.demo9.model.entity.Users;
 import com.ra.demo9.repository.OrderDao;
+import com.ra.demo9.repository.impl.DashBroadDao;
 import com.ra.demo9.service.AdminService;
 import com.ra.demo9.service.ProductService;
 import com.ra.demo9.service.UserService;
@@ -20,8 +21,15 @@ public class AdminController {
     private UserService userService;
     @Autowired
     private OrderDao orderDao;
+    @Autowired
+    private DashBroadDao dashBroadDao;
+
 @RequestMapping("/")
 public String index(Model model) {
+    model.addAttribute("AllProducts",dashBroadDao.getAllQuantityProduct() );
+    model.addAttribute("allSaleProduct",dashBroadDao.getAllQuantitySale());
+    model.addAttribute("allMoney",dashBroadDao.getAllPriceSale());
+    model.addAttribute("allUser",dashBroadDao.getCountAllUser());
     return "admin";
 }
     @RequestMapping("/logoutadmin")
